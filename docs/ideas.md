@@ -7,8 +7,8 @@ Theta
 UFit
 
 ### Team Overview
-Name: Aditya Kumar Roy Chowdhury, GitHub username: AdityaUmass
-Name: Raghav Malpani, GitHub username: raghavmalpani
+Name: Aditya Kumar Roy Chowdhury, GitHub username: AdityaUmass\
+Name: Raghav Malpani, GitHub username: raghavmalpani\
 Name: Brandon Figueredo, GitHub username: Brandredo
 
 ### Innovative Idea
