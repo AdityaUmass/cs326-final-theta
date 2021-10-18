@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Make a Post</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    >
+    <link rel="stylesheet" href="CSS/post.css">
+  </head>
+  <body>
+    <div class="container mt-5">
+      <form action="" class="row g-3 p-2">
+        <h1>Make a Post</h1>
+        <div class="col-md-6 mt-2">
+          <label for="postTitle" class="form-label">Title</label>
+          <input type="text" class="form-control" id="title">
+        </div>
+        <div class="col-9">
+            <label for="postContent" class="form-label">Content</label>
+            <textarea name="postContent" rows=6 class="form-control"></textarea>
+        </div>
+        <div class="col-md-4">
+            <label for="Workout Type" class="form-label">Workout Type</label>
+            <select id="workout" class="form-select">
+                <option selected disabled>Choose a workout type</option>
+                <option>Upper-Body</option>
+                <option>Lower-Body</option>
+                <option>Cardio</option>
+                <option>Core</option>
+                <option>Other</option>
+            </select>
+        </div>
+        <div class="col-md-4">
+            <label for="Activity Type" class="form-label">Activity Type</label>
+            <select id="activity" class="form-select">
+            <option selected disabled>Choose an activity</option>
+            <option>Gym</option>
+            <option>Pick-up game</option>
+            <option>Club sport</option>
+            <option>Other</option>
+            </select>
+        </div>
+        <div class="col-md-4">
+            <label for="Workout Type" class="form-label">Workout Day</label>
+            <select id="workout" class="form-select">
+                <option selected disabled>Choose a day</option>
+                <option>Monday</option>
+                <option>Tuesday</option>
+                <option>Wednesday</option>
+                <option>Thursday</option>
+                <option>Friday</option>
+                <option>Saturday</option>
+                <option>Sunday</option>
+            </select>
+        </div>
+        <div class="col-4 ">
+            <label for="time" class="form-label">Workout Start Time</label>
+            <input type="time" class="form-control" id="time">
+        </div>
+        <div class="col-4 ">
+            <label for="duration" class="form-label">Workout Duration (Hours)</label>
+            <input type="number" class="form-control" id="duration">
+        </div>
+        <div class="col-4 ">
+            <label for="date" class="form-label">Workout Date</label>
+            <input type="date" class="form-control" id="date">
+        </div>
+        <div class="col-6">
+            <label for="contact" class="form-label">How to Contact You (Snapchat, Instagram, Mobile, etc..)</label>
+            <textarea name="contact" rows=2 class="form-control"></textarea>
+        </div>
+        <div class="col-12 mb-2">
+          <button type="submit" class="btn btn-primary">Post</button>
+        </div>
+      </form>
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
