@@ -1,4 +1,9 @@
+body {
+    background-color: #881c1c;
+}
+
 form {
+    background-color: white;
     border-radius: 6px;
     border: 2px solid #F5F5F5;
 }
