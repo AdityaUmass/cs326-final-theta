@@ -15,31 +15,96 @@
   </head>
   <body>
 
-    <button id="test">click me</button>
-
     <nav class="navbar navbar-dark fixed-top">
     
         <div class="container-fluid">
-            <a href="home.html" class="navbar-brand"><img src="Images/UMass_Amherst_athletics_logo.svg.png" alt=""/></a>
+            
+            <div class="alignLeft">
+                <a href="home.html" class="navbar-brand"><img src="Images/umass_logo.png" alt=""/></a>
     
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="offcanvas"
-            data-bs-target="#navMenu"
-            aria-controls="navMenu"
-            id="buttonToggleCanvas"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
+                <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="offcanvas"
+                data-bs-target="#navMenu"
+                aria-controls="navMenu"
+                aria-labelledby="navMenuLabel"
+                id="buttonToggleCanvas"
+                >
+                <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+            
+          
+            <div class="signupControls">
+                <a class="navbar-brand" href="#">Sign Up</a>
+                <a class="navbar-brand" href="#">Login</a>
+            </div>
+
+
+            <div class="offcanvas offcanvas-start" tabindex="-1" id="navMenu" aria-labelledby="navMenuLabel">
+                <div class="offcanvas-header">
+                  <h5 class="offcanvas-title" id="navMenuLabel">Offcanvas</h5>
+                  <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                  <div>
+                    Some text as placeholder. In real life you can have the elements you have chosen. Like, text, images, lists, etc.
+                  </div>
+                  <div class="dropdown mt-3">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
+                      Dropdown button
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                      <li><a class="dropdown-item" href="#">Action</a></li>
+                      <li><a class="dropdown-item" href="#">Another action</a></li>
+                      <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+            <!-- <div class="offcanvas offcanvas-start" tabindex="-1" id="navMenu" aria-labelledby="navMenuLabel">
+                <div class="offcanvas-header">
+                  <h5 class="offcanvas-title" id="navMenuLabel">Menu</h5>
+                  <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                  <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Find a partner</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                      <a class="nav-link active" href="#">Clubs</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">News</a>
+                    </li>
+                    
+                  </ul>
+                  <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                  </form>
+                </div>
+              </div> -->
+
+              
     
         </div>
+
         
-        <div class="offcanvas offcanvas-start" tabindex="-1" id="navMenu" aria-labelledby="navMenuLabel">
+
+        
+        
+        <!-- <div class="offcanvas offcanvas-start" tabindex="-1" id="navMenu" aria-labelledby="navMenuLabel">
             <div class="offcanvas-header">
                 <h5 class="offcanvas-title" id="navMenuLabel">Menu</h5>
             </div>
-        </div>
+        </div> -->
       
     </nav>
 
