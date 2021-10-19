@@ -2,11 +2,11 @@
     background-color: #881c1c;
 }
 
-img {
+/* img {
     height: 30px;
     width: 40px;
     margin: 0px 10px 0px 10px;
-}
+} */
 
 .navbar>.container, 
 .navbar>.container-fluid, 
@@ -21,6 +21,21 @@ img {
     justify-content: space-between;
     margin-left: 10px;
 }
+
+/* .navbar-dark .navbar-brand {
+    color: #fff;
+    height: 30px;
+    width: 40px;
+    margin: 0px 10px 0px 10px;
+} */
+
+.navbar-brand .logo {
+    color: #fff;
+    height: 30px;
+    width: 40px;
+    margin: 0px 10px 0px 10px;
+}
+
 
 .signupControls a {
     margin: 0px 40px 0px 10px;
@@ -57,4 +72,15 @@ ul li {
     line-height: 1.5;
     color: white;
 }
+
+.home-page_page_img .recCenter {
+    background-size: 100%;
+}
+
+
+#carouselExampleControls {
+    position: relative;
+    top: 55.98px;
+}
+
 
