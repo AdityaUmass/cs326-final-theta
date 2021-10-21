@@ -97,7 +97,52 @@
       </a>
     </div> -->
 
-    
+    <div class="container-fluid posts">
+      <div class="row postholder">
+        <div class="col-4 filters">
+          <form action="" class="row pt-2 g-4">
+            <h1>Filters</h1>
+            <div class="col-6">
+              <label for="Workout Type" class="form-label">Workout Type</label>
+              <select id="workout" class="form-select">
+                <option selected disabled>Choose</option>
+                <option>Upper-Body</option>
+                <option>Lower-Body</option>
+                <option>Cardio</option>
+                <option>Core</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="col-6">
+              <label for="Activity Type" class="form-label">Activity Type</label>
+              <select id="activity" class="form-select">
+              <option selected disabled>Choose</option>
+              <option>Gym</option>
+              <option>Pick-up game</option>
+              <option>Club sport</option>
+              <option>Other</option>
+              </select>
+            </div>
+            <div class="col-6 ">
+              <label for="time" class="form-label">Workout Start Time</label>
+              <input type="time" class="form-control" id="time">
+            </div>
+            <div class="col-6 ">
+              <label for="duration" class="form-label">Workout Duration (Hours)</label>
+              <input type="number" class="form-control" id="duration">
+            </div>
+            <div class="col-6">
+              <label for="date" class="form-label">Workout Date</label>
+              <input type="date" class="form-control" id="date">
+            </div>
+            <div class="col-12 mb-2">
+              <button type="submit" class="btn btn-primary filterbtn">Post</button>
+            </div>
+          </form>
+        </div>
+        <div class="col-8 postlist"></div>
+      </div>
+    </div>
 
     <script
       src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
