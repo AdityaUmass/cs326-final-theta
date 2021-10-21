@@ -11,71 +11,73 @@
     />
     <link rel="stylesheet" href="CSS/home.css" />
     <title>UFit</title>
-    
   </head>
   <body>
-
     <nav class="navbar navbar-dark fixed-top">
-    
-        <div class="container-fluid">
-            
-            <div class="alignLeft">
-                <button
-                class="navbar-toggler"
-                type="button"
-                data-bs-toggle="offcanvas"
-                data-bs-target="#navMenu"
-                aria-controls="navMenu"
-                aria-labelledby="navMenuLabel"
-                id="buttonToggleCanvas"
-                >
-                <span class="navbar-toggler-icon"></span>
-                </button>
-                <a href="home.html" class="navbar-brand"><img class="logo" src="Images/umass_logo.png" alt=""/></a>
-            </div>
-            
-          
-            <div class="signupControls">
-                <a class="navbar-brand" href="#">Sign Up</a>
-                <a class="navbar-brand" href="#">Login</a>
-            </div>
-
-
-            <div class="offcanvas offcanvas-start" data-bs-backdrop="false" data-bs-scroll="true" tabindex="-1" id="navMenu" aria-labelledby="navMenuLabel">
-                <div class="offcanvas-header">
-                  <h4 class="offcanvas-title" id="navMenuLabel">Menu</h4>
-                  <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                </div>
-                <div class="offcanvas-body">
-                  <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                    
-                    <li class="nav-item">
-                        <a class="nav-link active" href="post.html">Find a partner</a>
-                    </li>
-                    
-                    <li class="nav-item">
-                      <a class="nav-link active" href="#">Clubs</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#">News</a>
-                    </li>
-                    
-                  </ul>
-                  <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                  </form>
-                </div>
-              </div>
+      <div class="container-fluid">
+        <div class="alignLeft">
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#navMenu"
+            aria-controls="navMenu"
+            aria-labelledby="navMenuLabel"
+            id="buttonToggleCanvas"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <a href="home.html" class="navbar-brand ufit"
+            ><img class="logo" src="Images/umass_logo.png" alt=""
+          /></a>
         </div>
+
+        <div class="signupControls">
+          <a class="navbar-brand" href="#">Sign Up</a>
+          <a class="navbar-brand" href="#">Login</a>
+        </div>
+
+        <div
+          class="offcanvas offcanvas-start"
+          data-bs-backdrop="false"
+          data-bs-scroll="true"
+          tabindex="-1"
+          id="navMenu"
+          aria-labelledby="navMenuLabel"
+        >
+          <div class="offcanvas-header">
+            <h4 class="offcanvas-title" id="navMenuLabel">Menu</h4>
+            <button
+              type="button"
+              class="btn-close text-reset"
+              data-bs-dismiss="offcanvas"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="offcanvas-body">
+            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+              <li class="nav-item">
+                <a class="nav-link active" href="post.html">Find a partner</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link active" href="#">Clubs and News</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link active" href="#">Your Highlights!</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </nav>
 
     <!-- <div class="home_page_img">
         <img class="recCenter" src="Images/rec-center-image.jpeg" alt="Recreation center image">
     </div> -->
 
-    <div id="recCenterCarousel" class="carousel slide" data-ride="carousel">
+    <!-- <div id="recCenterCarousel" class="carousel slide" data-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-item active">
           <img class="d-block w-100" src="Images/rec-center-image.jpeg" alt="First slide">
@@ -93,12 +95,29 @@
       <a class="carousel-control-next" href="#recCenterCarousel" role="button" data-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
       </a>
-    </div>
+    </div> -->
 
     
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
