@@ -1,0 +1,23 @@
+body {
+    background-color: #ffe8d6;
+}
+
+.container {
+    width: 900px;
+    /* delete this */
+    background-color: brown;
+    margin: 20px;
+}
+
+.card {
+    border-radius: 5%;
+}
+
+.container img {
+    border-top-left-radius: 5%;
+    border-top-right-radius: 5%;
+}
+
+hr {
+    margin: 0%;
+}
