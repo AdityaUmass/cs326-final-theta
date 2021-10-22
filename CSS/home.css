@@ -89,6 +89,10 @@ ul li {
 .postlist {
     height: 100%;
     background-color: #AC3B61;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 20px;
+    padding-top: 70px;
 }
 
 .filterbtn {
