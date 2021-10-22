@@ -1,18 +1,20 @@
+#carousel-banner {
+    margin-top: 30px;
+}
+
 .carousel-item {
-    background-color: blueviolet;
+    background-color:white
 }
 
 .carousel-item .event-container {
     display: flex;
     background-color: white;
-    margin-left: 35%;
-    width: 610px;
-    height: 240px;
+    margin-left: 30%;
+    width: 700px;
+    height: 300px;
     border-top: 5px solid rgb(105, 105, 105);
     border-bottom: 5px solid rgb(105, 105, 105);
 }
-
-
 
 .event-text-container .event-title {
     font-weight: 600;
@@ -30,9 +32,26 @@
 }
 
 
+.carousel-control-prev {
+    margin-left: 300px;
+}
+
+
+.carousel-control-next {
+    margin-right: 300px;
+}
+
+.carousel-control-prev-icon {
+    background-color: black;
+}
+
+.carousel-control-next-icon {
+    background-color: black;
+}
 
 .carousel-item .event-container .event-img img {
-    width: 320px;
+    width: 400px;
     height: 240px;
+    padding-bottom: 20px;
 }
     
