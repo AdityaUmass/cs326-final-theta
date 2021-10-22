@@ -2,15 +2,13 @@ body {
     background-color: #ffe8d6;
 }
 
-.container {
-    width: 900px;
-    /* delete this */
-    background-color: brown;
-    margin: 20px;
+.topNavmenu {
+    background-color: rgb(190, 189, 189);
 }
 
 .card {
     border-radius: 5%;
+    margin: 10px;
 }
 
 .container img {
@@ -21,3 +19,33 @@ body {
 hr {
     margin: 0%;
 }
+
+form {
+    background-color:white;
+    margin: 20px;
+    border-radius: 30px;
+    padding: 40px;
+}
+
+.content-area {
+    display: flex;
+}
+
+.content-child {
+    flex: 1;
+}
+
+#achievement-space {
+    margin: 20px;
+    padding: 20px;
+    /* background-color: yellow; */
+}
+
+.form-group input {
+    display: block;
+    margin-bottom: 15px;
+}
+
+
+
+
