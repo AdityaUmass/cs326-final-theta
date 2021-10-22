@@ -1,0 +1,38 @@
+.carousel-item {
+    background-color: blueviolet;
+}
+
+.carousel-item .event-container {
+    display: flex;
+    background-color: white;
+    margin-left: 35%;
+    width: 610px;
+    height: 240px;
+    border-top: 5px solid rgb(105, 105, 105);
+    border-bottom: 5px solid rgb(105, 105, 105);
+}
+
+
+
+.event-text-container .event-title {
+    font-weight: 600;
+    color: rgb(83, 16, 16);
+}
+
+.event-text-container h3 {
+    font-weight: 700;
+    color: rgb(0, 0, 0);
+    font-family: 'Bebas Neue', cursive;
+}
+
+.carousel-item .event-container .event-item {
+    padding: 20px;
+}
+
+
+
+.carousel-item .event-container .event-img img {
+    width: 320px;
+    height: 240px;
+}
+    
