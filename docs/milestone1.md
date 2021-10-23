@@ -41,4 +41,6 @@ Important Data:\
 
 ## Wireframes
 
+My Account : ![My Account Wireframe](Images/MyAccountWireframe)
+
 ## Mockups
