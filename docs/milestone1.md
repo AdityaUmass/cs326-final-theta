@@ -50,4 +50,7 @@ Important Data:
 ### Clubs + News
 ![alt text](https://github.com/AdityaUmass/cs326-final-theta/blob/master/Images/clubs-wireframe.png?raw=true)
 
+### Make a Post page
+![alt-text](https://github.com/AdityaUmass/cs326-final-theta/blob/master/Images/MakePostWireframe.png)
+
 ## Mockups
