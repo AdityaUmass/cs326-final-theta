@@ -31,10 +31,10 @@
                 <option>Lower-Body</option>
                 <option>Cardio</option>
                 <option>Core</option>
-                <option>Other</option>
+                <option>Full-Body</option>
             </select>
         </div>
-        <div class="col-md-4">
+        <div class="col-4">
             <label for="Activity Type" class="form-label">Activity Type</label>
             <select id="activity" class="form-select">
             <option selected disabled>Choose an activity</option>
@@ -43,20 +43,7 @@
             <option>Club sport</option>
             <option>Other</option>
             </select>
-        </div>
-        <div class="col-md-4">
-            <label for="Workout Type" class="form-label">Workout Day</label>
-            <select id="workout" class="form-select">
-                <option selected disabled>Choose a day</option>
-                <option>Monday</option>
-                <option>Tuesday</option>
-                <option>Wednesday</option>
-                <option>Thursday</option>
-                <option>Friday</option>
-                <option>Saturday</option>
-                <option>Sunday</option>
-            </select>
-        </div>
+        </div>   
         <div class="col-4 ">
             <label for="time" class="form-label">Workout Start Time</label>
             <input type="time" class="form-control" id="time">
@@ -65,11 +52,64 @@
             <label for="duration" class="form-label">Workout Duration (Hours)</label>
             <input type="number" class="form-control" id="duration">
         </div>
-        <div class="col-4 ">
-            <label for="date" class="form-label">Workout Date</label>
-            <input type="date" class="form-control" id="date">
+        <label for="">Workout Days</label>
+        <div class="col-2">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="gridCheck">
+            <label class="form-check-label" for="gridCheck">
+              Monday
+            </label>
+          </div>
         </div>
-        <div class="col-6">
+        <div class="col-2">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="gridCheck">
+            <label class="form-check-label" for="gridCheck">
+              Tuesday
+            </label>
+          </div>
+        </div>
+        <div class="col-2">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="gridCheck">
+            <label class="form-check-label" for="gridCheck">
+              Wednesday
+            </label>
+          </div>
+        </div>
+        <div class="col-2">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="gridCheck">
+            <label class="form-check-label" for="gridCheck">
+              Thursday
+            </label>
+          </div>
+        </div>
+        <div class="col-2">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="gridCheck">
+            <label class="form-check-label" for="gridCheck">
+              Friday
+            </label>
+          </div>
+        </div>
+        <div class="col-2">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="gridCheck">
+            <label class="form-check-label" for="gridCheck">
+              Saturday
+            </label>
+          </div>
+        </div>
+        <div class="col-2">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="gridCheck">
+            <label class="form-check-label" for="gridCheck">
+              Sunday
+            </label>
+          </div>
+        </div>
+        <div class="col-11">
             <label for="contact" class="form-label">How to Contact You (Snapchat, Instagram, Mobile, etc..)</label>
             <textarea name="contact" rows=2 class="form-control"></textarea>
         </div>
