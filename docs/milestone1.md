@@ -27,7 +27,14 @@ who want to find workout partners and they can even filter the posts to find a g
 
 Important Data:\
 * Posts
+    * Date
+    * Activity Type
+    * Content
+    * Title
+    * Contact Information
 * User information
+    * Login Email
+    * Name (Optional)
 * Clubs
 * News
 * Workout/Activity Filters

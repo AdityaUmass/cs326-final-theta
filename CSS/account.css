@@ -39,15 +39,16 @@
 .postlist {
     height: 100%;
     background-color: #DEF2F1;
-    overflow-y: auto;
-    overflow-x: hidden;
     padding: 20px;
-    padding-top: 70px;
 }
 
 .flr{
     float: right;
     margin-left: 1%;
+}
+
+h1 {
+    text-align:center;
 }
 
 
