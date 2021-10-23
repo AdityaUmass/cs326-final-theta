@@ -53,6 +53,7 @@ Important Data:
 
 ### Home/Posts page
 ![alt-text](https://github.com/AdityaUmass/cs326-final-theta/blob/master/Images/PostpageWireframe.png)
+This shows the general layout of the home page which also shows the posts from our users. On the left, the filters stay fixed in place so that you can change the types of posts you see based on their characteristics (Workout Type, Day, Duration, etc). On the right, you can freely scroll the relevant posts based on filters you set or otherwise. You can also interact with the posts by clicking a button to show you are interested, which will reflect in the Accounts page of whoever made that post as well as increment the displayed value for number of people interested.
 
 ### Make a Post page
 ![alt-text](https://github.com/AdityaUmass/cs326-final-theta/blob/master/Images/MakePostWireframe.png)
