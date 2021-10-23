@@ -53,10 +53,11 @@ Important Data:
 
 ### Home/Posts page
 ![alt-text](https://github.com/AdityaUmass/cs326-final-theta/blob/master/Images/PostpageWireframe.png)
-This shows the general layout of the home page which also shows the posts from our users. On the left, the filters stay fixed in place so that you can change the types of posts you see based on their characteristics (Workout Type, Day, Duration, etc). On the right, you can freely scroll the relevant posts based on filters you set or otherwise. You can also interact with the posts by clicking a button to show you are interested, which will reflect in the Accounts page of whoever made that post as well as increment the displayed value for number of people interested.
+This shows the general layout of the home page which also shows the posts from our users. On the left, the filters stay fixed in place so that you can change the types of posts you see based on their characteristics (Workout Type, Day, Duration, etc). When you click "Single Day Activity", an input will be toggled asking to specify the date of the activity. When you click "Repeated Activity", It will ask you two pick days from a set of days provided. On the right, you can freely scroll the relevant posts based on filters you set or otherwise. You can also interact with the posts by clicking a button to show you are interested, which will reflect in the Accounts page of whoever made that post as well as increment the displayed value for number of people interested.
 
 ### Make a Post page
 ![alt-text](https://github.com/AdityaUmass/cs326-final-theta/blob/master/Images/MakePostWireframe.png)
+This is the page where users can make a post that will be displayed on the Home page. As can be seen, apart from title and content, there are also multiple specifiers such as Activity Type and Workout Type that show up as filters on the home page. When you click "Single Day Activity", an input will be toggled asking to specify the date of the activity. When you click "Repeated Activity", It will ask you two pick days from a set of days provided. After setting the filters, filling in the content, and specifying contact information, you can make the post and the home page will be updated.
 
 ### Navigation Offcanvas
 ![alt text](https://github.com/AdityaUmass/cs326-final-theta/blob/master/Images/navigation-wireframe.png?raw=true)
