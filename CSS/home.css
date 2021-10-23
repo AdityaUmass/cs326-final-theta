@@ -64,11 +64,32 @@ ul li {
     background-size: 100%;
 }
 
+/* Post related formatting */
+.post {
+    margin-bottom: 20px;
+    border: none;
+}
 
-/* #carouselExampleControls {
-    position: relative;
-    top: 55.98px;
-} */
+.card-header {
+    background-color: #D9CAB3;
+    color: #212121;
+}
+
+.card-body {
+    background-color: #F6F6F6;
+}
+
+.card-title {
+    color: #6D9886;
+}
+
+.card-text {
+    color: #212121;
+}
+
+.card-title {
+
+}
 
 .posts {
     width: 100%; 
@@ -80,19 +101,22 @@ ul li {
     height: 100%;
 }
 
-.filters {
-    height: 100%;
-    background-color: #EDC7B7;
-    padding: 70px 30px;
-}
-
 .postlist {
     height: 100%;
-    background-color: #AC3B61;
+    background-color: #6D9886;
     overflow-y: auto;
     overflow-x: hidden;
     padding: 20px;
     padding-top: 70px;
+}
+
+/* Filter Formatting*/
+
+.filters {
+    height: 100%;
+    color: #F6F6F6;
+    background-color: #212121;
+    padding: 70px 30px;
 }
 
 .filterbtn {
