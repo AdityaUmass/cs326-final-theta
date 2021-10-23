@@ -43,4 +43,7 @@ Important Data:\
 
 My Account : ![My Account Wireframe](Images/MyAccountWireframe)
 
+Clubs + News
+![Clubs image](Images/club-wireframe.png)
+
 ## Mockups
