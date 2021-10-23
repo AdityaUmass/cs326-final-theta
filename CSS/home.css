@@ -64,11 +64,28 @@ ul li {
     background-size: 100%;
 }
 
+/* Post related formatting */
+.post {
+    margin-bottom: 20px;
+    border: none;
+}
 
-/* #carouselExampleControls {
-    position: relative;
-    top: 55.98px;
-} */
+.card-header {
+    background-color: #232931;
+    color: #EEEEEE;
+}
+
+.card-body {
+    background-color: #EEEEEE;
+}
+
+.card-title {
+    color: #4ECCA3;
+}
+
+.card-text {
+    color: #232931;
+}
 
 .posts {
     width: 100%; 
@@ -80,19 +97,22 @@ ul li {
     height: 100%;
 }
 
-.filters {
-    height: 100%;
-    background-color: #EDC7B7;
-    padding: 70px 30px;
-}
-
 .postlist {
     height: 100%;
-    background-color: #AC3B61;
+    background-color: #393E46;
     overflow-y: auto;
     overflow-x: hidden;
     padding: 20px;
     padding-top: 70px;
+}
+
+/* Filter Formatting*/
+
+.filters {
+    height: 100%;
+    color: #232931;
+    background-color: #4ECCA3;
+    padding: 70px 30px;
 }
 
 .filterbtn {
