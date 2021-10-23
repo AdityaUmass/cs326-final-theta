@@ -103,7 +103,7 @@ ul li {
     overflow-y: auto;
     overflow-x: hidden;
     padding: 20px;
-    padding-top: 70px;
+    padding-top: 30px;
 }
 
 /* Filter Formatting*/
@@ -112,7 +112,7 @@ ul li {
     height: 100%;
     color: #17252A;
     background-color: #2B7A78;
-    padding: 70px 30px;
+    padding: 30px 30px;
 }
 
 .filterbtn {
