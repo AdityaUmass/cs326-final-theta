@@ -57,4 +57,9 @@ Important Data:
 ### Make a Post page
 ![alt-text](https://github.com/AdityaUmass/cs326-final-theta/blob/master/Images/MakePostWireframe.png)
 
+### Navigation Offcanvas
+![alt text](https://github.com/AdityaUmass/cs326-final-theta/blob/master/Images/navigation-wireframe.png?raw=true)
+
+
+
 ## Mockups
