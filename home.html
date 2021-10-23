@@ -33,6 +33,7 @@
         <div class="col-4 filters">
           <form action="" class="row pt-2 g-4">
             <h1>Find a Match</h1>
+
             <div class="col-6">
               <label for="Workout Type" class="form-label">Workout Type</label>
               <select id="workout" class="form-select">
@@ -44,6 +45,7 @@
                 <option>Other</option>
               </select>
             </div>
+
             <div class="col-6">
               <label for="Activity Type" class="form-label"
                 >Activity Type</label
@@ -56,17 +58,90 @@
                 <option>Other</option>
               </select>
             </div>
+
             <div class="col-6">
               <label for="time" class="form-label">Workout Start Time</label>
               <input type="time" class="form-control" id="time" />
             </div>
+
             <div class="col-6">
               <label for="duration" class="form-label">Workout Duration (Hours)</label>
               <input type="number" class="form-control" id="duration" />
             </div>
-            <div class="col-6">
-              <label for="date" class="form-label">Workout Date</label>
-              <input type="date" class="form-control" id="date" />
+
+            <div class="col-12">
+              <a class="btn btn-primary btn-sm" data-bs-toggle="collapse" href="#collapseDate" role="button">
+                Single Day Activity
+              </a>
+              <a class="btn btn-primary btn-sm" data-bs-toggle="collapse" href="#collapseDays" role="button">
+                Repeated Activity
+              </a>
+            </div>
+    
+            <div class="collapse" id="collapseDate">
+              <div class="col-4 ">
+                <label for="date" class="form-label">Workout Date</label>
+                <input type="date" class="form-control" id="date">
+              </div>
+            </div>
+            <div class="collapse" id="collapseDays">
+              <label for="">Workout Days</label>
+              <div class="col-2">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="gridCheckMon">
+                  <label class="form-check-label" for="gridCheckMon">
+                    Monday
+                  </label>
+                </div>
+              </div>
+              <div class="col-2">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="gridCheckTue">
+                  <label class="form-check-label" for="gridCheckTue">
+                    Tuesday
+                  </label>
+                </div>
+              </div>
+              <div class="col-2">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="gridCheckWed">
+                  <label class="form-check-label" for="gridCheckWed">
+                    Wednesday
+                  </label>
+                </div>
+              </div>
+              <div class="col-2">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="gridCheckThurs">
+                  <label class="form-check-label" for="gridCheckThurs">
+                    Thursday
+                  </label>
+                </div>
+              </div>
+              <div class="col-2">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="gridCheckFri">
+                  <label class="form-check-label" for="gridCheckFri">
+                    Friday
+                  </label>
+                </div>
+              </div>
+              <div class="col-2">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="gridCheck">
+                  <label class="form-check-label" for="gridCheck">
+                    Saturday
+                  </label>
+                </div>
+              </div>
+              <div class="col-2">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="gridCheck">
+                  <label class="form-check-label" for="gridCheck">
+                    Sunday
+                  </label>
+                </div>
+              </div>
             </div>
             <div class="col-12 mb-2">
               <button type="submit" class="btn btn-primary filterbtn">
@@ -75,7 +150,9 @@
             </div>
           </form>
         </div>
+
         <div class="col-8 postlist">
+
           <div class="card post">
             <div class="card-header">
               <span>Days: Monday, Wednesday | </span>
@@ -127,7 +204,7 @@
               <span>Days: Thursday | </span>
               <span>Activity Type: Lower-Body | </span>
               <span>Time: 5:30pm | </span>
-              <span>Duration (hrs): 32</span>
+              <span>Duration (hrs): 3</span>
             </div>
             <div class="card-body">
               <h4 class="card-title">Post Title</h4>
