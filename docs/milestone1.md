@@ -39,7 +39,6 @@ Important Data:\
 * News
 * Workout/Activity Filters
 
-
 ## Wireframes
 
 ## Mockups
