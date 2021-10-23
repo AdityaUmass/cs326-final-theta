@@ -71,20 +71,20 @@ ul li {
 }
 
 .card-header {
-    background-color: #232931;
-    color: #EEEEEE;
+    background-color: #3AAFA9;
+    color: #17252A;
 }
 
 .card-body {
-    background-color: #EEEEEE;
+    background-color: #FEFFFF;
 }
 
 .card-title {
-    color: #4ECCA3;
+    color: #3AAFA9;
 }
 
 .card-text {
-    color: #232931;
+    color: #17252A;
 }
 
 .posts {
@@ -99,7 +99,7 @@ ul li {
 
 .postlist {
     height: 100%;
-    background-color: #393E46;
+    background-color: #DEF2F1;
     overflow-y: auto;
     overflow-x: hidden;
     padding: 20px;
@@ -110,8 +110,8 @@ ul li {
 
 .filters {
     height: 100%;
-    color: #232931;
-    background-color: #4ECCA3;
+    color: #17252A;
+    background-color: #2B7A78;
     padding: 70px 30px;
 }
 
