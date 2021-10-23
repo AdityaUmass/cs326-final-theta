@@ -52,11 +52,17 @@
 .filterbtn {
     background-color: #123C69;
     border-color: #123C69;
+    color: white;
+}
+
+i:hover {
+    color: red;
 }
 
 .filterbtn:hover {
     background-color: #AC3B61;
     border-color: #AC3B61;
+    color: white;
 }
 
 
