@@ -44,6 +44,6 @@ Important Data:\
 My Account : ![My Account Wireframe](Images/MyAccountWireframe)
 
 Clubs + News
-![alt text](https://github.com/AdityaUmass/cs326-final-theta/blob/master/Images/club-wireframe.png?raw=true)
+![alt text](https://github.com/AdityaUmass/cs326-final-theta/blob/master/Images/clubs-wireframe.png?raw=true)
 
 ## Mockups
