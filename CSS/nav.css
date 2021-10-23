@@ -1,0 +1,59 @@
+.navbar .login-label {
+    font-family: 'Hind Siliguri', sans-serif;
+    font-family: 'Roboto', sans-serif;
+    font-family: 'Rubik', sans-serif;
+    font-weight: 500;
+}
+
+.navbar .signup-label {
+    font-family: 'Hind Siliguri', sans-serif;
+    font-family: 'Roboto', sans-serif;
+    font-family: 'Rubik', sans-serif;
+    font-weight: 500;
+}
+
+.navbar .top-logo {
+    color: white;
+    font-family: 'Hind Siliguri', sans-serif;
+    font-family: 'Rubik', sans-serif;
+}
+
+.navbar .login-label:hover {
+    color: rgb(0, 255, 85);
+    text-decoration: underline;
+    text-underline-offset: 18px;
+    text-decoration-thickness: 3px;
+}
+
+.navbar .signup-label:hover {
+    color: rgb(0, 255, 85);
+    text-decoration: underline;
+    text-underline-offset: 18px;
+    text-decoration-thickness: 3px;
+}
+
+.offcanvas-header {
+    background-color: rgb(34, 37, 41);
+}
+
+.offcanvas-header .btn-close {
+    background-color: snow;
+}
+
+.offcanvas-header .offcanvas-title {
+    color: white;
+}
+
+
+.offcanvas-body {
+    background-color: rgb(34, 37, 41);
+}
+
+.offcanvas-body .navbar-nav .nav-item .nav-link {
+    color: white;
+}
+
+
+.offcanvas-body .navbar-nav .nav-item .nav-link:hover {
+    color: peru;
+}
