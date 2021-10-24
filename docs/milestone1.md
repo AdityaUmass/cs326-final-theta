@@ -41,7 +41,7 @@ Important Data:
     * Name (Optional)
 * Clubs
 * News
-* Workout/Activity Filters (As mentioned in post data - Activity Type, Workout Type, Workout Duration, Workout Start Time, Days, Date
+* Workout/Activity Filters (As mentioned in post data - Activity Type, Workout Type, Workout Duration, Workout Start Time, Days, Date)
 
 ## Wireframes
 
