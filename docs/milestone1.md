@@ -116,3 +116,7 @@ Post Page with Repeated Activity Toggled
 ### Sign Up
 ![Sign in Popup](https://github.com/AdityaUmass/cs326-final-theta/blob/master/Images/Sign%20up.png)
 
+### Offcanvas Navigation Sidebar
+![Offcanvas](https://github.com/AdityaUmass/cs326-final-theta/blob/master/Images/navmenu.png)
+
+
