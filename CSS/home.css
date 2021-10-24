@@ -1,12 +1,12 @@
 /* Post related formatting */
 .post {
     margin-bottom: 20px;
-    border: none;
+    border: 1px solid #d66853;
 }
 
 .card-header {
-    background-color: #3AAFA9;
-    color: #17252A;
+    background-color: #d66853;
+    color: #212d40;
 }
 
 .card-body {
@@ -14,7 +14,7 @@
 }
 
 .card-title {
-    color: #3AAFA9;
+    color: #e3b505;
 }
 
 .card-text {
@@ -33,7 +33,6 @@
 
 .postlist {
     height: 100%;
-    background-color: #DEF2F1;
     overflow-y: auto;
     overflow-x: hidden;
     padding: 20px;
@@ -44,14 +43,14 @@
 
 .filters {
     height: 100%;
-    color: #17252A;
-    background-color: #2B7A78;
+    color: white;
+    background-color: #212d40;
     padding: 30px 30px;
 }
 
 .filterbtn {
-    background-color: #123C69;
-    border-color: #123C69;
+    background-color: #d66853;
+    border-color: #d66853;
     color: white;
 }
 
@@ -60,8 +59,8 @@ i:hover {
 }
 
 .filterbtn:hover {
-    background-color: #AC3B61;
-    border-color: #AC3B61;
+    background-color: #c45742;
+    border-color: #c45742;
     color: white;
 }
 
