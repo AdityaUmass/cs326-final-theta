@@ -1,25 +1,25 @@
 /* Post related formatting */
 .post {
     margin-bottom: 20px;
-    border: none;
+    border: 2px solid #d66853;
 }
 
 .card-header {
-    background-color: #3AAFA9;
-    color: #17252A;
-}
-
-.card-footer {
-    background-color: #3AAFA9;
-    color: #17252A;
+    background-color: #d66853;
+    color: white;
 }
 
 .card-body {
     background-color: #FEFFFF;
 }
 
+
+.card-body {
+    background-color: #FEFFFF;
+}
+
 .card-title {
-    color: #3AAFA9;
+    color: #e3b505;
 }
 
 .card-text {
@@ -38,7 +38,6 @@
 
 .postlist {
     height: 100%;
-    background-color: #DEF2F1;
     padding: 20px;
 }
 
@@ -49,10 +48,16 @@
 
 h1 {
     text-align:center;
+    color: #FEFFFF;
+}
+
+.btn-spl{
+    background-color: #d66853;
+    color: #FEFFFF;
 }
 
 body{
-    background-color: #DEF2F1;
+    background-color: #212d40;
 }
 
 
