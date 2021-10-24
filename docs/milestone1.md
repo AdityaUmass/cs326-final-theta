@@ -67,10 +67,12 @@ The Offcanvas is a sidebar menu built into every page of the website. It provide
 
 ### Login
 ![Login Wireframe](https://github.com/AdityaUmass/cs326-final-theta/blob/master/Images/signInwireframe.png)
+
 The login page is a modal that takes two inputs from a user: their email and their password. Additionally, the login page has a button that would link the user to the create page modal.
 
 ### Sign Up
 ![CreateAccount Wireframe](https://github.com/AdityaUmass/cs326-final-theta/blob/master/Images/createAccountwireframe.png)
+
 The sign up page is a modal that takes three inputs from the user: their name, email and their selected password. Once inputted, the user can go ahead and create their account.
 
 ## Mockups
