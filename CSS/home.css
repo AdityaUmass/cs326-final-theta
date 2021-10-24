@@ -1,12 +1,12 @@
 /* Post related formatting */
 .post {
     margin-bottom: 20px;
-    border: 1px solid #d66853;
+    border: 2px solid #d66853;
 }
 
 .card-header {
     background-color: #d66853;
-    color: #212d40;
+    color: white;
 }
 
 .card-body {
