@@ -51,6 +51,7 @@ The my account web page allows a signed-in user to see the posts that they have 
 
 ### Clubs + News
 ![alt text](https://github.com/AdityaUmass/cs326-final-theta/blob/master/Images/club-wireframe.png?raw=true)
+This is the Clubs and News page. It provides users with news of current sports and recreation events, such as football games, club events, and club events, which are currently happening on campus during the week or month. It also contains a collection of UMass athletics clubs available for students to join. It display each clubs contact information as well as their social media links.
 
 ### Home/Posts page
 ![Home/Posts page](https://github.com/AdityaUmass/cs326-final-theta/blob/master/Images/PostpageWireframe.png)
@@ -62,6 +63,7 @@ This is the page where users can make a post that will be displayed on the Home 
 
 ### Navigation Offcanvas
 ![Navigation OffCanvas](https://github.com/AdityaUmass/cs326-final-theta/blob/master/Images/navigation-wireframe.png?raw=true)
+The Offcanvas is a sidebar menu built into every page of the website. It provides easy navigation to other pages.
 
 ### Login
 ![Login Wireframe](https://github.com/AdityaUmass/cs326-final-theta/blob/master/Images/signInwireframe.png)
