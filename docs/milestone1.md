@@ -109,6 +109,7 @@ Post Page with Repeated Activity Toggled
 ![Club Image 2](https://github.com/AdityaUmass/cs326-final-theta/blob/master/Images/screenshot2.png)
 
 ### Login
+![Log in Popup](https://github.com/AdityaUmass/cs326-final-theta/blob/master/Images/Log%20In.png)
 
 ### Sign Up
 
