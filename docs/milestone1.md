@@ -86,6 +86,9 @@ Home Page with Repeated Activity Toggled
 ### My Account
 Page View
 ![Account Page](https://github.com/AdityaUmass/cs326-final-theta/blob/master/Images/Accounts.png)
+
+View of popup that displays interested people for a specific post
+![Account Page 2](https://github.com/AdityaUmass/cs326-final-theta/blob/master/Images/InterestedPeople.png)
 ### Navigation Offcanvas
 
 ### Make a Post page
