@@ -112,5 +112,5 @@ Post Page with Repeated Activity Toggled
 ![Log in Popup](https://github.com/AdityaUmass/cs326-final-theta/blob/master/Images/Log%20In.png)
 
 ### Sign Up
-
+![Sign in Popup](https://github.com/AdityaUmass/cs326-final-theta/blob/master/Images/Sign%20up.png)
 
