@@ -68,13 +68,18 @@ This is the page where users can make a post that will be displayed on the Home 
 
 ## Mockups
 
+### Home/Posts page
+
 ### My Account
 
 ### Navigation Offcanvas
+
 ### Make a Post page
 
 ### Clubs + News
 
-### Home/Posts page
+### Login
+
+### Sign Up
 
 
