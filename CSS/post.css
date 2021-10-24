@@ -1,5 +1,5 @@
 body {
-    background-color: #3AAFA9;
+    background-color: #d66853;
 }
 
 form {
@@ -14,9 +14,21 @@ textarea {
 
 label {
     font-weight: bold;
-    color: #2B7A78;
+    color: #212d40;
 }
 
 .form-check-label {
     font-weight: normal;
+}
+
+.postBtn {
+    background-color: #d66853;
+    border-color: #d66853;
+    color: white;
+}
+
+.postBtn:hover {
+    background-color: #c45742;
+    border-color: #c45742;
+    color: white;
 }
