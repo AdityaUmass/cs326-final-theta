@@ -35,13 +35,13 @@ hr {
 
 .event-text-container .event-title {
   font-weight: 600;
-  color: rgb(83, 16, 16);
+  color: e3b505;
 }
 
 .event-text-container h3 {
-  font-weight: 700;
+  /* font-weight: 700; */
   color: rgb(0, 0, 0);
-  font-family: "Bebas Neue", cursive;
+  /* font-family: "Bebas Neue", cursive; */
 }
 
 .carousel-item .event-container .event-item {
@@ -81,9 +81,9 @@ a {
 }
 
 .divider {
-  font-family: "Bebas Neue", cursive;
-  font-family: "Oswald", sans-serif;
-  background-color: #3AAFA9;
+  /* font-family: "Bebas Neue", cursive;
+  font-family: "Oswald", sans-serif; */
+  background-color: #212d40;
   
   height: 300px;
   font-size: 80px;
