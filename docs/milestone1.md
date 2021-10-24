@@ -46,7 +46,7 @@ Important Data:
 ## Wireframes
 
 ### My Account
-![Account Wireframe](https://github.com/AdityaUmass/cs326-final-theta/blob/master/Images/MyAccountWireframe.png?raw=true)
+![Account Wireframe](https://github.com/AdityaUmass/cs326-final-theta/blob/master/Images/Accounts.png?raw=true)
 The my account web page allows a signed-in user to see the posts that they have uploaded to the website. Apart from just viewing their posts, this webpage allows users to update, delete, and even see the other users who have shown an interest in the activity. The user can see the emails of each post's interested users and send them a bulk email via a modal.  
 
 ### Clubs + News
