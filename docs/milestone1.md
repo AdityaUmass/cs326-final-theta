@@ -50,18 +50,18 @@ Important Data:
 The my account web page allows a signed-in user to see the posts that they have uploaded to the website. Apart from just viewing their posts, this webpage allows users to update, delete, and even see the other users who have shown an interest in the activity. The user can see the emails of each post's interested users and send them a bulk email via a modal.  
 
 ### Clubs + News
-![alt text](https://github.com/AdityaUmass/cs326-final-theta/blob/master/Images/club-wireframe.png?raw=true)
+![alt text](https://github.com/AdityaUmass/cs326-final-theta/blob/master/Images/clubs-wireframe.png?raw=true)
 
 ### Home/Posts page
-![alt-text](https://github.com/AdityaUmass/cs326-final-theta/blob/master/Images/PostpageWireframe.png)
+![Home/Posts page](https://github.com/AdityaUmass/cs326-final-theta/blob/master/Images/PostpageWireframe.png)
 This shows the general layout of the home page which also shows the posts from our users. On the left, the filters stay fixed in place so that you can change the types of posts you see based on their characteristics (Workout Type, Day, Duration, etc). When you click "Single Day Activity", an input will be toggled asking to specify the date of the activity. When you click "Repeated Activity", It will ask you two pick days from a set of days provided. On the right, you can freely scroll the relevant posts based on filters you set or otherwise. You can also interact with the posts by clicking a button to show you are interested, which will reflect in the Accounts page of whoever made that post as well as increment the displayed value for number of people interested.
 
 ### Make a Post page
-![alt-text](https://github.com/AdityaUmass/cs326-final-theta/blob/master/Images/MakePostWireframe.png)
+![Make a Post page](https://github.com/AdityaUmass/cs326-final-theta/blob/master/Images/MakePostWireframe.png)
 This is the page where users can make a post that will be displayed on the Home page. As can be seen, apart from title and content, there are also multiple specifiers such as Activity Type and Workout Type that show up as filters on the home page. When you click "Single Day Activity", an input will be toggled asking to specify the date of the activity. When you click "Repeated Activity", It will ask you two pick days from a set of days provided. After setting the filters, filling in the content, and specifying contact information, you can make the post and the home page will be updated.
 
 ### Navigation Offcanvas
-![alt text](https://github.com/AdityaUmass/cs326-final-theta/blob/master/Images/navigation-wireframe.png?raw=true)
+![Navigation OffCanvas](https://github.com/AdityaUmass/cs326-final-theta/blob/master/Images/navigation-wireframe.png?raw=true)
 
 ### Login
 ![Login Wireframe](https://github.com/AdityaUmass/cs326-final-theta/blob/master/Images/signInwireframe.png)
@@ -74,12 +74,24 @@ The sign up page is a modal that takes three inputs from the user: their name, e
 ## Mockups
 
 ### Home/Posts page
+Home Page
+![Home Image 1](https://github.com/AdityaUmass/cs326-final-theta/blob/master/Images/HomePage.png)
+
+Home Page with Single Day Activity Toggled
+![Home Image 2](https://github.com/AdityaUmass/cs326-final-theta/blob/master/Images/HomePage1.png)
+
+Home Page with Repeated Activity Toggled
+![Home Image 3](https://github.com/AdityaUmass/cs326-final-theta/blob/master/Images/HomePage2.png)
 
 ### My Account
 
 ### Navigation Offcanvas
 
 ### Make a Post page
+Post Page with Navbar
+Full Post View
+Post Page with Single Day Activity Toggled
+Post Page with Repeated Activity Toggled
 
 ### Clubs + News
 
