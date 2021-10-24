@@ -47,6 +47,7 @@ Important Data:
 
 ### My Account
 ![alt text](https://github.com/AdityaUmass/cs326-final-theta/blob/master/Images/MyAccountWireframe.png?raw=true)
+The my account web page allows a signed-in user to see the posts that they have uploaded to the website. Apart from just viewing their posts, this webpage allows users to update, delete, and even see the other users who have shown an interest in the activity. The user can see the emails of each post's interested users and send them a bulk email via a modal.  
 
 ### Clubs + News
 ![alt text](https://github.com/AdityaUmass/cs326-final-theta/blob/master/Images/clubs-wireframe.png?raw=true)
@@ -63,8 +64,12 @@ This is the page where users can make a post that will be displayed on the Home 
 ![alt text](https://github.com/AdityaUmass/cs326-final-theta/blob/master/Images/navigation-wireframe.png?raw=true)
 
 ### Login
+![Login Wireframe](https://github.com/AdityaUmass/cs326-final-theta/blob/master/Images/signInwireframe.png)
+The login page is a modal that takes two inputs from a user: their email and their password. Additionally, the login page has a button that would link the user to the create page modal.
 
 ### Sign Up
+![CreateAccount Wireframe](https://github.com/AdityaUmass/cs326-final-theta/blob/master/Images/createAccountwireframe.png)
+The sign up page is a modal that takes three inputs from the user: their name, email and their selected password. Once inputted, the user can go ahead and create their account.
 
 ## Mockups
 
