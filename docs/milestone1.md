@@ -89,9 +89,16 @@ Home Page with Repeated Activity Toggled
 
 ### Make a Post page
 Post Page with Navbar
+![Post Image 1](https://github.com/AdityaUmass/cs326-final-theta/blob/master/Images/PostPage1.png)
+
 Full Post View
+![Post Image 2](https://github.com/AdityaUmass/cs326-final-theta/blob/master/Images/PostPage2.png)
+
 Post Page with Single Day Activity Toggled
+![Pst Image 3](https://github.com/AdityaUmass/cs326-final-theta/blob/master/Images/PostPage3.png)
+
 Post Page with Repeated Activity Toggled
+![Pst Image 4](https://github.com/AdityaUmass/cs326-final-theta/blob/master/Images/PostPage4.png)
 
 ### Clubs + News
 
