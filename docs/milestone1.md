@@ -12,7 +12,7 @@ Name: Brandon Figueredo, GitHub username: Brandredo
 ## Labor Division Breakdown
 Aditya: "Create a Post" page, Home/Posts page, Navbar contributions\
 Raghav: Log in page, Sign up page, Account page\
-Brandon Figueredo: Clubs and News page, Navbar page and formatting\
+Brandon Figueredo: Clubs and News page, Navbar page and formatting
 
 General styliing done by all.
 
