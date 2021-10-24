@@ -62,6 +62,19 @@ This is the page where users can make a post that will be displayed on the Home 
 ### Navigation Offcanvas
 ![alt text](https://github.com/AdityaUmass/cs326-final-theta/blob/master/Images/navigation-wireframe.png?raw=true)
 
+### Login
 
+### Sign Up
 
 ## Mockups
+
+### My Account
+
+### Navigation Offcanvas
+### Make a Post page
+
+### Clubs + News
+
+### Home/Posts page
+
+
