@@ -1,0 +1,29 @@
+{
+  "name": "cs326-final-theta",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AdityaUmass/cs326-final-theta.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AdityaUmass/cs326-final-theta/issues"
+  },
+  "homepage": "https://github.com/AdityaUmass/cs326-final-theta#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "fs": "0.0.1-security",
+    "http": "0.0.1-security",
+    "url": "^0.11.0"
+  },
+  "devDependencies": {},
+  "description": ""
+}
