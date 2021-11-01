@@ -19,12 +19,12 @@
       rel="stylesheet"
     />
 
-    <link rel="stylesheet" href="CSS/post.css" />
-    <link rel="stylesheet" href="CSS/nav.css" />
+    <link rel="stylesheet" href="css/post.css" />
+    <link rel="stylesheet" href="css/nav.css" />
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
-      $.get("./navbar.html", function (data) {
+      $.get("/navbar", function (data) {
         $("#navbar").replaceWith(data);
       });
     </script>
