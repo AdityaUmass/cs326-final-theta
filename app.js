@@ -1,4 +1,4 @@
-import * as fs from 'fs';
+//import * as fs from 'fs';
 
 const filepath = "saveState.txt";
 let file = {};
@@ -59,6 +59,11 @@ app.post("/loginuser", function(req, res) {
 
     // reload page
 
+});
+
+app.post("/createPost", function(req, res) {
+    console.log(req.body);
+    res.redirect("/");
 });
 
 app.listen(8080, function() {
