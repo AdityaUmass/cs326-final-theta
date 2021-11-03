@@ -37,8 +37,18 @@ app.get("/navbar", function(req, res) {
     res.sendFile(__dirname + "/navbar.html");
 });
 
-app.get("/account", function(req, res) {
+app.get("/account", function(req, res) {    
+    //pull data from the database using global username
+    //render that data on to account.html
     res.sendFile(__dirname + "/account.html");
+});
+
+app.get("/accountDelete", function(req, res){
+    //get card's id and delete from the persistent storage/data
+});
+
+app.get("/accountUpdate", function(req,res){
+    //get card's id and pull data and 
 });
 
 app.get("/clubnews", function(req, res) {
