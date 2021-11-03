@@ -16,6 +16,12 @@
     text-decoration-thickness: 3px;
 }
 
+.navbar .signoutlink {
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+}
+
 .navbar .signup-label:hover {
     text-decoration: underline;
     text-underline-offset: 18px;
