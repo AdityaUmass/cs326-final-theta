@@ -1,9 +1,11 @@
-//import * as fs from 'fs';
+const fs = require("fs");
+const express = require("express");
 
 const filepath = "saveState.txt";
 let file = {};
 
-const express = require("express");
+const username = "";
+const loggedin = false;
 
 const app = express();
 
@@ -23,6 +25,7 @@ function reload(filename) {
 
 
 app.get("/", function(req, res) {
+    //render functions
     res.sendFile(__dirname + "/home.html");
 });
 
@@ -63,6 +66,10 @@ app.post("/loginuser", function(req, res) {
 
 app.post("/createPost", function(req, res) {
     console.log(req.body);
+    //creator
+    //likes
+    //likedusers
+    //unique-id
     res.redirect("/");
 });
 
