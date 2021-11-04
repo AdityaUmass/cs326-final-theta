@@ -53,13 +53,13 @@ function readUser(req, res) {
     let user = trackUsers.users.find(x => x === req.body.accountemail);
 
     if(user === undefined) {
-        res.send("User not found in the system");
+        return;
+        //res.send("User not found in the system");
     } else {
         res.send("user found");
     }
 
 }
-
 
 app.get("/", function(req, res) {
     //render functions
@@ -71,8 +71,21 @@ app.get("/post", function(req, res) {
 });
 
 app.get("/navbar", function(req, res) {
-    res.sendFile(__dirname + "/navbar.html");
+    
+    if(loggedin) {
+        res.sendFile(__dirname + "/navbarlog.html");
+    } else {
+        res.sendFile(__dirname + "/navbar.html");
+    }
+
 });
+
+app.get("/signout", function(req, res) {
+    loggedin = false;
+    username = "";
+    res.redirect('/');
+});
+
 
 app.get("/account", function(req, res) {    
     //pull data from the database using global username
