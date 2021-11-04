@@ -16,6 +16,8 @@ let trackPosts = { posts: [] };
 let username = "";
 let loggedin = false;
 
+
+
 // function reloads the file (for temporary persistant storage)
 function reload(filename, kind) {
     
@@ -139,11 +141,70 @@ app.post("/createPost", function(req, res) {
     //likes
     //likedusers
     //unique-id
+
+    let posts = JSON.parse(fs.readFileSync("posts.json"));
+
+    let post = {}
+    let formData = req.body;
+
+    post["author"] = username;
+    post["liked_count"] = 0;
+    post["liked_username"] = [];
+    post["_id"] = posts.length + 1;
+
+    post["title"] = formData.title;
+    post["content"] = formData.content;
+    post["activity"] = formData.activity;
+    post["workout"] = formData.workout;
+    post["duration"] = formData.duration;
+    post["time"] = formData.time;
+    post["contact"] = formData.contact;
+    
+    if("date" in formData) {
+        post["date"] = formData.date;
+    } else {
+        days = [];
+        if ("Monday" in formData) {
+            days.push("Monday");
+        }
+
+        if ("Tuesday" in formData) {
+            days.push("Tuesday");
+        }
+
+        if ("Wednesday" in formData) {
+            days.push("Wednesday");
+        }
+
+        if ("Thursday" in formData) {
+            days.push("Thursday");
+        }
+
+        if ("Friday" in formData) {
+            days.push("Friday");
+        }
+
+        if ("Saturday" in formData) {
+            days.push("Saturday");
+        }
+
+        if ("Sunday" in formData) {
+            days.push("Sunday");
+        }
+    }
+    
+    console.log(post);
+    posts.push(post);
+
+    fs.writeFile("posts.json", JSON.stringify(posts), (err) => {
+        "Post creation error.";
+    });
+
     res.redirect("/");
 });
 
 
 
 app.listen(8080, function() {
-    console.log("Server started on port 8080");
+    
 });
