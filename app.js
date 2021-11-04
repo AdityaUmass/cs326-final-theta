@@ -7,7 +7,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 
-const userfile = "userFile.json";
+const userfile = "users.json";
 let trackUsers = { users: [] };
 
 const postsFile = "postFile.json";
@@ -23,14 +23,7 @@ function reload(filename, kind) {
     
     if (fs.existsSync(filename)) {
         let someStr = fs.readFileSync(filename);
-        
-        if(kind === "users") {
-            trackUsers = JSON.parse(someStr);
-        } else {
-            // file for posts
-        }
-    } else {
-        
+        trackUsers = JSON.parse(someStr);   
     }
 }
 
@@ -55,9 +48,11 @@ function readUser(req, res) {
     let user = trackUsers.users.find(x => x === req.body.accountemail);
 
     if(user === undefined) {
+        // then the user was not found
         return;
         //res.send("User not found in the system");
     } else {
+        // then the user was found, but password authentication is still needed (next milestone?)
         res.send("user found");
     }
 
@@ -218,7 +213,7 @@ app.get("/like/:postID", function(req, res) {
     let postID = req.params.postID;
     let posts = JSON.parse(fs.readFileSync("posts.json"));
 
-    const postIndex = posts.findIndex(elem => elem._id = postID);
+    const postIndex = posts.findIndex(elem => elem._id === postID);
 
     if(posts[postIndex]["liked_username"].includes(username)) {
         posts[postIndex].liked_count--;
