@@ -1,5 +1,7 @@
 const fs = require("fs");
 const express = require("express");
+const homeJS = require("./public/js/home.js"); 
+
 const app = express();
 
 app.use(express.static("public"));
