@@ -160,7 +160,7 @@ app.post("/createPost", function(req, res) {
     post["time"] = formData.time;
     post["contact"] = formData.contact;
     
-    if("date" in formData) {
+    if(formData["date"].length === 0) {
         post["date"] = formData.date;
     } else {
         days = [];
@@ -203,7 +203,32 @@ app.post("/createPost", function(req, res) {
     res.redirect("/");
 });
 
+app.post("/filter", function(req, res) {
+    console.log(req.body);
 
+    let posts = JSON.parse(fs.readFileSync("posts.json"));
+    let filterData = req.body
+
+    //filter posts
+    //render them acordingly
+    res.redirect("/");
+});
+
+app.get("/like/:postID", function(req, res) {
+    let postID = req.params.postID;
+    let posts = JSON.parse(fs.readFileSync("posts.json"));
+
+    const postIndex = posts.findIndex(elem => elem._id = postID);
+
+    if(posts[postIndex]["liked_username"].includes(username)) {
+        posts[postIndex].liked_count--;
+        const index = posts[postIndex]["liked_username"].indexOf(username);
+        posts[postIndex]["liked_username"].splice(index, 1);
+    } else {
+        posts[postIndex].liked_count++;
+        posts[postIndex]["liked_username"].push(username);
+    }
+});
 
 app.listen(8080, function() {
     
