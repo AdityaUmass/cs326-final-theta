@@ -1,12 +1,12 @@
 {
   "name": "cs326-final-theta",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "app.js",
   "directories": {
     "doc": "docs"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon app.js"
   },
   "repository": {
     "type": "git",
@@ -22,6 +22,7 @@
     "express": "^4.17.1",
     "fs": "0.0.1-security",
     "http": "0.0.1-security",
+    "nodemon": "^2.0.14",
     "url": "^0.11.0"
   },
   "devDependencies": {},
