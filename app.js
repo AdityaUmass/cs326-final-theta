@@ -11,6 +11,7 @@ app.use(express.urlencoded({ extended: true }));
 
 let username = "";
 let loggedin = false;
+let account = {};
 
 
 // // function reloads the file (for temporary persistant storage)
@@ -41,13 +42,6 @@ app.get("/navbar", function(req, res) {
 
 });
 
-app.get("/signout", function(req, res) {
-    loggedin = false;
-    username = "";
-    res.redirect('/');
-});
-
-
 app.get("/account", function(req, res) {    
     //pull data from the database using global username
     //render that data on to account.html
@@ -75,6 +69,12 @@ app.post("/createuser", function(req, res) {
         trackUsers = JSON.parse(fs.readFileSync("users.json"));
     }
     
+    let userExists = trackUsers.users.some(user => user.accountemail === req.body.accountemail);
+    
+    if(userExists) {
+        res.status(400).send('An account with that email already exists');
+    }
+    
     // extract information here
     username = req.body.accountemail;
     loggedin = true;
@@ -100,19 +100,40 @@ app.post("/loginuser", function(req, res) {
     console.log(user);
 
     if(user === undefined) {
-        res.send("User not found in the system");
+        res.status(400).send('Account not found');
     } else {
         // then the user was found, but password authentication is still needed (next milestone?)
         // extract information here
         if(user.accountpassword !== req.body.accountpassword) {
-            res.send('Password doesn\'t match');
+            res.status(400).send('Incorrect password');
         }
     
         username = req.body.accountemail;
         loggedin = true;
+        account = user
         res.redirect('/');
     }
 });
+
+app.get("/signout", function(req, res) {
+    loggedin = false;
+    username = "";
+    res.redirect('/');
+});
+
+app.post("/updateInfo", function(req, res) {
+
+    if(!fs.existsSync("users.json")) {
+        res.status(400).send('Bad request');
+    }
+
+    let trackUsers = JSON.parse(fs.readFileSync("users.json"));
+
+    //let user = trackUsers.users.find(u => u.accountemail === account.accountemail);
+
+
+    res.sendFile(__dirname + "/accountUpdate.html");
+})
 
 app.post("/createPost", function(req, res) {
     console.log(req.body);
