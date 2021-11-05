@@ -1,6 +1,7 @@
+/* jshint esversion: 6*/
 const fs = require("fs");
 const express = require("express");
-const homeJS = require("./public/js/home.js"); 
+//const homeJS = require("./public/js/home.js"); 
 
 const app = express();
 
@@ -134,10 +135,6 @@ app.post("/loginuser", function(req, res) {
 
 app.post("/createPost", function(req, res) {
     console.log(req.body);
-    //creator
-    //likes
-    //likedusers
-    //unique-id
 
     let posts = JSON.parse(fs.readFileSync("posts.json"));
 
@@ -159,8 +156,9 @@ app.post("/createPost", function(req, res) {
     
     if(formData["date"].length !== 0) {
         post["date"] = formData.date;
+        post["days"] = [];
     } else {
-        days = [];
+        let days = [];
         if ("Monday" in formData) {
             days.push("Monday");
         }
@@ -188,9 +186,11 @@ app.post("/createPost", function(req, res) {
         if ("Sunday" in formData) {
             days.push("Sunday");
         }
+
+        post["days"] = days;
+        post["date"] = "";
     }
     
-    console.log(post);
     posts.push(post);
 
     fs.writeFile("posts.json", JSON.stringify(posts), (err) => {
@@ -198,7 +198,7 @@ app.post("/createPost", function(req, res) {
     });
 
     res.sendFile(__dirname + "/home.html");
-    homeJS.render(posts, username);
+    //homeJS.render(posts, username);
 });
 
 app.post("/filter", function(req, res) {
@@ -207,59 +207,65 @@ app.post("/filter", function(req, res) {
     let posts = JSON.parse(fs.readFileSync("posts.json"));
     let filterData = req.body;
 
-    let filteredPosts = posts;
+    let filteredPosts = [...posts];
 
     if (filterData["activity"].length !== 0) {
-
+        filteredPosts = filteredPosts.filter(elem => ("activity" in elem));
+        filteredPosts = filteredPosts.filter(elem => (elem["activity"] === filterData["activity"]));
     }
 
     if (filterData["workout"].length !== 0) {
-        
+        filteredPosts = filteredPosts.filter(elem => ("workout" in elem));
+        filteredPosts = filteredPosts.filter(elem => (elem["workout"] === filterData["workout"]));
     }
 
     if (filterData["duration"].length !== 0) {
+        filteredPosts = filteredPosts.filter(elem => ("duration" in elem));
+        filteredPosts = filteredPosts.filter(elem => (elem["duration"] === filterData["duration"]));
         
     }
 
     if (filterData["time"].length !== 0) {
-        
+        filteredPosts = filteredPosts.filter(elem => ("activity" in elem));
+        filteredPosts = filteredPosts.filter(elem => (elem["activity"] === filterData["activity"]));
     }
 
-    if(formData["date"].length !== 0) {
-        
+    if(filterData["date"].length !== 0) {
+        filteredPosts = filteredPosts.filter(elem => ("date" in elem));
+        filteredPosts = filteredPosts.filter(elem => (elem["date"] === filterData["date"]));
     } else {
         
-        if ("Monday" in formData) {
-            
+        if ("Monday" in filterData) {
+            filteredPosts = filteredPosts.filter(elem => ("Monday" in elem));
         }
 
-        if ("Tuesday" in formData) {
-            
+        if ("Tuesday" in filterData) {
+            filteredPosts = filteredPosts.filter(elem => ("Tuesday" in elem));
         }
 
-        if ("Wednesday" in formData) {
-            
+        if ("Wednesday" in filterData) {
+            filteredPosts = filteredPosts.filter(elem => ("Wednesday" in elem));
         }
 
-        if ("Thursday" in formData) {
-            
+        if ("Thursday" in filterData) {
+            filteredPosts = filteredPosts.filter(elem => ("Thursday" in elem));
         }
 
-        if ("Friday" in formData) {
-            
+        if ("Friday" in filterData) {
+            filteredPosts = filteredPosts.filter(elem => ("Friday" in elem));
         }
 
-        if ("Saturday" in formData) {
-            
+        if ("Saturday" in filterData) {
+            filteredPosts = filteredPosts.filter(elem => ("Saturday" in elem));
         }
 
         if ("Sunday" in formData) {
-            
+            filteredPosts = filteredPosts.filter(elem => ("Sunday" in elem));
         }
     }
     //render them acordingly
     res.sendFile(__dirname + "/home.html");
-    homeJS.render(filteredPosts, username);
+    //homeJS.render(filteredPosts, username);
 });
 
 app.get("/like/:postID", function(req, res) {
