@@ -20,7 +20,6 @@ let username = "";
 let loggedin = false;
 
 
-
 // function reloads the file (for temporary persistant storage)
 function reload(filename, kind) {
     
@@ -28,37 +27,6 @@ function reload(filename, kind) {
         let someStr = fs.readFileSync(filename);
         trackUsers = JSON.parse(someStr);   
     }
-}
-
-// creates a user
-function createUser(req, res) {
-    
-    reload(userfile, "users");
-
-    trackUsers.users.push(req.body);
-    let str = JSON.stringify(trackUsers);
-    fs.writeFileSync(userfile, str);
-    
-    // console.log(trackUsers.users);
-}
-
-// 
-function readUser(req, res) {
-
-    reload(userfile, "users");
-    
-    // what to do with this info? Send to client, print, etc...
-    let user = trackUsers.users.find(x => x === req.body.accountemail);
-
-    if(user === undefined) {
-        // then the user was not found
-        return;
-        //res.send("User not found in the system");
-    } else {
-        // then the user was found, but password authentication is still needed (next milestone?)
-        res.send("user found");
-    }
-
 }
 
 app.get("/", function(req, res) {
@@ -113,8 +81,9 @@ app.post("/createuser", function(req, res) {
     username = req.body.accountemail;
     loggedin = true;
 
-
-    createUser(req, res);
+    trackUsers.users.push(req.body);
+    let str = JSON.stringify(trackUsers);
+    fs.writeFileSync(userfile, str);
 
     // reload page
     res.redirect('/');
@@ -124,13 +93,21 @@ app.post("/loginuser", function(req, res) {
     
     console.log(req.body);
 
-    // extract information here
-    username = req.body.accountemail;
-    loggedin = true;
-
     // find user info
-    readUser(req, res);
-    res.redirect('/');
+    // what to do with this info? Send to client, print, etc...
+    let user = trackUsers.users.find(x => x === req.body.accountemail);
+
+    if(user === undefined) {
+        // then the user was not found
+        res.status(404).send('Sorry, we cannot find that!');
+        //res.send("User not found in the system");
+    } else {
+        // then the user was found, but password authentication is still needed (next milestone?)
+        // extract information here
+        username = req.body.accountemail;
+        loggedin = true;
+        res.redirect('/');
+    }
 });
 
 app.post("/createPost", function(req, res) {
