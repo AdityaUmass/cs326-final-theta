@@ -49,6 +49,7 @@ A post request for each post is sent as a JSON object. A representation is displ
   contact: 'Instagram: JSmith12'
 }
 ```
-A request body is 
+
+
 
 
