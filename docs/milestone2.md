@@ -49,6 +49,50 @@ A post request for each post is sent as a JSON object. A representation is displ
   contact: 'Instagram: JSmith12'
 }
 ```
+The request is sent as a JSON object containing the information provided by a user. Note that the only required fields are the title, content, and contact fields.
+
+## Logging In (Read)
+
+To login into an account, the API uses path: ```/loginuser```. A request example is shown below:
+```
+POST herokuroothpath/loginuser
+```
+
+A login request is sent as a JSON object with the following fields:
+
+```
+{ accountemail: 'johnsmith@gmail.com', accountpassword: 'password123' }
+```
+
+
+## Updating Posts or User Information
+
+creating new posts will perform updates to a users posts. updating user email, name, password is probably a good example of Update operation
+
+## Deleting Posts
+
+deleting posts
+
+
+# Handling Request Errors
+
+The API will respond with standard Express status codes when an error is encounter.
+
+1) If a new user tries to create an account but the email address already exists in the system
+```
+res.status(400).send('An account with that email already exists');
+```
+
+2) If an existing user tries to login with an incorrect password.
+```
+res.status(400).send('Incorrect password');
+```
+
+3) If a client tries to login but uses an incorrect email.
+```
+res.status(400).send('Account not found');
+```
+
 
 
 
