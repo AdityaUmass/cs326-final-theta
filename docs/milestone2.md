@@ -1,4 +1,4 @@
-UFit API Representation
+# UFit API Representation
 
 The purpose of our website is to help UMass Amherst students live a more active lifestyle, whether is finding gyms partners, posting achievements, or finding information about upcoming sporting events on campus.
 The UFit API demostrates ways in which these core features are implemented.
