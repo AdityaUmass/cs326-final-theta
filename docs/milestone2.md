@@ -1,28 +1,15 @@
 # UFit API Representation
 
-The purpose of our website is to help UMass Amherst students live a more active lifestyle, whether is finding gyms partners, posting achievements, or finding information about upcoming sporting events on campus.
-The UFit API demostrates ways in which these core features are implemented.
+The purpose of UFit is to help UMass Amherst students live a more active lifestyle, whether it's by finding gyms partners, sharing recent achievements, or finding information about upcoming sporting events on campus. The UFit API demostrates ways in which these core features are implemented.
+
+All requests are handled through HTTP. UFit uses the root path: ```insert heroku path here```. To send a request, this root path should be specified and followed by any of the following paths below.
 
 ## User Account Creation
 
-The API uses the path: */createuser* for account creation.
+The API uses the path: ```/createuser``` for account creation. Below is a preview of how to send a request to create an account
 
 ```
-app.post("/createuser", function(req, res) {
-    
-    // extract information here
-    username = req.body.accountemail;
-    loggedin = true;
-
-    reload(userfile, "users");
-
-    trackUsers.users.push(req.body);
-    let str = JSON.stringify(trackUsers);
-    fs.writeFileSync(userfile, str);
-
-    // reload page
-    res.redirect('/');
-});
+POST herokurootpath/createuser
 ```
 
 The endpoint will process a request in the form of a JSON object created from the login modal. A representation is shown below for the user John Smith:
@@ -40,3 +27,28 @@ A request body for account creation is composed of the following:
 - accountname: the user's name
 - accountpassword: the user's password
 - posts: a list of the user's created posts
+
+
+## Post Creation
+
+To create a post, use the path: ```/createPost``` as shown below
+```
+POST herokuroothpath/createPost
+```
+
+A post request for each post is sent as a JSON object. A representation is displayed below:
+```
+{
+  title: 'Just benched 225',
+  content: 'After two years I finally reach a 225 pound bench press. Ecstatic!',
+  activity: 'Gym',
+  workout: 'Upper-Body',
+  time: '',
+  duration: '',
+  date: '',
+  contact: 'Instagram: JSmith12'
+}
+```
+A request body is 
+
+
