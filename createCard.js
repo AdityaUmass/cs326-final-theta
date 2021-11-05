@@ -109,6 +109,27 @@ function renderAccountModal(postID, postEmails, body){
     modalButton.setAttribute("data-bs-dismiss", "modal");
     modalHeader.appendChild(modalButton); 
 
-    const modalBody
+    const modalBody = document.createElement("div");
+
+    let i = 0;
+    postEmails.forEach(email => {
+        const modalForm = document.createElement("div");
+        const checkBox = document.createElement("input");
+        checkBox.setAttribute("type","checkbox");
+        checkBox.setAttribute("value","");
+        checkBox.setAttribute("id","modal"+postID+"check" + i);
+        
+        checkBox.classList.add("form-check");
+        modalForm.appendChild(checkBox);
+        const label = document.createElement("label");
+        label.classList.add("form-check-label");
+        label.setAttribute("for","modal"+postID+"check"+i);
+    
+        i = i+1;
+
+        label.innerText = email;
+
+        modalBody.appendChild(modalForm);
+    });
 
 }
