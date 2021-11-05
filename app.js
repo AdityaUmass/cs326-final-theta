@@ -9,25 +9,18 @@ app.use(express.static("public"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-
-const userfile = "users.json";
-let trackUsers = { users: [] };
-
-const postsFile = "postFile.json";
-let trackPosts = { posts: [] };
-
 let username = "";
 let loggedin = false;
 
 
-// function reloads the file (for temporary persistant storage)
-function reload(filename, kind) {
+// // function reloads the file (for temporary persistant storage)
+// function reload(filename, kind) {
     
-    if (fs.existsSync(filename)) {
-        let someStr = fs.readFileSync(filename);
-        trackUsers = JSON.parse(someStr);   
-    }
-}
+//     if (fs.existsSync(filename)) {
+//         let someStr = fs.readFileSync(filename);
+//         trackUsers = JSON.parse(someStr);   
+//     }
+// }
 
 app.get("/", function(req, res) {
     //render functions
@@ -77,13 +70,18 @@ app.post("/createuser", function(req, res) {
     
     console.log(req.body);
 
+    let trackUsers = { users: [] };
+    if(fs.existsSync("users.json")) {
+        trackUsers = JSON.parse(fs.readFileSync("users.json"));
+    }
+    
     // extract information here
     username = req.body.accountemail;
     loggedin = true;
 
     trackUsers.users.push(req.body);
     let str = JSON.stringify(trackUsers);
-    fs.writeFileSync(userfile, str);
+    fs.writeFileSync("users.json", str);
 
     // reload page
     res.redirect('/');
@@ -95,15 +93,21 @@ app.post("/loginuser", function(req, res) {
 
     // find user info
     // what to do with this info? Send to client, print, etc...
-    let user = trackUsers.users.find(x => x === req.body.accountemail);
+
+    let trackUsers = JSON.parse(fs.readFileSync('users.json'));
+    let user = trackUsers.users.find(x => x.accountemail === req.body.accountemail);
+
+    console.log(user);
 
     if(user === undefined) {
-        // then the user was not found
-        res.status(404).send('Sorry, we cannot find that!');
-        //res.send("User not found in the system");
+        res.send("User not found in the system");
     } else {
         // then the user was found, but password authentication is still needed (next milestone?)
         // extract information here
+        if(user.accountpassword !== req.body.accountpassword) {
+            res.send('Password doesn\'t match');
+        }
+    
         username = req.body.accountemail;
         loggedin = true;
         res.redirect('/');
