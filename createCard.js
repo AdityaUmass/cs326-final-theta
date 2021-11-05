@@ -132,4 +132,17 @@ function renderAccountModal(postID, postEmails, body){
         modalBody.appendChild(modalForm);
     });
 
+    const modalFooter = document.createElement("div");
+    modalFooter.classList.add("modal-footer");
+    const modalFooterButton = document.createElement("button");
+    modalFooterButton.classList.add("btn", "btn-primary");
+    modalFooter.appendChild(modalFooterButton);
+
+    modalParent3.appendChild(modalHeader);
+    modalParent3.appendChild(modalBody);
+    modalParent3.appendChild(modalFooter);
+
+
+    //ADD TO BODY
+    body.appendChild(modalParent1);
 }
