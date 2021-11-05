@@ -1,6 +1,36 @@
+//const fs = require("fs");
+console.log("hi");
 
+data = [
+    {
+      "author": "",
+      "liked_count": 0,
+      "liked_username": [],
+      "_id": 1,
+      "title": "vfcdxs",
+      "content": " vfcdv fcdsxza",
+      "activity": "Gym",
+      "days": ["Monday"],
+      "workout": "Upper-Body",
+      "duration": "3",
+      "time": "05:48",
+      "contact": " fvcdsxaz",
+      "date": "2021-11-24"
+    }
+  ]
 
-function renderAccountPage(element, data, body){
+// if (fs.existsSync("cs326-final-theta\\users.json")) {
+//     let someStr = fs.readFileSync(filename);
+//     data = JSON.parse(someStr);   
+// }
+
+console.log(data);
+
+renderAccountPage(data);
+
+function renderAccountPage(data){
+    const element = document.getElementById("posts");
+
     element.innerHTML = '';
 
     data.forEach(post => {
@@ -16,7 +46,7 @@ function renderAccountPage(element, data, body){
         const span2 = document.createElement("span");
         const span3 = document.createElement("span");
         const span4 = document.createElement("span");
-        span1.innerText = "Days: " + post["days"].split(", ") + " |";
+        span1.innerText = "Days: " + post["days"].join(", ") + " |";
         span2.innerText = "Activity Type: " + post["activity"] + " |";
         span3.innerText = "Time: " + post["date"] + " |";
         span4.innerText = "Duration (hrs): " + post["duration"];
@@ -56,7 +86,7 @@ function renderAccountPage(element, data, body){
         const buttonEmail = document.createElement("button");
         buttonEmail.classList.add("btn", "btn-spl");
         buttonEmail.setAttribute("data-bs-toggle", "modal");
-        buttonEmail.setAttribute("data-bs-target", "modal" + post[_id]);
+        buttonEmail.setAttribute("data-bs-target", "modal" + post["_id"]);
         buttonEmail.innerText = "See all interested";
         divFooter.appendChild(buttonEmail);
 
@@ -89,7 +119,7 @@ function renderAccountModal(postID, postEmails, body){
     const modalParent2 = document.createElement("div");
     modalParent2.classList.add("modal-dialog");
     modalParent2.setAttribute("role", "document");
-    modalParent2.appendChild(modalParent2);
+    modalParent1.appendChild(modalParent2);
 
     const modalParent3 = document.createElement("div");
     modalParent3.classList.add("modal-content");
@@ -132,4 +162,18 @@ function renderAccountModal(postID, postEmails, body){
         modalBody.appendChild(modalForm);
     });
 
+    const modalFooter = document.createElement("div");
+    modalFooter.classList.add("modal-footer");
+    const modalFooterButton = document.createElement("button");
+    modalFooterButton.classList.add("btn", "btn-primary");
+    modalFooter.appendChild(modalFooterButton);
+
+    modalParent3.appendChild(modalHeader);
+    modalParent3.appendChild(modalBody);
+    modalParent3.appendChild(modalFooter);
+
 }
+
+// module.exports = {
+//     renderAccountPage: renderAccountPage
+// };
