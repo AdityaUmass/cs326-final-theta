@@ -157,7 +157,7 @@ app.post("/createPost", function(req, res) {
     post["time"] = formData.time;
     post["contact"] = formData.contact;
     
-    if(formData["date"].length === 0) {
+    if(formData["date"].length !== 0) {
         post["date"] = formData.date;
     } else {
         days = [];
@@ -197,18 +197,69 @@ app.post("/createPost", function(req, res) {
         "Post creation error.";
     });
 
-    res.redirect("/");
+    res.sendFile(__dirname + "/home.html");
+    homeJS.render(posts, username);
 });
 
 app.post("/filter", function(req, res) {
     console.log(req.body);
 
     let posts = JSON.parse(fs.readFileSync("posts.json"));
-    let filterData = req.body
+    let filterData = req.body;
 
-    //filter posts
+    let filteredPosts = posts;
+
+    if (filterData["activity"].length !== 0) {
+
+    }
+
+    if (filterData["workout"].length !== 0) {
+        
+    }
+
+    if (filterData["duration"].length !== 0) {
+        
+    }
+
+    if (filterData["time"].length !== 0) {
+        
+    }
+
+    if(formData["date"].length !== 0) {
+        
+    } else {
+        
+        if ("Monday" in formData) {
+            
+        }
+
+        if ("Tuesday" in formData) {
+            
+        }
+
+        if ("Wednesday" in formData) {
+            
+        }
+
+        if ("Thursday" in formData) {
+            
+        }
+
+        if ("Friday" in formData) {
+            
+        }
+
+        if ("Saturday" in formData) {
+            
+        }
+
+        if ("Sunday" in formData) {
+            
+        }
+    }
     //render them acordingly
-    res.redirect("/");
+    res.sendFile(__dirname + "/home.html");
+    homeJS.render(filteredPosts, username);
 });
 
 app.get("/like/:postID", function(req, res) {
