@@ -57,9 +57,11 @@ A post request for each post is sent as a JSON object. A representation is displ
 
 ## User Account Creation
 
-![login_interface1](public/Images/Screen Shot 2021-11-05 at 3.01.39 PM.png)
-The user is prompted 
-![login_interface2](public/Images/Screen Shot 2021-11-05 at 1.14.56 PM.png)
+![login_interface1](https://github.com/AdityaUmass/cs326-final-theta/blob/master/public/Images/Screen%20Shot%202021-11-05%20at%203.01.39%20PM.png)
+The user is issued a prompt to enter information that will be used for their account.
+
+![login_interface2](https://github.com/AdityaUmass/cs326-final-theta/blob/master/public/Images/Screen%20Shot%202021-11-05%20at%201.14.56%20PM.png)
+You can see that after account creation, the user is logged in and redirected to the homepage.
 
 
 
