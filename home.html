@@ -33,6 +33,8 @@
         $("#navbar").replaceWith(data);
       });
     </script>
+
+    <script src="js/home.js" defer></script>
   </head>
   <body>
     <div id="navbar"></div>
@@ -40,12 +42,12 @@
     <div class="container-fluid posts">
       <div class="row postholder">
         <div class="col-4 filters">
-          <form class="row pt-2 g-4">
+          <form class="row pt-2 g-4" action="/filter" method="post">
             <h1>Find a Match</h1>
 
             <div class="col-6">
               <label for="workout" class="form-label">Workout Type</label>
-              <select id="workout" class="form-select">
+              <select id="workout" class="form-select" name="workout">
                 <option selected disabled>Choose</option>
                 <option>Upper-Body</option>
                 <option>Lower-Body</option>
@@ -57,7 +59,7 @@
 
             <div class="col-6">
               <label for="activity" class="form-label">Activity Type</label>
-              <select id="activity" class="form-select">
+              <select id="activity" class="form-select" name="activity">
                 <option selected disabled>Choose</option>
                 <option>Gym</option>
                 <option>Pick-up game</option>
@@ -68,14 +70,14 @@
 
             <div class="col-6">
               <label for="time" class="form-label">Workout Start Time</label>
-              <input type="time" class="form-control" id="time" />
+              <input type="time" class="form-control" id="time" name="time"/>
             </div>
 
             <div class="col-6">
               <label for="duration" class="form-label"
                 >Workout Duration (Hours)</label
               >
-              <input type="number" class="form-control" id="duration" />
+              <input type="number" class="form-control" id="duration" name="duration"/>
             </div>
 
             <div class="col-12">
@@ -100,7 +102,7 @@
             <div class="collapse" id="collapseDate">
               <div class="col-4">
                 <label for="date" class="form-label">Workout Date</label>
-                <input type="date" class="form-control" id="date" />
+                <input type="date" class="form-control" id="date" name="date"/>
               </div>
             </div>
             <div class="collapse" id="collapseDays">
@@ -111,6 +113,7 @@
                     class="form-check-input"
                     type="checkbox"
                     id="gridCheckMon"
+                    name="Monday"
                   />
                   <label class="form-check-label" for="gridCheckMon">
                     Monday
@@ -123,6 +126,7 @@
                     class="form-check-input"
                     type="checkbox"
                     id="gridCheckTue"
+                    name="Tuesday"
                   />
                   <label class="form-check-label" for="gridCheckTue">
                     Tuesday
@@ -135,6 +139,7 @@
                     class="form-check-input"
                     type="checkbox"
                     id="gridCheckWed"
+                    name="Wednesday"
                   />
                   <label class="form-check-label" for="gridCheckWed">
                     Wednesday
@@ -147,6 +152,7 @@
                     class="form-check-input"
                     type="checkbox"
                     id="gridCheckThurs"
+                    name="Thursday"
                   />
                   <label class="form-check-label" for="gridCheckThurs">
                     Thursday
@@ -159,6 +165,7 @@
                     class="form-check-input"
                     type="checkbox"
                     id="gridCheckFri"
+                    name="Friday"
                   />
                   <label class="form-check-label" for="gridCheckFri">
                     Friday
@@ -171,6 +178,7 @@
                     class="form-check-input"
                     type="checkbox"
                     id="gridCheckSat"
+                    name="Saturday"
                   />
                   <label class="form-check-label" for="gridCheckSat">
                     Saturday
@@ -183,6 +191,7 @@
                     class="form-check-input"
                     type="checkbox"
                     id="gridCheckSun"
+                    name="Sunday"
                   />
                   <label class="form-check-label" for="gridCheckSun">
                     Sunday
