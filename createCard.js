@@ -1,4 +1,6 @@
-function renderAccountPage(element, data){
+
+
+function renderAccountPage(element, data, body){
     element.innerHTML = '';
 
     data.forEach(post => {
@@ -73,4 +75,40 @@ function renderAccountPage(element, data){
         //Add card to list
         element.appendChild(divCard);
     });
+}
+
+function renderAccountModal(postID, postEmails, body){
+
+    const modalParent1 = document.createElement("div");
+    modalParent1.classList.add("modal", "fade");
+    modalParent1.setAttribute("id", "modal" + postID);
+    modalParent1.setAttribute("tabindex", "-1");
+    modalParent1.setAttribute("role", "dialog");
+    body.appendChild(modalParent1);
+
+    const modalParent2 = document.createElement("div");
+    modalParent2.classList.add("modal-dialog");
+    modalParent2.setAttribute("role", "document");
+    modalParent2.appendChild(modalParent2);
+
+    const modalParent3 = document.createElement("div");
+    modalParent3.classList.add("modal-content");
+    modalParent2.appendChild(modalParent3);
+
+    const modalHeader = document.createElement("div");
+    modalHeader.classList.add("modal-header");
+
+    const modalTitle = document.createElement("h5");
+    modalTitle.classList.add("modal-title");
+    modalTitle.innerText = "Participants";
+    modalHeader.appendChild(modalTitle);
+    
+    const modalButton = document.createElement("button");
+    modalButton.classList.add("btn-close");
+    modalButton.setAttribute("type", "button");
+    modalButton.setAttribute("data-bs-dismiss", "modal");
+    modalHeader.appendChild(modalButton); 
+
+    const modalBody
+
 }
