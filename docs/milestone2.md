@@ -228,7 +228,7 @@ The "Looking for a gym partner" post has now been removed from the users profile
 
 # Updates to the Project
 
-In order for the user to change their account information, we added an HTML file called ```accountUpdate.html```, and its associated CSS file ```accountUpdate.html```.
+In order for the user to change their account information, we added an HTML file called ```accountUpdate.html```, and its associated CSS file ```accountUpdate.css```.
 
 # Division of Labor Breakdown
 
