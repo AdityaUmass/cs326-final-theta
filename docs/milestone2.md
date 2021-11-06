@@ -23,10 +23,10 @@ The endpoint will process a request in the form of a JSON object created from th
 ```
 
 A request body for account creation is composed of the following:
-- accountemail: the email address of the user, which will be the username to login
-- accountname: the user's name
-- accountpassword: the user's password
-- posts: a list of the user's created posts
+- String : **accountemail** - the email address of the user, which will be the username to login
+- String : **accountname** - the user's name
+- String : **accountpassword** - the user's password
+- Array[Posts] : **posts** - a list of the user's created posts
 
 
 ## Post Creation
@@ -49,7 +49,19 @@ A post request for each post is sent as a JSON object. A representation is displ
   contact: 'Instagram: JSmith12'
 }
 ```
-The request is sent as a JSON object containing the information provided by a user. Note that the only required fields are the title, content, and contact fields.
+The request is sent as a JSON object containing the information provided by a user. Note that the only required fields to make a post are the title, content, and contact fields. A request will vary depending on what information that user decides to fill out.
+
+A request body for a post creation is composed of the following:
+
+- String : **title** - The title of a post
+- String : **content** - A brief description about the user's intent of the post
+- String : **activity** - The activity type of this post
+- String : **workout** - The workout type of this post
+- String : **time** - The time of day in which the user would like to workout (in the format: HH:MM:XM )
+- String : **duration** - The duration of the workout (in format: hours )
+- String : **date** - The date of the workout (in format: MM:DD:YYYY )
+- String : **contact** - A brief description of the user's contact information
+
 
 ## Logging In (Read)
 
@@ -67,7 +79,29 @@ A login request is sent as a JSON object with the following fields:
 
 ## Updating Posts or User Information
 
-creating new posts will perform updates to a users posts. updating user email, name, password is probably a good example of Update operation
+To update user information, the API uses the path: ```/updateInfo``` like so:
+
+```POST herokuroothpath/updateInfo```
+
+This path then uses the API endpoint ```/updateAccountInfo``` to process the entered information
+
+```POST herokurootpath/updateAccountInfo```
+
+<!-- Updating a user account can only be done when a user is logged in. -->
+
+The body of the request is displayed below. Note that the fields are optional. A user can update their email without changing their password, for example.
+
+```
+{ accountname: 'Tyler', useremail: '', userpassword: '' }
+```
+
+This request will update the user's account name to "Tyler", with no further changes to the account.
+
+
+
+UPDATE POSTS HERE
+
+
 
 ## Deleting Posts
 
@@ -94,18 +128,30 @@ res.status(400).send('Account not found');
 ```
 
 
-
-
-
 # Client User Interface
 
-## User Account Creation
+## User Account & Post Creation
 
-![login_interface1](https://github.com/AdityaUmass/cs326-final-theta/blob/master/public/Images/Screen%20Shot%202021-11-05%20at%203.01.39%20PM.png)
+![account_interface1](https://github.com/AdityaUmass/cs326-final-theta/blob/master/public/Images/Screen%20Shot%202021-11-05%20at%203.01.39%20PM.png)
 The user is issued a prompt to enter information that will be used for their account.
 
-![login_interface2](https://github.com/AdityaUmass/cs326-final-theta/blob/master/public/Images/Screen%20Shot%202021-11-05%20at%201.14.56%20PM.png)
+![account_interface2](https://github.com/AdityaUmass/cs326-final-theta/blob/master/public/Images/Screen%20Shot%202021-11-05%20at%201.14.56%20PM.png)
 You can see that after account creation, the user is logged in and redirected to the homepage.
+
+## User Login
+
+![login_interface](https://github.com/AdityaUmass/cs326-final-theta/blob/master/public/Images/Screenshot%202021-11-05%20210614.png)
+When the user clicks the "Login" button in the navigation bar, an prompt box will open, allowing them to input their account information.
+
+## Updating User Details and Updating Posts
+
+![updateuser_interface](https://github.com/AdityaUmass/cs326-final-theta/blob/master/public/Images/Screenshot%202021-11-05%20205834.png)
+Through this simple interface, the user has the option to update their account information. All changes will be saved to the database.
+
+![updateposts_interface1]()
+
+## Deleting Posts
+
 
 
 
