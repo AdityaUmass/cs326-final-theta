@@ -46,11 +46,46 @@ app.get("/navbar", function(req, res) {
 app.get("/account", function(req, res) {    
     //pull data from the database using global username
     //render that data on to account.html
+    if (fs.existsSync("posts.json")){
+        let posts = JSON.parse(fs.readFileSync("posts.json"));
+        let i = {};
+        loggedInPosts = [];
+        posts.forEach(i => {
+            console.log(i);
+            if (i["author"] === username){
+                loggedInPosts.push(i);
+            }
+        });
+        console.log(loggedInPosts);
+        fs.writeFileSync("myAccount.json", JSON.stringify(loggedInPosts));
+    }
+    else {
+        fs.writeFileSync("myAccount.json", "[]");
+    }
     res.sendFile(__dirname + "/account.html");
 });
 
-app.get("/accountDelete", function(req, res){
+app.get("/myAccountJSON", function(req, res){
+    res.sendFile(__dirname + "/myAccount.json");
+});
+
+app.get("/accountDelete/:postID", function(req, res){
     //get card's id and delete from the persistent storage/data
+    const postID = req.params.postID;
+    console.log(postID);
+    if (fs.existsSync("posts.json")){
+        let posts = JSON.parse(fs.readFileSync("posts.json"));
+        for (let i = 0; i < posts.length; i++){
+            if (posts[i]["_id"] == postID && posts[i]["author"] == username){
+                posts.splice(i,1);
+                break;
+            }
+        }
+        fs.writeFileSync("posts.json",JSON.stringify(posts));
+    }
+
+    res.redirect('/account');
+
 });
 
 app.get("/accountUpdate", function(req,res){
