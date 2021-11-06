@@ -161,9 +161,8 @@ The user will have the option to delete any of the posts they've made. In this p
 The "Looking for a gym partner" post has now been removed from the users profile.
 
 
+# Division of Labor Breakdown
 
-
-
-
-
-
+Aditya: Created main server-starter template. Responsible for creating the HTML for each post and rendering them to homepage. Handled how posts are filtered by activity/workout, time/day, etc. Generated endpoints for creating a post, filtering a post, and liking a post.
+Raghav: Responsible for creating the HTML of a user's posts and rendering them to the user's account page. Created post deletion functionality and the ability to update the content of a post. Generate endpoints for navigating to the user's account page, deleting posts, and updating the content of a post.
+Brandon Figueredo: Handled login and signup functionality, as well as updating user information. Generate endpoints for creating a user, logging into an account, and updating a user's account.
