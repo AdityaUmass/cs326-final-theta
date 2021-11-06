@@ -94,6 +94,30 @@ A login request is sent as a JSON object with the following fields:
 { accountemail: 'johnsmith@gmail.com', accountpassword: 'password123' }
 ```
 
+## Signing out
+To sign out of the account, the API uses a GET request to path: ```/signout```:
+```
+GET herokuroothpath/signout
+``` 
+
+## Accessing Home Page
+To access the home page, the API uses a GET request to path: ```/```:
+```
+GET herokuroothpath/
+``` 
+
+
+## Accessing "Create a Post" page
+To access the home page, the API uses a GET request to path: ```/post```:
+```
+GET herokuroothpath/post
+``` 
+
+## Accessing "Clubs and News" page
+To access the home page, the API uses a GET request to path: ```/clubnews```:
+```
+GET herokuroothpath/clubnews
+``` 
 
 ## Updating Posts or User Information
 
@@ -113,11 +137,7 @@ The body of the request is displayed below. Note that the fields are optional. A
 { accountname: 'Tyler', useremail: '', userpassword: '' }
 ```
 
-This request will update the user's account name to "Tyler", with no further changes to the account.
-
-
-
-UPDATE POSTS HERE
+This request will update the user's account name to "Tyler", with no further changes to the account. In general, any non-empty field from the above request will be updated. All stored posts that either store the email as author or in likedd_username will be updated if required.
 
 ## Rendering Posts
 
