@@ -207,14 +207,16 @@ function createEmailLink(postID, emailCount){
         console.log("modal"+postID+"check" + i);
         console.log(document.getElementById("modal"+postID+"check" + i));
         if (document.getElementById("modal"+postID+"check" + i) != null &&
-         document.getElementById("modal"+postID+"check" + i).value &&
-         document.getElementById("modal"+postID+"label" + i).value
+         document.getElementById("modal"+postID+"check" + i).checked &&
+         document.getElementById("modal"+postID+"label" + i).innerText != null
          ){
-            emailStr.push(document.getElementById("modal"+postID+"label" + i).value);
+            emailStr.push(document.getElementById("modal"+postID+"label" + i).innerText);
         }
         i++;
     }
-    console.log("mailto:" + emailStr.join(","));
+    if (emailStr.length > 0){
+        window.location.replace("mailto:" + emailStr.join(","));
+    }
     
 }
 
