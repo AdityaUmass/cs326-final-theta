@@ -1,6 +1,7 @@
 /* jshint esversion: 6*/
 const fs = require("fs");
 const express = require("express");
+const { RSA_NO_PADDING } = require("constants");
 //const homeJS = require("./public/js/home.js"); 
 
 const app = express();
@@ -210,8 +211,16 @@ app.post("/createPost", function(req, res) {
     
     posts.push(post);
 
+
+
     fs.writeFile("posts.json", JSON.stringify(posts), (err) => {
         "Post creation error.";
+    });
+
+    let renderInfo = {"userName": username, "posts": posts};
+
+    fs.writeFile("render.json", JSON.stringify(renderInfo), (err) => {
+        "Write error.";
     });
 
     res.sendFile(__dirname + "/home.html");
@@ -280,6 +289,12 @@ app.post("/filter", function(req, res) {
             filteredPosts = filteredPosts.filter(elem => ("Sunday" in elem));
         }
     }
+
+    let renderInfo = {"userName": username, "posts": filteredPosts};
+
+    fs.writeFile("render.json", JSON.stringify(renderInfo), (err) => {
+        "Write error.";
+    });
     //render them acordingly
     res.sendFile(__dirname + "/home.html");
     //homeJS.render(filteredPosts, username);
@@ -299,7 +314,13 @@ app.get("/like/:postID", function(req, res) {
         posts[postIndex].liked_count++;
         posts[postIndex]["liked_username"].push(username);
     }
+
+    res.sendFile(__dirname + "/home.html");
 });
+
+app.get("/renderjson", function(req, res) {
+    res.sendFile(__dirname + "/render.json");
+})
 
 app.listen(8080, function() {
     
