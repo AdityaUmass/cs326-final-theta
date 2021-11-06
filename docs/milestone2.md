@@ -222,12 +222,17 @@ You can see that after account creation, the user is logged in and redirected to
 ![login_interface](https://github.com/AdityaUmass/cs326-final-theta/blob/master/public/Images/Screenshot%202021-11-05%20210614.png)
 When the user clicks the "Login" button in the navigation bar, an prompt box will open, allowing them to input their account information.
 
-## Updating User Details and Updating Posts
+## (UPDATE) Updating User Details and Liking Posts
 
 ![updateuser_interface](https://github.com/AdityaUmass/cs326-final-theta/blob/master/public/Images/Screenshot%202021-11-05%20205834.png)
 Through this simple interface, the user has the option to update their account information. All changes will be saved to the database.
 
-![updateposts_interface1]()
+![like_interface1](https://github.com/AdityaUmass/cs326-final-theta/blob/master/public/Images/Desktop%20Screenshot%202021.11.06%20-%2019.43.40.66.png)
+Through this simple interface, the user has the option to update their account information. All changes will be saved to the database.
+
+![like_interface2](https://github.com/AdityaUmass/cs326-final-theta/blob/master/public/Images/Desktop%20Screenshot%202021.11.06%20-%2019.43.48.32.png)
+Through this simple interface, the user has the option to update their account information. All changes will be saved to the database.
+
 
 ## Deleting Posts
 
