@@ -89,7 +89,7 @@ app.post("/createuser", function(req, res) {
 
 app.post("/loginuser", function(req, res) {
     
-    console.log(req.body);
+    //console.log(req.body);
 
     // find user info
     // what to do with this info? Send to client, print, etc...
@@ -97,7 +97,7 @@ app.post("/loginuser", function(req, res) {
     let trackUsers = JSON.parse(fs.readFileSync('users.json'));
     let user = trackUsers.users.find(x => x.accountemail === req.body.accountemail);
 
-    console.log(user);
+    //console.log(user);
 
     if(user === undefined) {
         res.status(400).send('Account not found');
@@ -110,7 +110,6 @@ app.post("/loginuser", function(req, res) {
     
         username = req.body.accountemail;
         loggedin = true;
-        account = user
         res.redirect('/');
     }
 });
@@ -121,19 +120,35 @@ app.get("/signout", function(req, res) {
     res.redirect('/');
 });
 
-app.post("/updateInfo", function(req, res) {
-
-    if(!fs.existsSync("users.json")) {
-        res.status(400).send('Bad request');
-    }
-
-    let trackUsers = JSON.parse(fs.readFileSync("users.json"));
-
-    //let user = trackUsers.users.find(u => u.accountemail === account.accountemail);
-
-
+app.get("/updateInfo", function(req, res) {
     res.sendFile(__dirname + "/accountUpdate.html");
 })
+
+app.post("/updateAccountInfo", function(req, res) {
+    
+    let trackUsers = JSON.parse(fs.readFileSync('users.json'));
+    let user = trackUsers.users.find(x => x.accountemail === username);
+
+    if(req.body.useremail.length !== 0) {
+        user.accountemail = req.body.useremail;
+    }
+
+    if(req.body.accountname.length !== 0) {
+        user.accountname = req.body.accountname;
+    }
+
+    if(req.body.userpassword.length !== 0) {
+        user.accountpassword = req.body.userpassword;
+    }
+
+    fs.writeFileSync("users.json", JSON.stringify(trackUsers));
+
+    // display that changes were saved
+
+    res.redirect('/updateInfo');
+});
+
+
 
 app.post("/createPost", function(req, res) {
     console.log(req.body);
