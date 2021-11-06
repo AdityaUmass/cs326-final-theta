@@ -114,8 +114,8 @@ function createColors() {
 
 function likeFormatting() {
     if(window.localStorage.getItem('color' + this.id) === "white") {
-        this.style.backgroundColor = "light gray";
-        window.localStorage.setItem('color' + this.id, "light gray");
+        this.style.backgroundColor = "LightGrey";
+        window.localStorage.setItem('color' + this.id, "LightGrey");
     } else {
         this.style.backgroundColor = "white";
         window.localStorage.setItem('color' + this.id, "white");
