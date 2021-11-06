@@ -94,6 +94,11 @@ A login request is sent as a JSON object with the following fields:
 { accountemail: 'johnsmith@gmail.com', accountpassword: 'password123' }
 ```
 
+## Accessing Home Page
+To access the home page, the API uses a GET request to path: ```\```:
+```
+GET herokuroothpath/
+``` 
 
 ## Updating Posts or User Information
 
