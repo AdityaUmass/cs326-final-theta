@@ -12,20 +12,20 @@ app.use(express.urlencoded({ extended: true }));
 
 let username = "";
 let loggedin = false;
-let account = {};
-
-
-// // function reloads the file (for temporary persistant storage)
-// function reload(filename, kind) {
-    
-//     if (fs.existsSync(filename)) {
-//         let someStr = fs.readFileSync(filename);
-//         trackUsers = JSON.parse(someStr);   
-//     }
-// }
+let filtered = false
 
 app.get("/", function(req, res) {
     //render functions
+    if (!filtered) {
+        let posts = JSON.parse(fs.readFileSync("posts.json"));
+        let renderInfo = {"userName": username, "posts": posts};
+
+        fs.writeFile("render.json", JSON.stringify(renderInfo), (err) => {
+            "Write error.";
+        });
+    } else {
+        filtered = false;
+    }
     res.sendFile(__dirname + "/home.html");
 });
 
@@ -46,6 +46,12 @@ app.get("/navbar", function(req, res) {
 app.get("/account", function(req, res) {    
     //pull data from the database using global username
     //render that data on to account.html
+
+    if(!loggedin) {
+        res.status(400).send("User not logged in");
+        return;
+    }
+
     if (fs.existsSync("posts.json")){
         let posts = JSON.parse(fs.readFileSync("posts.json"));
         let i = {};
@@ -71,6 +77,12 @@ app.get("/myAccountJSON", function(req, res){
 
 app.get("/accountDelete/:postID", function(req, res){
     //get card's id and delete from the persistent storage/data
+
+    if(!loggedin) {
+        res.status(400).send("User not logged in");
+        return;
+    }
+
     const postID = req.params.postID;
     console.log(postID);
     if (fs.existsSync("posts.json")){
@@ -162,11 +174,65 @@ app.get("/updateInfo", function(req, res) {
 
 app.post("/updateAccountInfo", function(req, res) {
     
+    // save old email
+    let oldEmail = username;
+    
+    // open the file and find the user if there is one
     let trackUsers = JSON.parse(fs.readFileSync('users.json'));
     let user = trackUsers.users.find(x => x.accountemail === username);
 
+    // check if the email was changed
     if(req.body.useremail.length !== 0) {
+        
         user.accountemail = req.body.useremail;
+        
+        // change username
+        username = user.accountemail;
+
+        // update the posts file to replace the old email with the new email
+        let posts = JSON.parse(fs.readFileSync("posts.json"));    
+        
+        posts.forEach( post => { 
+        
+            if(post["author"] === oldEmail) {
+                post["author"] = username;
+            }
+            
+            post["liked_username"].forEach( (name, index) => {
+                if(name === oldEmail) {
+                    post["liked_username"][index] = username;
+                }        
+            });
+    
+        });
+
+        // write the new file
+        fs.writeFileSync("posts.json", JSON.stringify(posts));
+
+
+        // update the render file to replace the old email with the new email
+        let render = JSON.parse(fs.readFileSync("render.json"));
+
+        if(render["userName"] === oldEmail) {
+            render["userName"] = username;
+        }
+
+        render["posts"].forEach( post => { 
+        
+            if(post["author"] === oldEmail) {
+                post["author"] = username;
+            }
+            
+            post["liked_username"].forEach( (name, index) => {
+                if(name === oldEmail) {
+                    post["liked_username"][index] = username;
+                }        
+            });
+    
+        });
+
+        fs.writeFileSync("render.json", JSON.stringify(render));
+    
     }
 
     if(req.body.accountname.length !== 0) {
@@ -187,7 +253,10 @@ app.post("/updateAccountInfo", function(req, res) {
 
 
 app.post("/createPost", function(req, res) {
-    console.log(req.body);
+    if(!loggedin) {
+        res.status(400).send("User not logged in");
+        return;
+    }
 
     let posts = JSON.parse(fs.readFileSync("posts.json"));
 
@@ -258,7 +327,7 @@ app.post("/createPost", function(req, res) {
         "Write error.";
     });
 
-    res.sendFile(__dirname + "/home.html");
+    res.redirect("/");
     //homeJS.render(posts, username);
 });
 
@@ -330,12 +399,18 @@ app.post("/filter", function(req, res) {
     fs.writeFile("render.json", JSON.stringify(renderInfo), (err) => {
         "Write error.";
     });
+
+    filtered = true;
     //render them acordingly
-    res.sendFile(__dirname + "/home.html");
+    res.redirect("/");
     //homeJS.render(filteredPosts, username);
 });
 
 app.get("/like/:postID", function(req, res) {
+    if(!loggedin) {
+        res.status(400).send("User not logged in");
+        return;
+    }
     let postID = parseInt(req.params.postID);
     let posts = JSON.parse(fs.readFileSync("posts.json"));
     let renderData = (JSON.parse(fs.readFileSync("render.json")));

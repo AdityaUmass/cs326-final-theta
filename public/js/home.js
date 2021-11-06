@@ -1,3 +1,4 @@
+
 async function render() {
     //render all posts using for loop
     //add special styling to liked posts.
@@ -14,7 +15,6 @@ async function render() {
 
     const element = document.getElementsByClassName("col-8 postlist")[0];
     
-
     element.innerHTML = "";
 
     posts.forEach(post => {
@@ -30,7 +30,11 @@ async function render() {
         const span2 = document.createElement("span");
         const span3 = document.createElement("span");
         const span4 = document.createElement("span");
-        span1.innerText = "Days: " + post["days"].join(", ") + " |";
+        if (post["date"].length !== 0) {
+            span1.innerText = "Date: " + post["date"] + " |";
+        } else {
+            span1.innerText = "Days: " + post["days"].join(", ") + " |";
+        }
         span2.innerText = "Activity Type: " + post["activity"] + " |";
         span3.innerText = "Time: " + post["date"] + " |";
         span4.innerText = "Duration (hrs): " + post["duration"];
@@ -60,6 +64,10 @@ async function render() {
         const likeLink = document.createElement("a");
         likeLink.classList.add("btn");
         likeLink.classList.add("btn-light");
+        
+        likeLink.classList.add("likebutton");
+        likeLink.setAttribute("id", post["_id"]);
+
         const icon = document.createElement("i");
         icon.classList.add("far");
         icon.classList.add("fa-heart");
@@ -78,24 +86,45 @@ async function render() {
         const divFooter = document.createElement("div");
         divFooter.classList.add("card-footer");
 
+        const contactSpan = document.createElement("span");
+        contactSpan.innerText = "Contact: " + post["contact"];
+        divFooter.appendChild(contactSpan);
+
         divCard.appendChild(divFooter);
 
-        //Add card to list
-
-        
         element.appendChild(divCard);
     });
-    
 }
+
+window.onload = render().then(createColors);
+
+function createColors() {
+    const likes = document.getElementsByClassName("likebutton");
+    
+    for(let i = 0; i < likes.length; ++i) {
+        
+        let id = likes[i].id;
+    
+        if(window.localStorage.getItem('color' + id) === null) {
+            window.localStorage.setItem('color' + id, "white");
+        } else {
+            likes[i].style.backgroundColor = window.localStorage.getItem('color' + id);
+        }
+    }
+
+    for(let m = 0; m < likes.length; ++m) {
+        likes[m].addEventListener('click', likeFormatting);
+    }
+}
+
 
 function likeFormatting() {
-    
+    if(window.localStorage.getItem('color' + this.id) === "white") {
+        this.style.backgroundColor = "LightGrey";
+        window.localStorage.setItem('color' + this.id, "LightGrey");
+    } else {
+        this.style.backgroundColor = "white";
+        window.localStorage.setItem('color' + this.id, "white");
+    }
 }
 
-window.onload = render;
-
-// module.exports = {
-//     render: render,
-//     likeFormatting: likeFormatting
-
-// };

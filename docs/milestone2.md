@@ -36,7 +36,7 @@ To create a post, use the path: ```/createPost``` as shown below
 POST herokuroothpath/createPost
 ```
 
-A post request for each post is sent as a JSON object. A representation is displayed below:
+A post request for each post is sent as a JSON object. A representation of the minimal fiels of a request is displayed below:
 ```
 {
   title: 'Just benched 225',
@@ -62,6 +62,24 @@ A request body for a post creation is composed of the following:
 - String : **date** - The date of the workout (in format: MM:DD:YYYY )
 - String : **contact** - A brief description of the user's contact information
 
+When a post is created, the server will add additional fields to a post object
+```
+{
+  author: 'test@umass.edu',
+  liked_count: 1,
+  liked_username: [ 'test@umass.edu' ],
+  _id: 1,
+  title: 'hbgvf',
+  content: 'gbvfcdsx',
+  activity: 'Gym',
+  workout: 'Upper-Body',
+  duration: '1',
+  time: '22:19',
+  contact: 'Snap',
+  date: '2021-11-03',
+  days: []
+}
+```
 
 ## Logging In (Read)
 
@@ -105,7 +123,16 @@ UPDATE POSTS HERE
 
 ## Deleting Posts
 
-deleting posts
+For deleting a post, the API uses the path: ```/accountDelete/:postID```, where ```postID``` is the ID of a post the user has previously created. 
+
+A request is made like so:
+```GET herokurootpath/accountDelete/:postID```
+
+An example request is displayed below to delete a post with ID: 12
+```
+GET herokurootpath/accountDelete/12
+```
+
 
 
 # Handling Request Errors
