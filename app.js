@@ -12,17 +12,6 @@ app.use(express.urlencoded({ extended: true }));
 
 let username = "";
 let loggedin = false;
-let account = {};
-
-
-// // function reloads the file (for temporary persistant storage)
-// function reload(filename, kind) {
-    
-//     if (fs.existsSync(filename)) {
-//         let someStr = fs.readFileSync(filename);
-//         trackUsers = JSON.parse(someStr);   
-//     }
-// }
 
 app.get("/", function(req, res) {
     //render functions
@@ -46,6 +35,12 @@ app.get("/navbar", function(req, res) {
 app.get("/account", function(req, res) {    
     //pull data from the database using global username
     //render that data on to account.html
+
+    if(!loggedin) {
+        res.statusCode(400).send("User not logged in");
+        return;
+    }
+
     if (fs.existsSync("posts.json")){
         let posts = JSON.parse(fs.readFileSync("posts.json"));
         let i = {};
@@ -71,6 +66,12 @@ app.get("/myAccountJSON", function(req, res){
 
 app.get("/accountDelete/:postID", function(req, res){
     //get card's id and delete from the persistent storage/data
+
+    if(!loggedin) {
+        res.statusCode(400).send("User not logged in");
+        return;
+    }
+
     const postID = req.params.postID;
     console.log(postID);
     if (fs.existsSync("posts.json")){
@@ -187,7 +188,10 @@ app.post("/updateAccountInfo", function(req, res) {
 
 
 app.post("/createPost", function(req, res) {
-    console.log(req.body);
+    if(!loggedin) {
+        res.statusCode(400).send("User not logged in");
+        return;
+    }
 
     let posts = JSON.parse(fs.readFileSync("posts.json"));
 
@@ -336,6 +340,10 @@ app.post("/filter", function(req, res) {
 });
 
 app.get("/like/:postID", function(req, res) {
+    if(!loggedin) {
+        res.statusCode(400).send("User not logged in");
+        return;
+    }
     let postID = parseInt(req.params.postID);
     let posts = JSON.parse(fs.readFileSync("posts.json"));
     let renderData = (JSON.parse(fs.readFileSync("render.json")));
