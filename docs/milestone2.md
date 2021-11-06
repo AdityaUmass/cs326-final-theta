@@ -100,6 +100,13 @@ To access the home page, the API uses a GET request to path: ```/```:
 GET herokuroothpath/
 ``` 
 
+
+## Accessing "Create a Post" page
+To access the home page, the API uses a GET request to path: ```/post```:
+```
+GET herokuroothpath/post
+``` 
+
 ## Updating Posts or User Information
 
 To update user information, the API uses the path: ```/updateInfo``` like so:
