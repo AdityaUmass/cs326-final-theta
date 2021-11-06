@@ -226,6 +226,10 @@ The user will have the option to delete any of the posts they've made. In this p
 The "Looking for a gym partner" post has now been removed from the users profile.
 
 
+# Updates to the Project
+
+In order for the user to change their account information, we added an HTML file called ```accountUpdate.html```, and its associated CSS file ```accountUpdate.html```.
+
 # Division of Labor Breakdown
 
 Aditya: Created main server-starter template. Responsible for creating the HTML for each post and rendering them to homepage. Handled how posts are filtered by activity/workout, time/day, etc. Generated endpoints for creating a post, filtering a post, and liking a post.
