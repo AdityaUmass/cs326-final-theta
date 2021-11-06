@@ -164,13 +164,14 @@ function renderAccountModal(postID, postEmails, body){
 
         const checkBox = document.createElement("input");
         checkBox.setAttribute("type","checkbox");
-        checkBox.setAttribute("value","");
+        checkBox.setAttribute("value",email);
         checkBox.setAttribute("id","modal"+postID+"check" + i);
         checkBox.classList.add("form-check-input");
         modalForm.appendChild(checkBox);
         
         const label = document.createElement("label");
         label.classList.add("form-check-label");
+        label.setAttribute("id", "modal"+postID+"label"+i);
         label.setAttribute("for","modal"+postID+"check"+i);
     
         i = i+1;
@@ -183,9 +184,10 @@ function renderAccountModal(postID, postEmails, body){
 
     const modalFooter = document.createElement("div");
     modalFooter.classList.add("modal-footer");
-    const modalFooterButton = document.createElement("button");
+    const modalFooterButton = document.createElement("a");
     modalFooterButton.classList.add("btn", "btn-primary");
     modalFooterButton.innerText = "Email Selected";
+    modalFooterButton.addEventListener("click", () => createEmailLink(postID,postEmails.length));
     modalFooterButton.setAttribute("type", "button");
     
     modalFooter.appendChild(modalFooterButton);
@@ -196,6 +198,26 @@ function renderAccountModal(postID, postEmails, body){
 
     body.appendChild(modalParent1);
 
+}
+
+function createEmailLink(postID, emailCount){
+    let i = 0;
+    let emailStr = [];
+    while (i < emailCount){
+        console.log("modal"+postID+"check" + i);
+        console.log(document.getElementById("modal"+postID+"check" + i));
+        if (document.getElementById("modal"+postID+"check" + i) != null &&
+         document.getElementById("modal"+postID+"check" + i).checked &&
+         document.getElementById("modal"+postID+"label" + i).innerText != null
+         ){
+            emailStr.push(document.getElementById("modal"+postID+"label" + i).innerText);
+        }
+        i++;
+    }
+    if (emailStr.length > 0){
+        window.location.replace("mailto:" + emailStr.join(","));
+    }
+    
 }
 
 // module.exports = {
