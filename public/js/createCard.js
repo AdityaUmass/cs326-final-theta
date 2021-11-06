@@ -93,9 +93,10 @@ function renderAccountPage(data){
         divFooter.classList.add("card-footer");
 
         const buttonEmail = document.createElement("button");
+        buttonEmail.setAttribute("type","button");
         buttonEmail.classList.add("btn", "btn-spl");
         buttonEmail.setAttribute("data-bs-toggle", "modal");
-        buttonEmail.setAttribute("data-bs-target", "modal" + post["_id"]);
+        buttonEmail.setAttribute("data-bs-target", "#modal" + post["_id"]);
         buttonEmail.innerText = "See all interested";
         divFooter.appendChild(buttonEmail);
 
@@ -104,16 +105,20 @@ function renderAccountPage(data){
         buttonUpdate.innerText = "Update"
         divFooter.appendChild(buttonUpdate);
 
-        const buttonDelete = document.createElement("button");
+        const buttonDelete = document.createElement("a");
         buttonDelete.classList.add("btn", "btn-danger", "flr");
-        buttonDelete.setAttribute("href", "/accountDelete:" + post["_id"]);
-        buttonDelete.innerText = "Delete"
+        const hrefString = "/accountDelete/" + post["_id"];
+        buttonDelete.setAttribute("href", hrefString);
+        buttonDelete.innerText = "Delete";
         divFooter.appendChild(buttonDelete);
 
         divCard.appendChild(divFooter);
 
         //Add card to list
         element.appendChild(divCard);
+
+        //render account modal
+        renderAccountModal(post._id, post.liked_username, document.getElementById("modalList"));
     });
 }
 
@@ -124,7 +129,7 @@ function renderAccountModal(postID, postEmails, body){
     modalParent1.setAttribute("id", "modal" + postID);
     modalParent1.setAttribute("tabindex", "-1");
     modalParent1.setAttribute("role", "dialog");
-    body.appendChild(modalParent1);
+    
 
     const modalParent2 = document.createElement("div");
     modalParent2.classList.add("modal-dialog");
@@ -150,17 +155,20 @@ function renderAccountModal(postID, postEmails, body){
     modalHeader.appendChild(modalButton); 
 
     const modalBody = document.createElement("div");
+    modalBody.classList.add("modal-body");
 
     let i = 0;
     postEmails.forEach(email => {
         const modalForm = document.createElement("div");
+        modalForm.classList.add("form-check");
+
         const checkBox = document.createElement("input");
         checkBox.setAttribute("type","checkbox");
         checkBox.setAttribute("value","");
         checkBox.setAttribute("id","modal"+postID+"check" + i);
-        
-        checkBox.classList.add("form-check");
+        checkBox.classList.add("form-check-input");
         modalForm.appendChild(checkBox);
+        
         const label = document.createElement("label");
         label.classList.add("form-check-label");
         label.setAttribute("for","modal"+postID+"check"+i);
@@ -168,6 +176,7 @@ function renderAccountModal(postID, postEmails, body){
         i = i+1;
 
         label.innerText = email;
+        modalForm.appendChild(label);
 
         modalBody.appendChild(modalForm);
     });
@@ -176,11 +185,16 @@ function renderAccountModal(postID, postEmails, body){
     modalFooter.classList.add("modal-footer");
     const modalFooterButton = document.createElement("button");
     modalFooterButton.classList.add("btn", "btn-primary");
+    modalFooterButton.innerText = "Email Selected";
+    modalFooterButton.setAttribute("type", "button");
+    
     modalFooter.appendChild(modalFooterButton);
 
     modalParent3.appendChild(modalHeader);
     modalParent3.appendChild(modalBody);
     modalParent3.appendChild(modalFooter);
+
+    body.appendChild(modalParent1);
 
 }
 
