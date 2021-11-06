@@ -174,7 +174,14 @@ An example request is displayed below to delete a post with ID: 12
 GET herokurootpath/accountDelete/12
 ```
 
+## Liking/Unliking posts on the Home page
+If logged in, the home page allows you to like or unlike posts. In order to do this, the API using a GET request to the path ```/like/:postID``` as such:
+```
+GET herokurootpath/like/:postID
+```
+the postID is the unique ID of the post we use to identify it in posts.json and render.json to update its "liked_count" and "liked_username" accordingly.
 
+The endpoint then redirects to ```/```.
 
 # Handling Request Errors
 
