@@ -14,6 +14,7 @@ let username = "";
 let loggedin = false;
 let filtered = false
 
+// endpoint for homepage
 app.get("/", function(req, res) {
     //render functions
     if (!filtered) {
@@ -29,10 +30,12 @@ app.get("/", function(req, res) {
     res.sendFile(__dirname + "/home.html");
 });
 
+// endpoint will get the posts page
 app.get("/post", function(req, res) {
     res.sendFile(__dirname + "/post.html");
 });
 
+// endpoint will send the navigation bar based on login status
 app.get("/navbar", function(req, res) {
     
     if(loggedin) {
@@ -43,6 +46,7 @@ app.get("/navbar", function(req, res) {
 
 });
 
+// endpoint which gets all posts for the account
 app.get("/account", function(req, res) {    
     //pull data from the database using global username
     //render that data on to account.html
@@ -71,10 +75,12 @@ app.get("/account", function(req, res) {
     res.sendFile(__dirname + "/account.html");
 });
 
+// endpoint will get an accounts posts file
 app.get("/myAccountJSON", function(req, res){
     res.sendFile(__dirname + "/myAccount.json");
 });
 
+// endpoint which deletes a post on the account
 app.get("/accountDelete/:postID", function(req, res){
     //get card's id and delete from the persistent storage/data
 
@@ -100,33 +106,39 @@ app.get("/accountDelete/:postID", function(req, res){
 
 });
 
+// endpoint updates a post on the account
 app.get("/accountUpdate", function(req,res){
     //get card's id and pull data and 
 });
 
+// endpoint will send the clubs_news page
 app.get("/clubnews", function(req, res) {
     res.sendFile(__dirname + "/clubs_news.html");
 });
 
+// endpoint for creating a new user
 app.post("/createuser", function(req, res) {
     
-    console.log(req.body);
-
+    // opens a file
     let trackUsers = { users: [] };
     if(fs.existsSync("users.json")) {
         trackUsers = JSON.parse(fs.readFileSync("users.json"));
     }
     
+    // finds user
     let userExists = trackUsers.users.some(user => user.accountemail === req.body.accountemail);
     
+    // sends an error if the user already exists
     if(userExists) {
         res.status(400).send('An account with that email already exists');
+        return;
     }
     
     // extract information here
     username = req.body.accountemail;
     loggedin = true;
 
+    // push the user for the file
     trackUsers.users.push(req.body);
     let str = JSON.stringify(trackUsers);
     fs.writeFileSync("users.json", str);
@@ -135,18 +147,15 @@ app.post("/createuser", function(req, res) {
     res.redirect('/');
 });
 
+// endpoint for logging in
 app.post("/loginuser", function(req, res) {
-    
-    //console.log(req.body);
-
-    // find user info
-    // what to do with this info? Send to client, print, etc...
-
+ 
+    // open file and find user
     let trackUsers = JSON.parse(fs.readFileSync('users.json'));
     let user = trackUsers.users.find(x => x.accountemail === req.body.accountemail);
 
-    //console.log(user);
 
+    // checks if the user exists
     if(user === undefined) {
         res.status(400).send('Account not found');
     } else {
@@ -162,16 +171,19 @@ app.post("/loginuser", function(req, res) {
     }
 });
 
+// endpoint for signing out
 app.get("/signout", function(req, res) {
     loggedin = false;
     username = "";
     res.redirect('/');
 });
 
+// endpoint for going to the update info page
 app.get("/updateInfo", function(req, res) {
     res.sendFile(__dirname + "/accountUpdate.html");
 })
 
+// endpoint for updating user account information
 app.post("/updateAccountInfo", function(req, res) {
     
     // save old email
@@ -235,14 +247,17 @@ app.post("/updateAccountInfo", function(req, res) {
     
     }
 
+    // check if the account name was changed
     if(req.body.accountname.length !== 0) {
         user.accountname = req.body.accountname;
     }
 
+    // check if the password was changed
     if(req.body.userpassword.length !== 0) {
         user.accountpassword = req.body.userpassword;
     }
 
+    // write the new users
     fs.writeFileSync("users.json", JSON.stringify(trackUsers));
 
     // display that changes were saved
@@ -251,7 +266,7 @@ app.post("/updateAccountInfo", function(req, res) {
 });
 
 
-
+// endpoint for creating a new post
 app.post("/createPost", function(req, res) {
     if(!loggedin) {
         res.status(400).send("User not logged in");
