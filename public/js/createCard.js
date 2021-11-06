@@ -1,32 +1,41 @@
 //const fs = require("fs");
+//import fs from "fs";
 console.log("hi");
+let dictionary = {};
+const response = await fetch(
+    "../../myAccountJSON"
+);
+if (response.ok) {
+    dictionary = await response.json();
+}
+console.log(dictionary);
 
-data = [
-    {
-      "author": "",
-      "liked_count": 0,
-      "liked_username": [],
-      "_id": 1,
-      "title": "vfcdxs",
-      "content": " vfcdv fcdsxza",
-      "activity": "Gym",
-      "days": ["Monday"],
-      "workout": "Upper-Body",
-      "duration": "3",
-      "time": "05:48",
-      "contact": " fvcdsxaz",
-      "date": "2021-11-24"
-    }
-  ]
+// const data = [
+//     {
+//       "author": "",
+//       "liked_count": 0,
+//       "liked_username": [],
+//       "_id": 1,
+//       "title": "vfcdxs",
+//       "content": " vfcdv fcdsxza",
+//       "activity": "Gym",
+//       "days": ["Monday"],
+//       "workout": "Upper-Body",
+//       "duration": "3",
+//       "time": "05:48",
+//       "contact": " fvcdsxaz",
+//       "date": "2021-11-24"
+//     }
+//   ]
 
 // if (fs.existsSync("cs326-final-theta\\users.json")) {
 //     let someStr = fs.readFileSync(filename);
 //     data = JSON.parse(someStr);   
 // }
 
-console.log(data);
+//console.log(data);
 
-renderAccountPage(data);
+renderAccountPage(dictionary);
 
 function renderAccountPage(data){
     const element = document.getElementById("posts");
@@ -97,6 +106,7 @@ function renderAccountPage(data){
 
         const buttonDelete = document.createElement("button");
         buttonDelete.classList.add("btn", "btn-danger", "flr");
+        buttonDelete.setAttribute("href", "/accountDelete:" + post["_id"]);
         buttonDelete.innerText = "Delete"
         divFooter.appendChild(buttonDelete);
 
