@@ -110,7 +110,7 @@ deleting posts
 
 # Handling Request Errors
 
-The API will respond with standard Express status codes when an error is encounter.
+The API will respond with standard Express error status codes when an error is encountered. It will also display a brief message describing the error.
 
 1) If a new user tries to create an account but the email address already exists in the system
 ```
