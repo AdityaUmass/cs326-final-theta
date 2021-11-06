@@ -37,7 +37,7 @@ app.get("/account", function(req, res) {
     //render that data on to account.html
 
     if(!loggedin) {
-        res.statusCode(400).send("User not logged in");
+        res.status(400).send("User not logged in");
         return;
     }
 
@@ -68,7 +68,7 @@ app.get("/accountDelete/:postID", function(req, res){
     //get card's id and delete from the persistent storage/data
 
     if(!loggedin) {
-        res.statusCode(400).send("User not logged in");
+        res.status(400).send("User not logged in");
         return;
     }
 
@@ -189,7 +189,7 @@ app.post("/updateAccountInfo", function(req, res) {
 
 app.post("/createPost", function(req, res) {
     if(!loggedin) {
-        res.statusCode(400).send("User not logged in");
+        res.status(400).send("User not logged in");
         return;
     }
 
@@ -262,7 +262,7 @@ app.post("/createPost", function(req, res) {
         "Write error.";
     });
 
-    res.sendFile(__dirname + "/home.html");
+    res.redirect("/");
     //homeJS.render(posts, username);
 });
 
@@ -335,13 +335,13 @@ app.post("/filter", function(req, res) {
         "Write error.";
     });
     //render them acordingly
-    res.sendFile(__dirname + "/home.html");
+    res.redirect("/");
     //homeJS.render(filteredPosts, username);
 });
 
 app.get("/like/:postID", function(req, res) {
     if(!loggedin) {
-        res.statusCode(400).send("User not logged in");
+        res.status(400).send("User not logged in");
         return;
     }
     let postID = parseInt(req.params.postID);
