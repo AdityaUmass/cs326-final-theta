@@ -1,7 +1,16 @@
 //const fs = require("fs");
+//import fs from "fs";
 console.log("hi");
+let dictionary = {};
+const response = await fetch(
+    "../../postJSON"
+);
+if (response.ok) {
+    dictionary = await response.json();
+}
+console.log(dictionary);
 
-data = [
+const data = [
     {
       "author": "",
       "liked_count": 0,

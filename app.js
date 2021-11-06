@@ -93,6 +93,10 @@ app.get("/account", function(req, res) {
     res.sendFile(__dirname + "/account.html");
 });
 
+app.get("/postJSON", function(req, res){
+    res.sendFile(__dirname + "/posts.json");
+});
+
 app.get("/accountDelete", function(req, res){
     //get card's id and delete from the persistent storage/data
 });
