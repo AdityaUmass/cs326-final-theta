@@ -94,6 +94,12 @@ A login request is sent as a JSON object with the following fields:
 { accountemail: 'johnsmith@gmail.com', accountpassword: 'password123' }
 ```
 
+## Signing out
+To sign out of the account, the API uses a GET request to path: ```/signout```:
+```
+GET herokuroothpath/signout
+``` 
+
 ## Accessing Home Page
 To access the home page, the API uses a GET request to path: ```/```:
 ```
