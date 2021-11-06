@@ -9,57 +9,19 @@ app.use(express.static("public"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-
-const userfile = "users.json";
-let trackUsers = { users: [] };
-
-const postsFile = "postFile.json";
-let trackPosts = { posts: [] };
-
 let username = "";
 let loggedin = false;
+let account = {};
 
 
-
-// function reloads the file (for temporary persistant storage)
-function reload(filename, kind) {
+// // function reloads the file (for temporary persistant storage)
+// function reload(filename, kind) {
     
-    if (fs.existsSync(filename)) {
-        let someStr = fs.readFileSync(filename);
-        trackUsers = JSON.parse(someStr);   
-    }
-}
-
-// creates a user
-function createUser(req, res) {
-    
-    reload(userfile, "users");
-
-    trackUsers.users.push(req.body);
-    let str = JSON.stringify(trackUsers);
-    fs.writeFileSync(userfile, str);
-    
-    // console.log(trackUsers.users);
-}
-
-// 
-function readUser(req, res) {
-
-    reload(userfile, "users");
-    
-    // what to do with this info? Send to client, print, etc...
-    let user = trackUsers.users.find(x => x === req.body.accountemail);
-
-    if(user === undefined) {
-        // then the user was not found
-        return;
-        //res.send("User not found in the system");
-    } else {
-        // then the user was found, but password authentication is still needed (next milestone?)
-        res.send("user found");
-    }
-
-}
+//     if (fs.existsSync(filename)) {
+//         let someStr = fs.readFileSync(filename);
+//         trackUsers = JSON.parse(someStr);   
+//     }
+// }
 
 app.get("/", function(req, res) {
     //render functions
@@ -79,13 +41,6 @@ app.get("/navbar", function(req, res) {
     }
 
 });
-
-app.get("/signout", function(req, res) {
-    loggedin = false;
-    username = "";
-    res.redirect('/');
-});
-
 
 app.get("/account", function(req, res) {    
     //pull data from the database using global username
@@ -113,12 +68,24 @@ app.post("/createuser", function(req, res) {
     
     console.log(req.body);
 
+    let trackUsers = { users: [] };
+    if(fs.existsSync("users.json")) {
+        trackUsers = JSON.parse(fs.readFileSync("users.json"));
+    }
+    
+    let userExists = trackUsers.users.some(user => user.accountemail === req.body.accountemail);
+    
+    if(userExists) {
+        res.status(400).send('An account with that email already exists');
+    }
+    
     // extract information here
     username = req.body.accountemail;
     loggedin = true;
 
-
-    createUser(req, res);
+    trackUsers.users.push(req.body);
+    let str = JSON.stringify(trackUsers);
+    fs.writeFileSync("users.json", str);
 
     // reload page
     res.redirect('/');
@@ -126,16 +93,66 @@ app.post("/createuser", function(req, res) {
 
 app.post("/loginuser", function(req, res) {
     
-    console.log(req.body);
-
-    // extract information here
-    username = req.body.accountemail;
-    loggedin = true;
+    //console.log(req.body);
 
     // find user info
-    readUser(req, res);
+    // what to do with this info? Send to client, print, etc...
+
+    let trackUsers = JSON.parse(fs.readFileSync('users.json'));
+    let user = trackUsers.users.find(x => x.accountemail === req.body.accountemail);
+
+    //console.log(user);
+
+    if(user === undefined) {
+        res.status(400).send('Account not found');
+    } else {
+        // then the user was found, but password authentication is still needed (next milestone?)
+        // extract information here
+        if(user.accountpassword !== req.body.accountpassword) {
+            res.status(400).send('Incorrect password');
+        }
+    
+        username = req.body.accountemail;
+        loggedin = true;
+        res.redirect('/');
+    }
+});
+
+app.get("/signout", function(req, res) {
+    loggedin = false;
+    username = "";
     res.redirect('/');
 });
+
+app.get("/updateInfo", function(req, res) {
+    res.sendFile(__dirname + "/accountUpdate.html");
+})
+
+app.post("/updateAccountInfo", function(req, res) {
+    
+    let trackUsers = JSON.parse(fs.readFileSync('users.json'));
+    let user = trackUsers.users.find(x => x.accountemail === username);
+
+    if(req.body.useremail.length !== 0) {
+        user.accountemail = req.body.useremail;
+    }
+
+    if(req.body.accountname.length !== 0) {
+        user.accountname = req.body.accountname;
+    }
+
+    if(req.body.userpassword.length !== 0) {
+        user.accountpassword = req.body.userpassword;
+    }
+
+    fs.writeFileSync("users.json", JSON.stringify(trackUsers));
+
+    // display that changes were saved
+
+    res.redirect('/updateInfo');
+});
+
+
 
 app.post("/createPost", function(req, res) {
     console.log(req.body);
