@@ -119,7 +119,23 @@ This request will update the user's account name to "Tyler", with no further cha
 
 UPDATE POSTS HERE
 
+## Rendering Posts
 
+To render the relevant logged-in account's posts, the API uses the path: ```/account```.
+
+A request is made like so:
+```GET herokurootpath/account```
+
+The endpoint filters the posts.json page and fills a new file called myAccount.json that contains the relevant posts created by the logged-in user. 
+
+## Reading Posts
+
+A front-end module for accounts.html uses this API path (```myAccountJSON```) to fetch the JSON file for the logged in account. 
+
+A request is made like so:
+```GET herokurootpath/myAccountJSON```
+
+The endpoint then redirects to ```/account```.
 
 ## Deleting Posts
 
@@ -127,6 +143,8 @@ For deleting a post, the API uses the path: ```/accountDelete/:postID```, where 
 
 A request is made like so:
 ```GET herokurootpath/accountDelete/:postID```
+
+Howvever, the delete only occurs if (a) the post meant to be deleted was originally created by the currently logged-in user and (b) the post meant to be deleted actually exists.
 
 An example request is displayed below to delete a post with ID: 12
 ```
