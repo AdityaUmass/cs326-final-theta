@@ -94,6 +94,10 @@ A login request is sent as a JSON object with the following fields:
 { accountemail: 'johnsmith@gmail.com', accountpassword: 'password123' }
 ```
 
+## Login Status and Navigation Bar
+
+Depending on whether a user is logged in, the endpoint ```/navbar``` will serve the website with the correct navigation menu. When not logged in, the navigation bar will consist of two buttons: ```Login``` and ```Sign Up```. Upon logging in, the server will make a get request to ```/navbar``` and use the nagivation bar with the button ```Sign Out```.
+
 ## Signing out
 To sign out of the account, the API uses a GET request to path: ```/signout```:
 ```
@@ -105,7 +109,6 @@ To access the home page, the API uses a GET request to path: ```/```:
 ```
 GET herokuroothpath/
 ``` 
-
 
 ## Accessing "Create a Post" page
 To access the home page, the API uses a GET request to path: ```/post```:
@@ -125,7 +128,7 @@ To update user information, the API uses the path: ```/updateInfo``` like so:
 
 ```POST herokuroothpath/updateInfo```
 
-This path then uses the API endpoint ```/updateAccountInfo``` to process the entered information
+This path then uses the API endpoint ```/updateAccountInfo``` to process the entered information from the form
 
 ```POST herokurootpath/updateAccountInfo```
 
