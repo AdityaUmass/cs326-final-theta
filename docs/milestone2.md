@@ -130,6 +130,8 @@ res.status(400).send('Account not found');
 
 # Client User Interface
 
+The interface images below show the different user-friendly interfaces the user will use to interact with their account information, their post content, and other users' content uploaded to UFit.
+
 ## User Account & Post Creation
 
 ![account_interface1](https://github.com/AdityaUmass/cs326-final-theta/blob/master/public/Images/Screen%20Shot%202021-11-05%20at%203.01.39%20PM.png)
