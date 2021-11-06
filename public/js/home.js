@@ -56,11 +56,22 @@ async function render() {
         bodyText.innerText = post["content"];
         divBody.appendChild(bodyText);
 
-        const interestedSpan = document.createElement("span")
+
+        const likeLink = document.createElement("a");
+        likeLink.classList.add("btn");
+        likeLink.classList.add("btn-light");
+        const icon = document.createElement("i");
+        icon.classList.add("far");
+        icon.classList.add("fa-heart");
+        likeLink.appendChild(icon);
+        likeLink.setAttribute("href", "/like/" + post["_id"]);
+        divBody.appendChild(likeLink);
+
+        const interestedSpan = document.createElement("span");
         interestedSpan.classList.add("text-muted");
         interestedSpan.innerText = post["liked_count"] + " interested";
         divBody.appendChild(interestedSpan);
-
+        
         divCard.appendChild(divBody);
 
         //BUILD FOOTER
