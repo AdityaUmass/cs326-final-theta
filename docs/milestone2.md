@@ -135,7 +135,7 @@ The interface images below show the different user-friendly interfaces the user 
 ## User Account & Post Creation
 
 ![account_interface1](https://github.com/AdityaUmass/cs326-final-theta/blob/master/public/Images/Screen%20Shot%202021-11-05%20at%203.01.39%20PM.png)
-The user is issued a prompt to enter information that will be used for their account.
+When the user click the "Sign Up" button in the navigation bar, they're issued a prompt to enter information that will be used for their account.
 
 ![account_interface2](https://github.com/AdityaUmass/cs326-final-theta/blob/master/public/Images/Screen%20Shot%202021-11-05%20at%201.14.56%20PM.png)
 You can see that after account creation, the user is logged in and redirected to the homepage.
