@@ -128,8 +128,3 @@ function likeFormatting() {
     }
 }
 
-// module.exports = {
-//     render: render,
-//     likeFormatting: likeFormatting
-
-// };

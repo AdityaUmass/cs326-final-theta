@@ -12,9 +12,20 @@ app.use(express.urlencoded({ extended: true }));
 
 let username = "";
 let loggedin = false;
+let filtered = false
 
 app.get("/", function(req, res) {
     //render functions
+    if (!filtered) {
+        let posts = JSON.parse(fs.readFileSync("posts.json"));
+        let renderInfo = {"userName": username, "posts": posts};
+
+        fs.writeFile("render.json", JSON.stringify(renderInfo), (err) => {
+            "Write error.";
+        });
+    } else {
+        filtered = false;
+    }
     res.sendFile(__dirname + "/home.html");
 });
 
@@ -334,6 +345,8 @@ app.post("/filter", function(req, res) {
     fs.writeFile("render.json", JSON.stringify(renderInfo), (err) => {
         "Write error.";
     });
+
+    filtered = true;
     //render them acordingly
     res.redirect("/");
     //homeJS.render(filteredPosts, username);
