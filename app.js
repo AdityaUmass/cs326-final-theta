@@ -336,21 +336,46 @@ app.post("/filter", function(req, res) {
 });
 
 app.get("/like/:postID", function(req, res) {
-    let postID = req.params.postID;
+    let postID = parseInt(req.params.postID);
     let posts = JSON.parse(fs.readFileSync("posts.json"));
+    let renderData = (JSON.parse(fs.readFileSync("render.json")));
+    let postsRender = renderData["posts"];
+
+    
 
     const postIndex = posts.findIndex(elem => elem._id === postID);
-
+    const postIndexRender = postsRender.findIndex(elem => elem._id === postID);
+    console.log(postIndex);
     if(posts[postIndex]["liked_username"].includes(username)) {
         posts[postIndex].liked_count--;
+        postsRender[postIndexRender].liked_count--;
+
         const index = posts[postIndex]["liked_username"].indexOf(username);
         posts[postIndex]["liked_username"].splice(index, 1);
+
+        const indexRender = postsRender[postIndexRender]["liked_username"].indexOf(username);
+        postsRender[postIndexRender]["liked_username"].splice(indexRender, 1);
+
+
     } else {
         posts[postIndex].liked_count++;
         posts[postIndex]["liked_username"].push(username);
+
+        postsRender[postIndexRender].liked_count++;
+        postsRender[postIndexRender]["liked_username"].push(username);
     }
 
-    res.sendFile(__dirname + "/home.html");
+    fs.writeFile("posts.json", JSON.stringify(posts), (err) => {
+        "Post creation error.";
+    });
+
+    renderData["posts"] = postsRender;
+
+    fs.writeFile("render.json", JSON.stringify(renderData), (err) => {
+        "Post creation error.";
+    });
+
+    res.redirect("/");
 });
 
 app.get("/renderjson", function(req, res) {
