@@ -139,7 +139,7 @@ The body of the request is displayed below. Note that the fields are optional. A
 
 This request will update the user's account name to "Tyler", with no further changes to the account. In general, any non-empty field from the above request will be updated. All stored posts that either store the email as author or in likedd_username will be updated if required.
 
-## Rendering Posts
+## Rendering Posts on the Accounts Page
 
 To render the relevant logged-in account's posts, the API uses the path: ```/account```.
 
@@ -148,7 +148,7 @@ A request is made like so:
 
 The endpoint filters the posts.json page and fills a new file called myAccount.json that contains the relevant posts created by the logged-in user. 
 
-## Reading Posts
+## Reading Posts on the Accounts Page
 
 A front-end module for accounts.html uses this API path (```myAccountJSON```) to fetch the JSON file for the logged in account. 
 
@@ -157,7 +157,7 @@ A request is made like so:
 
 The endpoint then redirects to ```/account```.
 
-## Deleting Posts
+## Deleting Posts on the Accounts Page
 
 For deleting a post, the API uses the path: ```/accountDelete/:postID```, where ```postID``` is the ID of a post the user has previously created. 
 
