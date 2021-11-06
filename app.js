@@ -284,15 +284,18 @@ app.post("/filter", function(req, res) {
     let filterData = req.body;
 
     let filteredPosts = [...posts];
-
-    if (filterData["activity"].length !== 0) {
-        filteredPosts = filteredPosts.filter(elem => ("activity" in elem));
-        filteredPosts = filteredPosts.filter(elem => (elem["activity"] === filterData["activity"]));
+    if ("activity" in filterData) {
+        if (filterData["activity"].length !== 0) {
+            filteredPosts = filteredPosts.filter(elem => ("activity" in elem));
+            filteredPosts = filteredPosts.filter(elem => (elem["activity"] === filterData["activity"]));
+        }
     }
 
-    if (filterData["workout"].length !== 0) {
-        filteredPosts = filteredPosts.filter(elem => ("workout" in elem));
-        filteredPosts = filteredPosts.filter(elem => (elem["workout"] === filterData["workout"]));
+    if ("workout" in filterData) {
+        if (filterData["workout"].length !== 0) {
+            filteredPosts = filteredPosts.filter(elem => ("workout" in elem));
+            filteredPosts = filteredPosts.filter(elem => (elem["workout"] === filterData["workout"]));
+        }
     }
 
     if (filterData["duration"].length !== 0) {
@@ -312,31 +315,31 @@ app.post("/filter", function(req, res) {
     } else {
         
         if ("Monday" in filterData) {
-            filteredPosts = filteredPosts.filter(elem => ("Monday" in elem));
+            filteredPosts = filteredPosts.filter(elem => (elem["days"].includes("Monday")));
         }
 
         if ("Tuesday" in filterData) {
-            filteredPosts = filteredPosts.filter(elem => ("Tuesday" in elem));
+            filteredPosts = filteredPosts.filter(elem => (elem["days"].includes("Tuesday")));
         }
 
         if ("Wednesday" in filterData) {
-            filteredPosts = filteredPosts.filter(elem => ("Wednesday" in elem));
+            filteredPosts = filteredPosts.filter(elem => (elem["days"].includes("Wednesday")));
         }
 
         if ("Thursday" in filterData) {
-            filteredPosts = filteredPosts.filter(elem => ("Thursday" in elem));
+            filteredPosts = filteredPosts.filter(elem => (elem["days"].includes("Thursday")));
         }
 
         if ("Friday" in filterData) {
-            filteredPosts = filteredPosts.filter(elem => ("Friday" in elem));
+            filteredPosts = filteredPosts.filter(elem => (elem["days"].includes("Friday")));
         }
 
         if ("Saturday" in filterData) {
-            filteredPosts = filteredPosts.filter(elem => ("Saturday" in elem));
+            filteredPosts = filteredPosts.filter(elem => (elem["days"].includes("Saturday")));
         }
 
-        if ("Sunday" in formData) {
-            filteredPosts = filteredPosts.filter(elem => ("Sunday" in elem));
+        if ("Sunday" in filterData) {
+            filteredPosts = filteredPosts.filter(elem => (elem["days"].includes("Sunday")));
         }
     }
 
@@ -401,7 +404,7 @@ app.get("/like/:postID", function(req, res) {
 
 app.get("/renderjson", function(req, res) {
     res.sendFile(__dirname + "/render.json");
-})
+});
 
 app.listen(8080, function() {
     
