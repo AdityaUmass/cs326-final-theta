@@ -137,12 +137,7 @@ The body of the request is displayed below. Note that the fields are optional. A
 { accountname: 'Tyler', useremail: '', userpassword: '' }
 ```
 
-This request will update the user's account name to "Tyler", with no further changes to the account.
-
-
-
-UPDATE POSTS HERE
-
+This request will update the user's account name to "Tyler", with no further changes to the account. In general, any non-empty field from the above request will be updated. All stored posts that either store the email as author or in likedd_username will be updated if required.
 
 
 ## Deleting Posts
