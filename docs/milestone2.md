@@ -154,6 +154,11 @@ Through this simple interface, the user has the option to update their account i
 
 ## Deleting Posts
 
+![delete_interface1](https://github.com/AdityaUmass/cs326-final-theta/blob/master/public/Images/Desktop%20Screenshot%202021.11.05%20-%2022.27.56.04.png)
+The user will have the option to delete any of the posts they've made. In this preview we'll delete the second post labeled "Looking for a gym partner".
+
+![delete_interface2](https://github.com/AdityaUmass/cs326-final-theta/blob/master/public/Images/Desktop%20Screenshot%202021.11.05%20-%2022.28.27.74%20(2).png)
+The "Looking for a gym partner" post has now been removed from the users profile.
 
 
 
