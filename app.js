@@ -163,11 +163,65 @@ app.get("/updateInfo", function(req, res) {
 
 app.post("/updateAccountInfo", function(req, res) {
     
+    // save old email
+    let oldEmail = username;
+    
+    // open the file and find the user if there is one
     let trackUsers = JSON.parse(fs.readFileSync('users.json'));
     let user = trackUsers.users.find(x => x.accountemail === username);
 
+    // check if the email was changed
     if(req.body.useremail.length !== 0) {
+        
         user.accountemail = req.body.useremail;
+        
+        // change username
+        username = user.accountemail;
+
+        // update the posts file to replace the old email with the new email
+        let posts = JSON.parse(fs.readFileSync("posts.json"));    
+        
+        posts.forEach( post => { 
+        
+            if(post["author"] === oldEmail) {
+                post["author"] = username;
+            }
+            
+            post["liked_username"].forEach( (name, index) => {
+                if(name === oldEmail) {
+                    post["liked_username"][index] = username;
+                }        
+            });
+    
+        });
+
+        // write the new file
+        fs.writeFileSync("posts.json", JSON.stringify(posts));
+
+
+        // update the render file to replace the old email with the new email
+        let render = JSON.parse(fs.readFileSync("render.json"));
+
+        if(render["userName"] === oldEmail) {
+            render["userName"] = username;
+        }
+
+        render["posts"].forEach( post => { 
+        
+            if(post["author"] === oldEmail) {
+                post["author"] = username;
+            }
+            
+            post["liked_username"].forEach( (name, index) => {
+                if(name === oldEmail) {
+                    post["liked_username"][index] = username;
+                }        
+            });
+    
+        });
+
+        fs.writeFileSync("render.json", JSON.stringify(render));
+    
     }
 
     if(req.body.accountname.length !== 0) {
