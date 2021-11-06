@@ -30,7 +30,11 @@ async function render() {
         const span2 = document.createElement("span");
         const span3 = document.createElement("span");
         const span4 = document.createElement("span");
-        span1.innerText = "Days: " + post["days"].join(", ") + " |";
+        if (post["date"].length !== 0) {
+            span1.innerText = "Date: " + post["date"] + " |";
+        } else {
+            span1.innerText = "Days: " + post["days"].join(", ") + " |";
+        }
         span2.innerText = "Activity Type: " + post["activity"] + " |";
         span3.innerText = "Time: " + post["date"] + " |";
         span4.innerText = "Duration (hrs): " + post["duration"];
@@ -82,9 +86,11 @@ async function render() {
         const divFooter = document.createElement("div");
         divFooter.classList.add("card-footer");
 
-        divCard.appendChild(divFooter);
+        const contactSpan = document.createElement("span");
+        contactSpan.innerText = "Contact: " + post["contact"];
+        divFooter.appendChild(contactSpan);
 
-        //Add card to list
+        divCard.appendChild(divFooter);
 
         element.appendChild(divCard);
     });
@@ -122,8 +128,3 @@ function likeFormatting() {
     }
 }
 
-// module.exports = {
-//     render: render,
-//     likeFormatting: likeFormatting
-
-// };
