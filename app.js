@@ -336,14 +336,16 @@ app.post("/filter", function(req, res) {
 });
 
 app.get("/like/:postID", function(req, res) {
-    let postID = req.params.postID;
+    let postID = parseInt(req.params.postID);
     let posts = JSON.parse(fs.readFileSync("posts.json"));
     let renderData = (JSON.parse(fs.readFileSync("render.json")));
     let postsRender = renderData["posts"];
 
+    
+
     const postIndex = posts.findIndex(elem => elem._id === postID);
     const postIndexRender = postsRender.findIndex(elem => elem._id === postID);
-
+    console.log(postIndex);
     if(posts[postIndex]["liked_username"].includes(username)) {
         posts[postIndex].liked_count--;
         postsRender[postIndexRender].liked_count--;
@@ -373,7 +375,7 @@ app.get("/like/:postID", function(req, res) {
         "Post creation error.";
     });
 
-    res.sendFile(__dirname + "/home.html");
+    res.redirect("/");
 });
 
 app.get("/renderjson", function(req, res) {
