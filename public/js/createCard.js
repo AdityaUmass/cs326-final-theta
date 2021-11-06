@@ -217,7 +217,6 @@ function createEmailLink(postID, emailCount){
     if (emailStr.length > 0){
         window.location.replace("mailto:" + emailStr.join(","));
     }
-    
 }
 
 // module.exports = {
