@@ -209,7 +209,7 @@ res.status(400).send('Account not found');
 
 The interface images below show the different user-friendly interfaces the user will use to interact with their account information, their post content, and other users' content uploaded to UFit.
 
-## User Account & Post Creation
+## (CREATE) User Account & Post Creation
 
 ![account_interface1](https://github.com/AdityaUmass/cs326-final-theta/blob/master/public/Images/Screen%20Shot%202021-11-05%20at%203.01.39%20PM.png)
 When the user click the "Sign Up" button in the navigation bar, they're issued a prompt to enter information that will be used for their account.
@@ -217,7 +217,7 @@ When the user click the "Sign Up" button in the navigation bar, they're issued a
 ![account_interface2](https://github.com/AdityaUmass/cs326-final-theta/blob/master/public/Images/Screen%20Shot%202021-11-05%20at%201.14.56%20PM.png)
 You can see that after account creation, the user is logged in and redirected to the homepage.
 
-## User Login
+## (READ) User Login
 
 ![login_interface](https://github.com/AdityaUmass/cs326-final-theta/blob/master/public/Images/Screenshot%202021-11-05%20210614.png)
 When the user clicks the "Login" button in the navigation bar, an prompt box will open, allowing them to input their account information.
@@ -228,13 +228,13 @@ When the user clicks the "Login" button in the navigation bar, an prompt box wil
 Through this simple interface, the user has the option to update their account information. All changes will be saved to the database.
 
 ![like_interface1](https://github.com/AdityaUmass/cs326-final-theta/blob/master/public/Images/Desktop%20Screenshot%202021.11.06%20-%2019.43.40.66.png)
-Through this simple interface, the user has the option to update their account information. All changes will be saved to the database.
+Before a user likes a post in the feed, the like button will appear white.
 
 ![like_interface2](https://github.com/AdityaUmass/cs326-final-theta/blob/master/public/Images/Desktop%20Screenshot%202021.11.06%20-%2019.43.48.32.png)
-Through this simple interface, the user has the option to update their account information. All changes will be saved to the database.
+After liking a post, the button will turn grey and the number of interested users will update.
 
 
-## Deleting Posts
+## (DELETE) Deleting Posts
 
 ![delete_interface1](https://github.com/AdityaUmass/cs326-final-theta/blob/master/public/Images/Desktop%20Screenshot%202021.11.05%20-%2022.27.56.04.png)
 The user will have the option to delete any of the posts they've made. In this preview we'll delete the second post labeled "Looking for a gym partner".
