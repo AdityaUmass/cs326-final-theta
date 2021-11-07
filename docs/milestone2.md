@@ -230,12 +230,18 @@ When the user click the "Sign Up" button in the navigation bar, they're issued a
 ![account_interface2](https://github.com/AdityaUmass/cs326-final-theta/blob/master/public/Images/Screen%20Shot%202021-11-05%20at%201.14.56%20PM.png)
 You can see that after account creation, the user is logged in and redirected to the homepage.
 
-## (READ) User Login
+## (READ) User Login, Reading and Filtering posts on Home page, Seeing people interested in your posts on the accounts page
 
 ![login_interface](https://github.com/AdityaUmass/cs326-final-theta/blob/master/public/Images/Screenshot%202021-11-05%20210614.png)
 When the user clicks the "Login" button in the navigation bar, an prompt box will open, allowing them to input their account information.
 
-## (UPDATE) Updating User Details and Liking Posts
+When the home page is accessed, we need to display the posts made, and for that, we need to read from the posts stored and display all of them as seen in the above image.
+
+We can also filter posts based on certain parameters that we can set on the home page. In the above image, we have filtered the posts to only show posts for a duration of two hours.
+
+On the account page, where a user can see posts made by them as well as see the emails of the people interested in their posts, we need to read the stored data to find posts made by the user and access the stored emails of people interested in that post.
+
+## (UPDATE) Updating User Details and Liking/Unliking Posts
 
 ![updateuser_interface](https://github.com/AdityaUmass/cs326-final-theta/blob/master/public/Images/Screenshot%202021-11-05%20205834.png)
 Through this simple interface, the user has the option to update their account information. All changes will be saved to the database.
