@@ -242,6 +242,7 @@ When the home page is accessed, we need to display the posts made, and for that,
 ![filtered posts](https://github.com/AdityaUmass/cs326-final-theta/blob/master/public/Images/filteredposts.png)
 We can also filter posts based on certain parameters that we can set on the home page. In the above image, we have filtered the posts to only show posts for a duration of two hours.
 
+![account_page](https://github.com/AdityaUmass/cs326-final-theta/blob/master/public/Images/accountpageinterest.png)
 On the account page, where a user can see posts made by them as well as see the emails of the people interested in their posts, we need to read the stored data to find posts made by the user and access the stored emails of people interested in that post.
 
 ## (UPDATE) Updating User Details and Liking/Unliking Posts
