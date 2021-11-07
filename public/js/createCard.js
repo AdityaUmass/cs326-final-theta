@@ -100,15 +100,17 @@ function renderAccountPage(data){
         buttonEmail.innerText = "See all interested";
         divFooter.appendChild(buttonEmail);
 
-        const buttonUpdate = document.createElement("button");
+        const buttonUpdate = document.createElement("a");
         buttonUpdate.classList.add("btn", "btn-primary", "flr");
+        const hrefString1 = "/accountUpdate/" + post["_id"];
+        buttonUpdate.setAttribute("href", hrefString1);
         buttonUpdate.innerText = "Update"
         divFooter.appendChild(buttonUpdate);
 
         const buttonDelete = document.createElement("a");
         buttonDelete.classList.add("btn", "btn-danger", "flr");
-        const hrefString = "/accountDelete/" + post["_id"];
-        buttonDelete.setAttribute("href", hrefString);
+        const hrefString2 = "/accountDelete/" + post["_id"];
+        buttonDelete.setAttribute("href", hrefString2);
         buttonDelete.innerText = "Delete";
         divFooter.appendChild(buttonDelete);
 
