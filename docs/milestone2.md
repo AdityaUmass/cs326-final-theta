@@ -122,7 +122,7 @@ To access the home page, the API uses a GET request to path: ```/clubnews```:
 GET https://ufit326.herokuapp.com/clubnews
 ``` 
 
-## Updating Posts or User Information
+## Updating User Information
 
 To update user information, the API uses the path: ```/updateInfo``` like so:
 
@@ -167,11 +167,25 @@ For deleting a post, the API uses the path: ```/accountDelete/:postID```, where 
 A request is made like so:
 ```GET https://ufit326.herokuapp.com/accountDelete/:postID```
 
-Howvever, the delete only occurs if (a) the post meant to be deleted was originally created by the currently logged-in user and (b) the post meant to be deleted actually exists.
+However, the delete only occurs if (a) the post meant to be deleted was originally created by the currently logged-in user and (b) the post meant to be deleted actually exists.
 
 An example request is displayed below to delete a post with ID: 12
 ```
 GET https://ufit326.herokuapp.com/accountDelete/12
+```
+
+## Updating Posts via the Accounts Page
+
+To update a post, the API uses the path: ```/accountUpdate/:postID```, where ```postID``` is the ID of a post the user has previously created. 
+
+A request is made like so:
+```GET https://ufit326.herokuapp.com/accountUpdate/:postID```
+
+The purpose of this update is to be able to change certain attributes of a workout/exercise post without having to recreate a post. At the moment, the API "updates" a post by first deleting the post and then redirecting the user to a prefilled create post page.
+
+An example request is displayed below to update a post with ID: 12
+```
+GET https://ufit326.herokuapp.com/accountUpdate/12
 ```
 
 ## Liking/Unliking posts on the Home page
@@ -264,6 +278,10 @@ Before a user likes a post in the feed, the like button will appear white.
 ![like_interface2](https://github.com/AdityaUmass/cs326-final-theta/blob/master/public/Images/Desktop%20Screenshot%202021.11.06%20-%2019.43.48.32.png)
 After liking a post, the button will turn grey and the number of interested users will update.
 
+Using the update button, the user can update the information of a specific post. 
+
+Once the button is clicked, it will take the user to a prefilled create page.
+
 
 ## (DELETE) Deleting Posts
 
@@ -278,11 +296,13 @@ The "Looking for a gym partner" post has now been removed from the users profile
 
 In order for the user to change their account information, we added an HTML file called ```accountUpdate.html```, and its associated CSS file ```accountUpdate.css```.
 
+This feature was not clearly defined in the first milestone, but the purpose of this update is to be able to change certain attributes of a workout/exercise post without having to recreate a post. (Required no HTML changes)
+
 # Division of Labor Breakdown
 
 Aditya: Created main server-starter template. Responsible for creating the HTML for each post and rendering them to homepage. Handled how posts are filtered by activity/workout, time/day, etc. Generated endpoints for creating a post, filtering a post, and liking a post.
 
-Raghav: Responsible for creating a generic HTML card creation script that was repurposed for the accounts and home page. Rendered the cards on the account page. Created post deletion functionality and the ability to update the content of a post. Generate endpoints for navigating to the user's account page, deleting posts, and updating the content of a post.
+Raghav: Responsible for creating a generic HTML card creation script that was repurposed for the accounts and home page. Rendered the cards on the account page. Created post deletion functionality and the ability to update the content of a post. Generated endpoints for navigating to the user's account page, deleting posts, and updating the content of a post.
 
 Brandon Figueredo: Handled login and signup functionality, as well as updating user information. Generate endpoints for creating a user, logging into an account, and updating a user's account.
 
