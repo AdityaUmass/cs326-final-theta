@@ -2,14 +2,14 @@
 
 The purpose of UFit is to help UMass Amherst students live a more active lifestyle, whether it's by finding gyms partners, sharing recent achievements, or finding information about upcoming sporting events on campus. The UFit API demostrates ways in which these core features are implemented.
 
-All requests are handled through HTTP. UFit uses the root path: ```insert heroku path here```. To send a request, this root path should be specified and followed by any of the following paths below.
+All requests are handled through HTTP. UFit uses the root path: ```https://ufit326.herokuapp.com/```. To send a request, this root path should be specified and followed by any of the following paths below.
 
 ## User Account Creation
 
 The API uses the path: ```/createuser``` for account creation. Below is a preview of how to send a request to create an account
 
 ```
-POST herokurootpath/createuser
+POST https://ufit326.herokuapp.com/createuser
 ```
 
 The endpoint will process a request in the form of a JSON object created from the login modal. A representation is shown below for the user John Smith:
@@ -33,7 +33,7 @@ A request body for account creation is composed of the following:
 
 To create a post, use the path: ```/createPost``` as shown below
 ```
-POST herokuroothpath/createPost
+POST https://ufit326.herokuapp.com/createPost
 ```
 
 A post request for each post is sent as a JSON object. A representation of the minimal fiels of a request is displayed below:
@@ -85,7 +85,7 @@ When a post is created, the server will add additional fields to a post object
 
 To login into an account, the API uses path: ```/loginuser```. A request example is shown below:
 ```
-POST herokuroothpath/loginuser
+POST https://ufit326.herokuapp.com/loginuser
 ```
 
 A login request is sent as a JSON object with the following fields:
@@ -101,36 +101,36 @@ Depending on whether a user is logged in, the endpoint ```/navbar``` will serve 
 ## Signing out
 To sign out of the account, the API uses a GET request to path: ```/signout```:
 ```
-GET herokuroothpath/signout
+GET https://ufit326.herokuapp.com/signout
 ``` 
 
 ## Accessing Home Page
 To access the home page, the API uses a GET request to path: ```/```:
 ```
-GET herokuroothpath/
+GET https://ufit326.herokuapp.com/
 ``` 
 
 ## Accessing "Create a Post" page
 To access the home page, the API uses a GET request to path: ```/post```:
 ```
-GET herokuroothpath/post
+GET https://ufit326.herokuapp.com/post
 ``` 
 
 ## Accessing "Clubs and News" page
 To access the home page, the API uses a GET request to path: ```/clubnews```:
 ```
-GET herokuroothpath/clubnews
+GET https://ufit326.herokuapp.com/clubnews
 ``` 
 
 ## Updating Posts or User Information
 
 To update user information, the API uses the path: ```/updateInfo``` like so:
 
-```POST herokuroothpath/updateInfo```
+```POST https://ufit326.herokuapp.com/updateInfo```
 
 This path then uses the API endpoint ```/updateAccountInfo``` to process the entered information from the form
 
-```POST herokurootpath/updateAccountInfo```
+```POST https://ufit326.herokuapp.com/updateAccountInfo```
 
 <!-- Updating a user account can only be done when a user is logged in. -->
 
@@ -147,7 +147,7 @@ This request will update the user's account name to "Tyler", with no further cha
 To render the relevant logged-in account's posts, the API uses the path: ```/account```.
 
 A request is made like so:
-```GET herokurootpath/account```
+```GET https://ufit326.herokuapp.com/account```
 
 The endpoint filters the posts.json page and fills a new file called myAccount.json that contains the relevant posts created by the logged-in user. 
 
@@ -156,7 +156,7 @@ The endpoint filters the posts.json page and fills a new file called myAccount.j
 A front-end module for accounts.html uses this API path (```myAccountJSON```) to fetch the JSON file for the logged in account. 
 
 A request is made like so:
-```GET herokurootpath/myAccountJSON```
+```GET https://ufit326.herokuapp.com/myAccountJSON```
 
 The endpoint then redirects to ```/account```.
 
@@ -165,19 +165,19 @@ The endpoint then redirects to ```/account```.
 For deleting a post, the API uses the path: ```/accountDelete/:postID```, where ```postID``` is the ID of a post the user has previously created. 
 
 A request is made like so:
-```GET herokurootpath/accountDelete/:postID```
+```GET https://ufit326.herokuapp.com/accountDelete/:postID```
 
 Howvever, the delete only occurs if (a) the post meant to be deleted was originally created by the currently logged-in user and (b) the post meant to be deleted actually exists.
 
 An example request is displayed below to delete a post with ID: 12
 ```
-GET herokurootpath/accountDelete/12
+GET https://ufit326.herokuapp.com/accountDelete/12
 ```
 
 ## Liking/Unliking posts on the Home page
 If logged in, the home page allows you to like or unlike posts. In order to do this, the API using a GET request to the path ```/like/:postID``` as such:
 ```
-GET herokurootpath/like/:postID
+GET https://ufit326.herokuapp.com/like/:postID
 ```
 the postID is the unique ID of the post we use to identify it in posts.json and render.json to update its "liked_count" and "liked_username" accordingly.
 
@@ -267,3 +267,9 @@ Aditya: Created main server-starter template. Responsible for creating the HTML 
 Raghav: Responsible for creating a generic HTML card creation script that was repurposed for the accounts and home page. Rendered the cards on the account page. Created post deletion functionality and the ability to update the content of a post. Generate endpoints for navigating to the user's account page, deleting posts, and updating the content of a post.
 
 Brandon Figueredo: Handled login and signup functionality, as well as updating user information. Generate endpoints for creating a user, logging into an account, and updating a user's account.
+
+# Heroku Application
+
+```
+https://ufit326.herokuapp.com/
+```
