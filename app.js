@@ -140,6 +140,7 @@ app.get("/accountUpdate/:postID", function(req, res){
 
 app.get("/updateJSON", function(req, res){
     res.sendFile(__dirname + "/update.json");
+    update = false;
 });
 
 
