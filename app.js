@@ -103,7 +103,7 @@ app.get("/accountDelete/:postID", function(req, res){
         fs.writeFileSync("posts.json",JSON.stringify(posts));
     }
 
-    res.redirect('/post');
+    res.redirect('/account');
 
 });
 
