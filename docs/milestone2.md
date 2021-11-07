@@ -202,7 +202,20 @@ res.status(400).send('Incorrect password');
 res.status(400).send('Account not found');
 ```
 
-4) 
+4) If a user is not logged in and they try to access the account page.
+```
+res.status(400).send("User not logged in");
+```
+
+5) If a user tried to create a post and they are not logged in.
+```
+res.status(400).send("User not logged in");
+```
+
+6) If a user tries to like a post and they are not logged in.
+```
+res.status(400).send("User not logged in");
+```
 
 
 # Client User Interface
