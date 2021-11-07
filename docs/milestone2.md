@@ -273,3 +273,9 @@ Brandon Figueredo: Handled login and signup functionality, as well as updating u
 ```
 https://ufit326.herokuapp.com/
 ```
+
+### Sources
+All images are taken from the official UMass Campus Pulse website, from their respective clubs.
+```
+https://umassamherst.campuslabs.com/engage/
+```
