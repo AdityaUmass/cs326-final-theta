@@ -235,8 +235,11 @@ You can see that after account creation, the user is logged in and redirected to
 ![login_interface](https://github.com/AdityaUmass/cs326-final-theta/blob/master/public/Images/Screenshot%202021-11-05%20210614.png)
 When the user clicks the "Login" button in the navigation bar, an prompt box will open, allowing them to input their account information.
 
+![iunfiltered posts](https://github.com/AdityaUmass/cs326-final-theta/blob/master/public/Images/allposts.png)
 When the home page is accessed, we need to display the posts made, and for that, we need to read from the posts stored and display all of them as seen in the above image.
 
+
+![filtered posts](https://github.com/AdityaUmass/cs326-final-theta/blob/master/public/Images/filteredposts.png)
 We can also filter posts based on certain parameters that we can set on the home page. In the above image, we have filtered the posts to only show posts for a duration of two hours.
 
 On the account page, where a user can see posts made by them as well as see the emails of the people interested in their posts, we need to read the stored data to find posts made by the user and access the stored emails of people interested in that post.
