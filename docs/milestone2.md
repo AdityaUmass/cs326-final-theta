@@ -278,8 +278,10 @@ Before a user likes a post in the feed, the like button will appear white.
 ![like_interface2](https://github.com/AdityaUmass/cs326-final-theta/blob/master/public/Images/Desktop%20Screenshot%202021.11.06%20-%2019.43.48.32.png)
 After liking a post, the button will turn grey and the number of interested users will update.
 
+![update post interface1](https://github.com/AdityaUmass/cs326-final-theta/blob/master/public/Images/updatebefore.png)
 Using the update button, the user can update the information of a specific post. 
 
+![update post interface2](https://github.com/AdityaUmass/cs326-final-theta/blob/master/public/Images/updateafter.png)
 Once the button is clicked, it will take the user to a prefilled create page.
 
 
