@@ -183,6 +183,14 @@ the postID is the unique ID of the post we use to identify it in posts.json and 
 
 The endpoint then redirects to ```/```.
 
+
+## Filtering posts on the Home page
+The posts displayed on the home page cn be filtered by the parameters visible on the home page and the API uses a POST request to the path ```/filter``` as such:
+```
+POST https://ufit326.herokuapp.com/filter
+```
+The post request carries the filter parameters and filters the posts from posts.json and puts the valid posts in render.json and finally redirects to ```/``` which makes a GET request to the path ```/renderjson``` to fetch render.json on the browser-side
+
 # Handling Request Errors
 
 The API will respond with standard Express error status codes when an error is encountered. It will also display a brief message describing the error.
