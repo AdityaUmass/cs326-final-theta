@@ -281,7 +281,25 @@ app.post("/createPost", function(req, res) {
     post["author"] = username;
     post["liked_count"] = 0;
     post["liked_username"] = [];
-    post["_id"] = posts.length + 1;
+    
+    let newID = 0;
+    
+    while(true) {
+        let foundID = true;
+        for (let post of posts) {
+            if (post["_id"] === newID) {
+                foundID = false;
+                newID++;
+                break;
+            }
+        }
+
+        if (foundID === true) {
+            break;
+        }
+    }
+    
+    post["_id"] = newID;
 
     post["title"] = formData.title;
     post["content"] = formData.content;
