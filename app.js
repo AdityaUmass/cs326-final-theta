@@ -12,7 +12,8 @@ app.use(express.urlencoded({ extended: true }));
 
 let username = "";
 let loggedin = false;
-let filtered = false
+let filtered = false;
+let update
 
 // endpoint for homepage
 app.get("/", function(req, res) {
@@ -106,10 +107,42 @@ app.get("/accountDelete/:postID", function(req, res){
 
 });
 
-// endpoint updates a post on the account
-app.get("/accountUpdate", function(req,res){
-    //get card's id and pull data and 
+// endpoint which deletes a post on the account
+app.get("/accountUpdate/:postID", function(req, res){
+    //get card's id and delete from the persistent storage/data
+
+    if(!loggedin) {
+        res.status(400).send("User not logged in");
+        return;
+    }
+
+    let updatedPost = {};
+    fs.writeFileSync("update.json", "");
+    const postID = req.params.postID;
+    console.log(postID);
+    if (fs.existsSync("posts.json")){
+        let posts = JSON.parse(fs.readFileSync("posts.json"));
+        for (let i = 0; i < posts.length; i++){
+            if (posts[i]["_id"] == postID && posts[i]["author"] == username){
+                updatedPost = posts[i];
+                posts.splice(i,1);
+                break;
+            }
+        }
+        fs.writeFileSync("posts.json",JSON.stringify(posts));
+        update = true;
+        fs.writeFileSync("update.json",JSON.stringify({"post": updatedPost, "update": update}));
+    }
+
+    res.redirect('/post');
+
 });
+
+app.get("/updateJSON", function(req, res){
+    res.sendFile(__dirname + "/update.json");
+    update = false;
+});
+
 
 // endpoint will send the clubs_news page
 app.get("/clubnews", function(req, res) {
@@ -281,7 +314,25 @@ app.post("/createPost", function(req, res) {
     post["author"] = username;
     post["liked_count"] = 0;
     post["liked_username"] = [];
-    post["_id"] = posts.length + 1;
+    
+    let newID = 0;
+    
+    while(true) {
+        let foundID = true;
+        for (let post of posts) {
+            if (post["_id"] === newID) {
+                foundID = false;
+                newID++;
+                break;
+            }
+        }
+
+        if (foundID === true) {
+            break;
+        }
+    }
+    
+    post["_id"] = newID;
 
     post["title"] = formData.title;
     post["content"] = formData.content;
@@ -475,6 +526,6 @@ app.get("/renderjson", function(req, res) {
     res.sendFile(__dirname + "/render.json");
 });
 
-app.listen(8080, function() {
+app.listen(process.env.PORT || 8080, function() {
     
 });

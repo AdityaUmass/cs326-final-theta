@@ -2,14 +2,14 @@
 
 The purpose of UFit is to help UMass Amherst students live a more active lifestyle, whether it's by finding gyms partners, sharing recent achievements, or finding information about upcoming sporting events on campus. The UFit API demostrates ways in which these core features are implemented.
 
-All requests are handled through HTTP. UFit uses the root path: ```insert heroku path here```. To send a request, this root path should be specified and followed by any of the following paths below.
+All requests are handled through HTTP. UFit uses the root path: ```https://ufit326.herokuapp.com/```. To send a request, this root path should be specified and followed by any of the following paths below.
 
 ## User Account Creation
 
 The API uses the path: ```/createuser``` for account creation. Below is a preview of how to send a request to create an account
 
 ```
-POST herokurootpath/createuser
+POST https://ufit326.herokuapp.com/createuser
 ```
 
 The endpoint will process a request in the form of a JSON object created from the login modal. A representation is shown below for the user John Smith:
@@ -33,7 +33,7 @@ A request body for account creation is composed of the following:
 
 To create a post, use the path: ```/createPost``` as shown below
 ```
-POST herokuroothpath/createPost
+POST https://ufit326.herokuapp.com/createPost
 ```
 
 A post request for each post is sent as a JSON object. A representation of the minimal fiels of a request is displayed below:
@@ -85,7 +85,7 @@ When a post is created, the server will add additional fields to a post object
 
 To login into an account, the API uses path: ```/loginuser```. A request example is shown below:
 ```
-POST herokuroothpath/loginuser
+POST https://ufit326.herokuapp.com/loginuser
 ```
 
 A login request is sent as a JSON object with the following fields:
@@ -101,36 +101,36 @@ Depending on whether a user is logged in, the endpoint ```/navbar``` will serve 
 ## Signing out
 To sign out of the account, the API uses a GET request to path: ```/signout```:
 ```
-GET herokuroothpath/signout
+GET https://ufit326.herokuapp.com/signout
 ``` 
 
 ## Accessing Home Page
 To access the home page, the API uses a GET request to path: ```/```:
 ```
-GET herokuroothpath/
+GET https://ufit326.herokuapp.com/
 ``` 
 
 ## Accessing "Create a Post" page
 To access the home page, the API uses a GET request to path: ```/post```:
 ```
-GET herokuroothpath/post
+GET https://ufit326.herokuapp.com/post
 ``` 
 
 ## Accessing "Clubs and News" page
 To access the home page, the API uses a GET request to path: ```/clubnews```:
 ```
-GET herokuroothpath/clubnews
+GET https://ufit326.herokuapp.com/clubnews
 ``` 
 
-## Updating Posts or User Information
+## Updating User Information
 
 To update user information, the API uses the path: ```/updateInfo``` like so:
 
-```POST herokuroothpath/updateInfo```
+```POST https://ufit326.herokuapp.com/updateInfo```
 
 This path then uses the API endpoint ```/updateAccountInfo``` to process the entered information from the form
 
-```POST herokurootpath/updateAccountInfo```
+```POST https://ufit326.herokuapp.com/updateAccountInfo```
 
 <!-- Updating a user account can only be done when a user is logged in. -->
 
@@ -147,7 +147,7 @@ This request will update the user's account name to "Tyler", with no further cha
 To render the relevant logged-in account's posts, the API uses the path: ```/account```.
 
 A request is made like so:
-```GET herokurootpath/account```
+```GET https://ufit326.herokuapp.com/account```
 
 The endpoint filters the posts.json page and fills a new file called myAccount.json that contains the relevant posts created by the logged-in user. 
 
@@ -156,7 +156,7 @@ The endpoint filters the posts.json page and fills a new file called myAccount.j
 A front-end module for accounts.html uses this API path (```myAccountJSON```) to fetch the JSON file for the logged in account. 
 
 A request is made like so:
-```GET herokurootpath/myAccountJSON```
+```GET https://ufit326.herokuapp.com/myAccountJSON```
 
 The endpoint then redirects to ```/account```.
 
@@ -165,16 +165,45 @@ The endpoint then redirects to ```/account```.
 For deleting a post, the API uses the path: ```/accountDelete/:postID```, where ```postID``` is the ID of a post the user has previously created. 
 
 A request is made like so:
-```GET herokurootpath/accountDelete/:postID```
+```GET https://ufit326.herokuapp.com/accountDelete/:postID```
 
-Howvever, the delete only occurs if (a) the post meant to be deleted was originally created by the currently logged-in user and (b) the post meant to be deleted actually exists.
+However, the delete only occurs if (a) the post meant to be deleted was originally created by the currently logged-in user and (b) the post meant to be deleted actually exists.
 
 An example request is displayed below to delete a post with ID: 12
 ```
-GET herokurootpath/accountDelete/12
+GET https://ufit326.herokuapp.com/accountDelete/12
 ```
 
+## Updating Posts via the Accounts Page
 
+To update a post, the API uses the path: ```/accountUpdate/:postID```, where ```postID``` is the ID of a post the user has previously created. 
+
+A request is made like so:
+```GET https://ufit326.herokuapp.com/accountUpdate/:postID```
+
+The purpose of this update is to be able to change certain attributes of a workout/exercise post without having to recreate a post. At the moment, the API "updates" a post by first deleting the post and then redirecting the user to a prefilled create post page.
+
+An example request is displayed below to update a post with ID: 12
+```
+GET https://ufit326.herokuapp.com/accountUpdate/12
+```
+
+## Liking/Unliking posts on the Home page
+If logged in, the home page allows you to like or unlike posts. In order to do this, the API using a GET request to the path ```/like/:postID``` as such:
+```
+GET https://ufit326.herokuapp.com/like/:postID
+```
+the postID is the unique ID of the post we use to identify it in posts.json and render.json to update its "liked_count" and "liked_username" accordingly.
+
+The endpoint then redirects to ```/```.
+
+
+## Filtering posts on the Home page
+The posts displayed on the home page cn be filtered by the parameters visible on the home page and the API uses a POST request to the path ```/filter``` as such:
+```
+POST https://ufit326.herokuapp.com/filter
+```
+The post request carries the filter parameters and filters the posts from posts.json and puts the valid posts in render.json and finally redirects to ```/``` which makes a GET request to the path ```/renderjson``` to fetch render.json on the browser-side
 
 # Handling Request Errors
 
@@ -195,14 +224,27 @@ res.status(400).send('Incorrect password');
 res.status(400).send('Account not found');
 ```
 
-4) 
+4) If a user tries to access the account page and they are not logged in.
+```
+res.status(400).send("User not logged in");
+```
+
+5) If a user tries to create a post and they are not logged in.
+```
+res.status(400).send("User not logged in");
+```
+
+6) If a user tries to like a post and they are not logged in.
+```
+res.status(400).send("User not logged in");
+```
 
 
 # Client User Interface
 
 The interface images below show the different user-friendly interfaces the user will use to interact with their account information, their post content, and other users' content uploaded to UFit.
 
-## User Account & Post Creation
+## (CREATE) User Account & Post Creation
 
 ![account_interface1](https://github.com/AdityaUmass/cs326-final-theta/blob/master/public/Images/Screen%20Shot%202021-11-05%20at%203.01.39%20PM.png)
 When the user click the "Sign Up" button in the navigation bar, they're issued a prompt to enter information that will be used for their account.
@@ -210,19 +252,40 @@ When the user click the "Sign Up" button in the navigation bar, they're issued a
 ![account_interface2](https://github.com/AdityaUmass/cs326-final-theta/blob/master/public/Images/Screen%20Shot%202021-11-05%20at%201.14.56%20PM.png)
 You can see that after account creation, the user is logged in and redirected to the homepage.
 
-## User Login
+## (READ) User Login, Reading and Filtering posts on Home page, Seeing people interested in your posts on the accounts page
 
 ![login_interface](https://github.com/AdityaUmass/cs326-final-theta/blob/master/public/Images/Screenshot%202021-11-05%20210614.png)
 When the user clicks the "Login" button in the navigation bar, an prompt box will open, allowing them to input their account information.
 
-## Updating User Details and Updating Posts
+![iunfiltered posts](https://github.com/AdityaUmass/cs326-final-theta/blob/master/public/Images/allposts.png)
+When the home page is accessed, we need to display the posts made, and for that, we need to read from the posts stored and display all of them as seen in the above image.
+
+
+![filtered posts](https://github.com/AdityaUmass/cs326-final-theta/blob/master/public/Images/filteredposts.png)
+We can also filter posts based on certain parameters that we can set on the home page. In the above image, we have filtered the posts to only show posts for a duration of two hours.
+
+![account_page](https://github.com/AdityaUmass/cs326-final-theta/blob/master/public/Images/accountpageinterest.png)
+On the account page, where a user can see posts made by them as well as see the emails of the people interested in their posts, we need to read the stored data to find posts made by the user and access the stored emails of people interested in that post.
+
+## (UPDATE) Updating User Details and Liking/Unliking Posts
 
 ![updateuser_interface](https://github.com/AdityaUmass/cs326-final-theta/blob/master/public/Images/Screenshot%202021-11-05%20205834.png)
 Through this simple interface, the user has the option to update their account information. All changes will be saved to the database.
 
-![updateposts_interface1]()
+![like_interface1](https://github.com/AdityaUmass/cs326-final-theta/blob/master/public/Images/Desktop%20Screenshot%202021.11.06%20-%2019.43.40.66.png)
+Before a user likes a post in the feed, the like button will appear white.
 
-## Deleting Posts
+![like_interface2](https://github.com/AdityaUmass/cs326-final-theta/blob/master/public/Images/Desktop%20Screenshot%202021.11.06%20-%2019.43.48.32.png)
+After liking a post, the button will turn grey and the number of interested users will update.
+
+![update post interface1](https://github.com/AdityaUmass/cs326-final-theta/blob/master/public/Images/updatebefore.png)
+Using the update button, the user can update the information of a specific post. 
+
+![update post interface2](https://github.com/AdityaUmass/cs326-final-theta/blob/master/public/Images/updateafter.png)
+Once the button is clicked, it will take the user to a prefilled create page.
+
+
+## (DELETE) Deleting Posts
 
 ![delete_interface1](https://github.com/AdityaUmass/cs326-final-theta/blob/master/public/Images/Desktop%20Screenshot%202021.11.05%20-%2022.27.56.04.png)
 The user will have the option to delete any of the posts they've made. In this preview we'll delete the second post labeled "Looking for a gym partner".
@@ -235,10 +298,24 @@ The "Looking for a gym partner" post has now been removed from the users profile
 
 In order for the user to change their account information, we added an HTML file called ```accountUpdate.html```, and its associated CSS file ```accountUpdate.css```.
 
+This feature was not clearly defined in the first milestone, but the purpose of this update is to be able to change certain attributes of a workout/exercise post without having to recreate a post. (Required no HTML changes)
+
 # Division of Labor Breakdown
 
 Aditya: Created main server-starter template. Responsible for creating the HTML for each post and rendering them to homepage. Handled how posts are filtered by activity/workout, time/day, etc. Generated endpoints for creating a post, filtering a post, and liking a post.
 
-Raghav: Responsible for creating a generic HTML card creation script that was repurposed for the accounts and home page. Rendered the cards on the account page. Created post deletion functionality and the ability to update the content of a post. Generate endpoints for navigating to the user's account page, deleting posts, and updating the content of a post.
+Raghav: Responsible for creating a generic HTML card creation script that was repurposed for the accounts and home page. Rendered the cards on the account page. Created post deletion functionality and the ability to update the content of a post. Generated endpoints for navigating to the user's account page, deleting posts, and updating the content of a post.
 
 Brandon Figueredo: Handled login and signup functionality, as well as updating user information. Generate endpoints for creating a user, logging into an account, and updating a user's account.
+
+# Heroku Application
+
+```
+https://ufit326.herokuapp.com/
+```
+
+### Sources
+All images are taken from the official UMass Campus Pulse website, from their respective clubs.
+```
+https://umassamherst.campuslabs.com/engage/
+```
