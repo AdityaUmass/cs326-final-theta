@@ -4,7 +4,7 @@ let secrets;
 let password;
 
 if(!process.env.PASSWORD) {
-    secrets = require("./secrets");
+    secrets = require("./confidential");
     password = secrets.dbURL;
 } else {
     password = process.env.PASSWORD;
