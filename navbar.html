@@ -92,13 +92,13 @@
         ></button>
       </div>
       <div class="modal-body">
-        <form action="/loginuser" method="post">
+        <form action="/login" method="POST">
           <div class="form-group row mb-2">
             <label for="emailLogin" class="form-label col-form-label col-sm-3"
               >Email ID:
             </label>
             <div class="col-sm-9">
-              <input name="accountemail" type="email" class="form-control" id="emailLogin" />
+              <input name="username" type="email" class="form-control" id="emailLogin" />
             </div>
           </div>
           <div class="form-group row mb-2">
@@ -106,7 +106,7 @@
               >Password:
             </label>
             <div class="col-sm-9">
-              <input name="accountpassword" type="password" class="form-control" id="pwdLogin" />
+              <input name="password" type="password" class="form-control" id="pwdLogin" />
             </div>
           </div>
           <div class="modal-footer loginModal">
@@ -140,14 +140,14 @@
         ></button>
       </div>
       <div class="modal-body">
-        <form action="/createuser" method="post">
+        <form action="/createUser" method="POST">
           <div class="form-group row mb-2">
             <label for="emailSignup" class="form-label col-form-label col-sm-3"
               >Email ID:
             </label>
             <div class="col-sm-9">
               <input
-                name="accountemail"
+                name="username"
                 type="email"
                 class="form-control"
                 id="emailSignup"
@@ -161,7 +161,7 @@
               >Name:
             </label>
             <div class="col-sm-9">
-              <input name="accountname" type="text" class="form-control" id="nameSignup" />
+              <input name="name" type="text" class="form-control" id="nameSignup" />
             </div>
           </div>
           <div class="form-group row mb-2">
@@ -170,7 +170,7 @@
             </label>
             <div class="col-sm-9">
               <input
-                name="accountpassword"
+                name="password"
                 type="password"
                 class="form-control"
                 id="pwdSignup"
