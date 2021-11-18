@@ -51,11 +51,11 @@ passport.use(
     new LocalStrategy((username, password, done) => {
       User.findOne({ username: username }, (err, user) => {
         if (err) { 
-          return done(err);
+            return done(err);
         }
 
         if (!user) {
-          return done(null, false, { message: "Incorrect username" });
+            return done(null, false, { message: "Incorrect username" });
         }
         
         bcryptjs.compare(password, user.password, (err, res) => {
@@ -82,10 +82,12 @@ app.use(passport.session());
 
 // checks whether a user is logged in
 function isLoggedIn(req, res, next) {
+    
+    // console.log(req.user);
     if(req.user) { // user is not logged in
         next();
     } else {
-        res.redirect('/'); // user is not logged in
+        res.sendFile(__dirname + "/home.html"); // user is not logged in
     }
 }
 
@@ -301,10 +303,14 @@ app.post("/updateAccountInfo", isLoggedIn, async function(req, res) {
             });
         });
     }
-
-    // find every instance of the old username in each liked_username array
-    User.updateMany({ liked_username: oldEmail}, {})
     
+    // find every instance of the old username in each liked_username array
+    try {
+        await Post.updateMany({ liked_username : oldEmail}, { $set: {"liked_username.$" : req.user.username}});
+    } catch (error) {
+        console.log(error);
+    }
+
     res.redirect('/account');
 });
 
