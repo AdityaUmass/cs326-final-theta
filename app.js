@@ -191,7 +191,19 @@ app.get("/account", function(req, res) {
 
 // endpoint will get an accounts posts file
 app.get("/myAccountJSON", function(req, res){
-    res.sendFile(__dirname + "/myAccount.json");
+    try {
+        const username = req.user["username"];
+        //pull from the database
+        Post.find({author: username}, function(err, result) {
+            if (err) throw err;
+            res.send(result); 
+        });
+        //console.log(posts);
+        //res.json(posts);
+
+    } catch (error) {
+        console.log(error);
+    }
 });
 
 // endpoint which deletes a post on the account
