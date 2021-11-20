@@ -97,7 +97,14 @@ app.get("/", function(req, res) {
     //render functions
     if (!filtered) {
         let posts = JSON.parse(fs.readFileSync("posts.json"));
-        let renderInfo = {"userName": username, "posts": posts};
+        let testPosts = [];
+        Post.find({}, function(err, foundPosts) {
+            if (!err) {
+                testPosts = [...foundPosts];
+            }
+        });
+       
+        let renderInfo = {"userName": username, "posts": testPosts};
 
         fs.writeFile("render.json", JSON.stringify(renderInfo), (err) => {
             "Write error.";
@@ -345,9 +352,8 @@ app.post("/createPost", isLoggedIn, function(req, res) {
 });
 
 app.post("/filter", function(req, res) {
-    console.log(req.body);
 
-    let posts = JSON.parse(fs.readFileSync("posts.json"));
+    let posts = Post.find({});
     let filterData = req.body;
 
     let filteredPosts = [...posts];
@@ -410,7 +416,7 @@ app.post("/filter", function(req, res) {
         }
     }
 
-    let renderInfo = {"userName": username, "posts": filteredPosts};
+    let renderInfo = {"userName": req.user.username, "posts": filteredPosts};
 
     fs.writeFile("render.json", JSON.stringify(renderInfo), (err) => {
         "Write error.";
@@ -422,43 +428,66 @@ app.post("/filter", function(req, res) {
     //homeJS.render(filteredPosts, username);
 });
 
-app.get("/like/:postID", function(req, res) {
-    if(!loggedin) {
-        res.status(400).send("User not logged in");
-        return;
+app.get("/like/:postID", async function(req, res) {
+    if(!req.user) {
+        alert("User not logged in");
+        res.redirect("/");
     }
     let postID = parseInt(req.params.postID);
-    let posts = JSON.parse(fs.readFileSync("posts.json"));
+    // let posts = JSON.parse(fs.readFileSync("posts.json"));
     let renderData = (JSON.parse(fs.readFileSync("render.json")));
     let postsRender = renderData["posts"];
 
-    
+    const likedPost = Post.findOne({"_id": postID});
 
-    const postIndex = posts.findIndex(elem => elem._id === postID);
+    // const postIndex = posts.findIndex(elem => elem._id === postID);
     const postIndexRender = postsRender.findIndex(elem => elem._id === postID);
-    console.log(postIndex);
-    if(posts[postIndex]["liked_username"].includes(username)) {
-        posts[postIndex].liked_count--;
+    
+    // if(posts[postIndex]["liked_username"].includes(username)) {
+    //     posts[postIndex].liked_count--;
+    //     postsRender[postIndexRender].liked_count--;
+
+    //     const index = posts[postIndex]["liked_username"].indexOf(username);
+    //     posts[postIndex]["liked_username"].splice(index, 1);
+
+    //     const indexRender = postsRender[postIndexRender]["liked_username"].indexOf(username);
+    //     postsRender[postIndexRender]["liked_username"].splice(indexRender, 1);
+
+
+    // } else {
+    //     posts[postIndex].liked_count++;
+    //     posts[postIndex]["liked_username"].push(username);
+
+    //     postsRender[postIndexRender].liked_count++;
+    //     postsRender[postIndexRender]["liked_username"].push(username);
+    // }
+
+    // fs.writeFile("posts.json", JSON.stringify(posts), (err) => {
+    //     "Post creation error.";
+    // });
+
+    if(likedPost["liked_username"].includes(req.user.username)) {
+        const index = likedPost["liked_username"].indexOf(req.user.username);
+        likedPost["liked_username"].splice(index, 1);
+        try {
+            await Post.findOneAndUpdate({"_id": postID}, {$set: {liked_count: likedPost["liked_count"] - 1, liked_username: likedPost["liked_username"]}});
+        } catch (error) {
+            console.log(error);
+        }
         postsRender[postIndexRender].liked_count--;
-
-        const index = posts[postIndex]["liked_username"].indexOf(username);
-        posts[postIndex]["liked_username"].splice(index, 1);
-
-        const indexRender = postsRender[postIndexRender]["liked_username"].indexOf(username);
         postsRender[postIndexRender]["liked_username"].splice(indexRender, 1);
 
-
+        
     } else {
-        posts[postIndex].liked_count++;
-        posts[postIndex]["liked_username"].push(username);
-
+        likedPost["liked_username"].push(req.user.username);
+        try {
+            await Post.findOneAndUpdate({"_id": postID}, {$set: {liked_count: likedPost["liked_count"] - 1, liked_username: likedPost["liked_username"]}});
+        } catch (error) {
+            console.log(error);
+        }
         postsRender[postIndexRender].liked_count++;
-        postsRender[postIndexRender]["liked_username"].push(username);
+        postsRender[postIndexRender]["liked_username"].push(req.user.username);
     }
-
-    fs.writeFile("posts.json", JSON.stringify(posts), (err) => {
-        "Post creation error.";
-    });
 
     renderData["posts"] = postsRender;
 
