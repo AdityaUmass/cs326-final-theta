@@ -97,18 +97,15 @@ app.get("/", function(req, res) {
     //render functions
     if (!filtered) {
         let posts = JSON.parse(fs.readFileSync("posts.json"));
-        let testPosts = [];
         Post.find({}, function(err, foundPosts) {
             if (!err) {
-                testPosts = [...foundPosts];
-            }
-        });
-       
-        let renderInfo = {"userName": username, "posts": testPosts};
+                let renderInfo = {"userName": username, "posts": foundPosts};
 
-        fs.writeFile("render.json", JSON.stringify(renderInfo), (err) => {
-            "Write error.";
-        });
+                fs.writeFile("render.json", JSON.stringify(renderInfo), (err) => {
+                    "Write error.";
+                });
+            }
+        });   
     } else {
         filtered = false;
     }
