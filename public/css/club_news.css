@@ -35,13 +35,11 @@ hr {
 
 .event-text-container .event-title {
   font-weight: 600;
-  color: e3b505;
+  color: #0531c2;
 }
 
 .event-text-container h3 {
-  /* font-weight: 700; */
   color: rgb(0, 0, 0);
-  /* font-family: "Bebas Neue", cursive; */
 }
 
 .carousel-item .event-container .event-item {
@@ -81,10 +79,9 @@ a {
 }
 
 .divider {
-  /* font-family: "Bebas Neue", cursive;
-  font-family: "Oswald", sans-serif; */
-  background-color: #212d40;
-  
+  /* credit to: https://cssgradient.io/ (confirmed I could use with TA) */
+  background: rgb(35,24,140);
+  background: linear-gradient(90deg, rgba(35,24,140,1) 5%, rgba(70,125,240,1) 51%, rgba(72,48,214,1) 97%);
   height: 300px;
   font-size: 80px;
   margin-top: 50px;
