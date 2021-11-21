@@ -37,3 +37,71 @@ User document {
 **posts**: an array of Posts created by the user
 
 As you can see, a ```name```, ```username```, and ```password``` are required fields to be entered.
+
+### Post
+
+Below is a representation of a Post document in the database. This is used when a user creates a post from their account:
+```
+Post document {
+
+    author: {
+        type: String,
+        required: true
+    },
+    liked_count: Number,
+    liked_username: [String],
+    title: {
+        type: String,
+        required: true
+    },
+    content: {
+        type: String,
+        required: true
+    },
+    activity: String,
+    workout: String,
+    duration: String,
+    time: String,
+    contact: {
+        type: String,
+        required: true
+    },
+    date: String,
+    days: [String]
+}
+```
+
+**author**: the name of the user who created the post
+
+**liked_count**: the number of users who liked the post
+
+**liked_username**: the username (email addresses) of the users who have liked the post
+
+**title**: the title of the post - signifies what the post is about
+
+**content**: a brief description related to the purpose of the post
+
+**activity**: the activity type that a user can select (i.e. Gym, Cardio, etc)
+
+**workout**: the workout type that a user can select (i.e. Upper Body, Lower Body, etc)
+
+**duration**: how long the user plans to spend doing this event
+
+**time**: the time the user wants to start the event
+
+**contact**: the contact information of the user (i.e. email address, phone, social media, etc)
+
+**date**: the day this event will take place
+
+**days**: if this event will be reoccuring, this is a list of days the event will take place
+
+A Post can be about a looking for a workout partner, posting an achievement, or hosting a sporting event. Since there is a lot of variation for a Post, the only required fields are a: ```title```, ```content```, and ```contact```.
+
+## Division of Labor
+
+Aditya: Todo
+
+Raghav: Todo
+
+Brandon Figueredo: Created the User and Post document models. Set up user account creation, login and signout, and handled user authentication with Passport and Bcryptjs for password hashing. Responsible for updating User documents in the database when a user changes their name, username or password, as well as updated the "liked_username" array of usernames of a Post document to reflect the change in the user's username/email address of previous Post's they had liked with their old email.
+
