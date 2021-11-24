@@ -454,7 +454,7 @@ app.get("/renderjson", function(req, res) {
     res.sendFile(__dirname + "/render.json");
 });
 
-app.listen(8080, function(err) {
+app.listen(process.env.PORT || 8080, function(err) {
     if(err) {
         console.log("couldn't connect to server");
     }
