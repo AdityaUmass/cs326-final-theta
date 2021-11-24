@@ -99,7 +99,7 @@ A Post can be about a looking for a workout partner, posting an achievement, or 
 
 ## Division of Labor
 
-Aditya: Todo
+Aditya: Handled post rendering on front page in case of filtered or unfiltered posts. Handled mechanism of retrieving and filtering posts from database based on user-input filters. Completed functionality for liking posts such that when a post's like-button is clicked, the post is checked to see if the user has liked it before. If so, the post's like count is decremented and the logged in user is removed from the list of users liking the posts. The opposite happens if the post has not been liked previously.
 
 Raghav: Todo
 
