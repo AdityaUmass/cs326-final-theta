@@ -83,8 +83,7 @@ app.use(passport.session());
 // checks whether a user is logged in
 function isLoggedIn(req, res, next) {
     
-    // console.log(req.user);
-    if(req.user) { // user is not logged in
+    if(req.user) { // user is logged in
         next();
     } else {
         res.sendFile(__dirname + "/home.html"); // user is not logged in
@@ -326,6 +325,7 @@ app.post("/createPost", isLoggedIn, function(req, res) {
 app.post("/filter", function(req, res) {
 
     let filterData = req.body;
+    console.log(req.body);
     Post.find({}, function(err, foundPosts) {
         if (!err) {
             let filteredPosts = [...foundPosts];
