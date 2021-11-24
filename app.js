@@ -99,7 +99,7 @@ app.get("/", function(req, res) {
         let posts = JSON.parse(fs.readFileSync("posts.json"));
         Post.find({}, function(err, foundPosts) {
             if (!err) {
-                let renderInfo = {"userName": username, "posts": foundPosts};
+                let renderInfo = {"userName": username, "posts": foundPosts.reverse()};
 
                 fs.writeFile("render.json", JSON.stringify(renderInfo), (err) => {
                     "Write error.";
@@ -362,149 +362,129 @@ app.post("/createPost", isLoggedIn, function(req, res) {
 
 app.post("/filter", function(req, res) {
 
-    let posts = Post.find({});
     let filterData = req.body;
+    Post.find({}, function(err, foundPosts) {
+        if (!err) {
+            let filteredPosts = [...foundPosts];
+            
+            if ("activity" in filterData) {
+                if (filterData["activity"].length !== 0) {
+                    filteredPosts = filteredPosts.filter(elem => ("activity" in elem));
+                    filteredPosts = filteredPosts.filter(elem => (elem["activity"] === filterData["activity"]));
+                }
+            }
 
-    let filteredPosts = [...posts];
-    if ("activity" in filterData) {
-        if (filterData["activity"].length !== 0) {
-            filteredPosts = filteredPosts.filter(elem => ("activity" in elem));
-            filteredPosts = filteredPosts.filter(elem => (elem["activity"] === filterData["activity"]));
+            if ("workout" in filterData) {
+                if (filterData["workout"].length !== 0) {
+                    filteredPosts = filteredPosts.filter(elem => ("workout" in elem));
+                    filteredPosts = filteredPosts.filter(elem => (elem["workout"] === filterData["workout"]));
+                }
+            }
+
+            if (filterData["duration"].length !== 0) {
+                filteredPosts = filteredPosts.filter(elem => ("duration" in elem));
+                filteredPosts = filteredPosts.filter(elem => (elem["duration"] === filterData["duration"]));
+                
+            }
+
+            if (filterData["time"].length !== 0) {
+                filteredPosts = filteredPosts.filter(elem => ("activity" in elem));
+                filteredPosts = filteredPosts.filter(elem => (elem["activity"] === filterData["activity"]));
+            }
+
+            if(filterData["date"].length !== 0) {
+                filteredPosts = filteredPosts.filter(elem => ("date" in elem));
+                filteredPosts = filteredPosts.filter(elem => (elem["date"] === filterData["date"]));
+            } else {
+                
+                if ("Monday" in filterData) {
+                    filteredPosts = filteredPosts.filter(elem => (elem["days"].includes("Monday")));
+                }
+
+                if ("Tuesday" in filterData) {
+                    filteredPosts = filteredPosts.filter(elem => (elem["days"].includes("Tuesday")));
+                }
+
+                if ("Wednesday" in filterData) {
+                    filteredPosts = filteredPosts.filter(elem => (elem["days"].includes("Wednesday")));
+                }
+
+                if ("Thursday" in filterData) {
+                    filteredPosts = filteredPosts.filter(elem => (elem["days"].includes("Thursday")));
+                }
+
+                if ("Friday" in filterData) {
+                    filteredPosts = filteredPosts.filter(elem => (elem["days"].includes("Friday")));
+                }
+
+                if ("Saturday" in filterData) {
+                    filteredPosts = filteredPosts.filter(elem => (elem["days"].includes("Saturday")));
+                }
+
+                if ("Sunday" in filterData) {
+                    filteredPosts = filteredPosts.filter(elem => (elem["days"].includes("Sunday")));
+                }
+            }
+
+            let renderInfo = {"userName": username, "posts": filteredPosts};
+
+            fs.writeFile("render.json", JSON.stringify(renderInfo), (err) => {
+                "Write error.";
+            });
+
+            filtered = true;
+            //render them acordingly
+            res.redirect("/");
+            //homeJS.render(filteredPosts, username);
         }
-    }
-
-    if ("workout" in filterData) {
-        if (filterData["workout"].length !== 0) {
-            filteredPosts = filteredPosts.filter(elem => ("workout" in elem));
-            filteredPosts = filteredPosts.filter(elem => (elem["workout"] === filterData["workout"]));
-        }
-    }
-
-    if (filterData["duration"].length !== 0) {
-        filteredPosts = filteredPosts.filter(elem => ("duration" in elem));
-        filteredPosts = filteredPosts.filter(elem => (elem["duration"] === filterData["duration"]));
-        
-    }
-
-    if (filterData["time"].length !== 0) {
-        filteredPosts = filteredPosts.filter(elem => ("activity" in elem));
-        filteredPosts = filteredPosts.filter(elem => (elem["activity"] === filterData["activity"]));
-    }
-
-    if(filterData["date"].length !== 0) {
-        filteredPosts = filteredPosts.filter(elem => ("date" in elem));
-        filteredPosts = filteredPosts.filter(elem => (elem["date"] === filterData["date"]));
-    } else {
-        
-        if ("Monday" in filterData) {
-            filteredPosts = filteredPosts.filter(elem => (elem["days"].includes("Monday")));
-        }
-
-        if ("Tuesday" in filterData) {
-            filteredPosts = filteredPosts.filter(elem => (elem["days"].includes("Tuesday")));
-        }
-
-        if ("Wednesday" in filterData) {
-            filteredPosts = filteredPosts.filter(elem => (elem["days"].includes("Wednesday")));
-        }
-
-        if ("Thursday" in filterData) {
-            filteredPosts = filteredPosts.filter(elem => (elem["days"].includes("Thursday")));
-        }
-
-        if ("Friday" in filterData) {
-            filteredPosts = filteredPosts.filter(elem => (elem["days"].includes("Friday")));
-        }
-
-        if ("Saturday" in filterData) {
-            filteredPosts = filteredPosts.filter(elem => (elem["days"].includes("Saturday")));
-        }
-
-        if ("Sunday" in filterData) {
-            filteredPosts = filteredPosts.filter(elem => (elem["days"].includes("Sunday")));
-        }
-    }
-
-    let renderInfo = {"userName": req.user.username, "posts": filteredPosts};
-
-    fs.writeFile("render.json", JSON.stringify(renderInfo), (err) => {
-        "Write error.";
     });
-
-    filtered = true;
-    //render them acordingly
-    res.redirect("/");
-    //homeJS.render(filteredPosts, username);
 });
 
 app.get("/like/:postID", async function(req, res) {
     if(!req.user) {
-        alert("User not logged in");
         res.redirect("/");
     }
-    let postID = parseInt(req.params.postID);
+    let postID = req.params.postID;
     // let posts = JSON.parse(fs.readFileSync("posts.json"));
     let renderData = (JSON.parse(fs.readFileSync("render.json")));
     let postsRender = renderData["posts"];
 
-    const likedPost = Post.findOne({"_id": postID});
+    Post.findOne({_id: postID}, async function(err, post) {
+        likedPost = post;
+        const postIndexRender = postsRender.findIndex(elem => elem._id === postID);
+        if(likedPost["liked_username"].includes(req.user.username)) {
+            const index = likedPost["liked_username"].indexOf(req.user.username);
+            likedPost["liked_username"].splice(index, 1);
+            try {
+                await Post.findOneAndUpdate({"_id": postID}, {$set: {liked_count: likedPost["liked_count"] - 1, liked_username: likedPost["liked_username"]}});
+            } catch (error) {
+                console.log(error);
+            }
 
-    // const postIndex = posts.findIndex(elem => elem._id === postID);
-    const postIndexRender = postsRender.findIndex(elem => elem._id === postID);
-    
-    // if(posts[postIndex]["liked_username"].includes(username)) {
-    //     posts[postIndex].liked_count--;
-    //     postsRender[postIndexRender].liked_count--;
+            const indexRender = postsRender[postIndexRender]["liked_username"].indexOf(username);
+            postsRender[postIndexRender].liked_count--;
+            postsRender[postIndexRender]["liked_username"].splice(indexRender, 1);
 
-    //     const index = posts[postIndex]["liked_username"].indexOf(username);
-    //     posts[postIndex]["liked_username"].splice(index, 1);
-
-    //     const indexRender = postsRender[postIndexRender]["liked_username"].indexOf(username);
-    //     postsRender[postIndexRender]["liked_username"].splice(indexRender, 1);
-
-
-    // } else {
-    //     posts[postIndex].liked_count++;
-    //     posts[postIndex]["liked_username"].push(username);
-
-    //     postsRender[postIndexRender].liked_count++;
-    //     postsRender[postIndexRender]["liked_username"].push(username);
-    // }
-
-    // fs.writeFile("posts.json", JSON.stringify(posts), (err) => {
-    //     "Post creation error.";
-    // });
-
-    if(likedPost["liked_username"].includes(req.user.username)) {
-        const index = likedPost["liked_username"].indexOf(req.user.username);
-        likedPost["liked_username"].splice(index, 1);
-        try {
-            await Post.findOneAndUpdate({"_id": postID}, {$set: {liked_count: likedPost["liked_count"] - 1, liked_username: likedPost["liked_username"]}});
-        } catch (error) {
-            console.log(error);
+            
+        } else {
+            likedPost["liked_username"].push(req.user.username);
+            try {
+                await Post.findOneAndUpdate({"_id": postID}, {$set: {liked_count: likedPost["liked_count"] + 1, liked_username: likedPost["liked_username"]}});
+            } catch (error) {
+                console.log(error);
+            }
+            postsRender[postIndexRender].liked_count++;
+            postsRender[postIndexRender]["liked_username"].push(req.user.username);
         }
-        postsRender[postIndexRender].liked_count--;
-        postsRender[postIndexRender]["liked_username"].splice(indexRender, 1);
 
-        
-    } else {
-        likedPost["liked_username"].push(req.user.username);
-        try {
-            await Post.findOneAndUpdate({"_id": postID}, {$set: {liked_count: likedPost["liked_count"] - 1, liked_username: likedPost["liked_username"]}});
-        } catch (error) {
-            console.log(error);
-        }
-        postsRender[postIndexRender].liked_count++;
-        postsRender[postIndexRender]["liked_username"].push(req.user.username);
-    }
+        renderData["posts"] = postsRender;
 
-    renderData["posts"] = postsRender;
+        fs.writeFile("render.json", JSON.stringify(renderData), (err) => {
+            "Post creation error.";
+        });
 
-    fs.writeFile("render.json", JSON.stringify(renderData), (err) => {
-        "Post creation error.";
+        res.redirect("/");
     });
-
-    res.redirect("/");
 });
 
 app.get("/renderjson", function(req, res) {
