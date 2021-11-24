@@ -95,13 +95,13 @@ Post document {
 
 **days**: if this event will be reoccuring, this is a list of days the event will take place
 
-A Post can be about a looking for a workout partner, posting an achievement, or hosting a sporting event. Since there is a lot of variation for a Post, the only required fields are a: ```title```, ```content```, and ```contact```.
+A Post can be about looking for a workout partner, posting an achievement, or hosting a sporting event. Since there is a lot of variation for a Post, the only required fields are a: ```title```, ```content```, and ```contact```.
 
 ## Division of Labor
 
 Aditya: Handled post rendering on front page in case of filtered or unfiltered posts. Handled mechanism of retrieving and filtering posts from database based on user-input filters. Completed functionality for liking posts such that when a post's like-button is clicked, the post is checked to see if the user has liked it before. If so, the post's like count is decremented and the logged in user is removed from the list of users liking the posts. The opposite happens if the post has not been liked previously.
 
-Raghav: Todo
+Raghav: Handled retrieving a users Posts from the database and rendering them to the user's account page. Also responsible for updating and deleting a Post in the database when the user updates the content of a Post or deletes one of their Posts. 
 
 Brandon Figueredo: Created the User and Post document models. Set up user account creation, login and signout, and handled user authentication with Passport and Bcryptjs for password hashing. Responsible for updating User documents in the database when a user changes their name, username or password, as well as updated the "liked_username" array of usernames of a Post document to reflect the change in the user's username/email address of previous Post's they had liked with their old email.
 
