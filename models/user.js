@@ -6,7 +6,7 @@ const userSchema = new Schema ({
         type: String,
         required: true
     },
-    email: {
+    username: {
         type: String,
         required: true
     },
@@ -14,5 +14,10 @@ const userSchema = new Schema ({
         type: String,
         required: true
     },
-    posts: [String]
-})
+    posts: {
+        type: [String],
+        required: false
+    }
+});
+
+module.exports = mongoose.model("User", userSchema);
