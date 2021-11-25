@@ -215,8 +215,8 @@ app.get("/accountUpdate/:postID", function(req, res){
     Post.findOne({author: req.user["username"], _id: postID }, function(err, result) {
         if (err) throw err;
         updatedPost = result;
-        // console.log(result);
-        // console.log(updatedPost);
+        console.log("updating");
+        console.log(updatedPost);
         if (updatedPost.length !== 0){
             update = true;
             fs.writeFileSync("update.json",JSON.stringify({"post": updatedPost, "update": update}));
@@ -234,7 +234,6 @@ app.get("/accountUpdate/:postID", function(req, res){
 app.get("/updateJSON", function(req, res){
     res.sendFile(__dirname + "/update.json");
     update = false;
-    fs.writeFileSync("update.json",JSON.stringify({"post": {}, "update": update}));
 });
 
 
