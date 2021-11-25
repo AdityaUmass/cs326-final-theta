@@ -24,7 +24,8 @@ const Post = require("./models/post");
 let username = '';
 let loggedin = false;
 let filtered = false;
-
+let update = false;
+fs.writeFileSync("update.json",JSON.stringify({"post": {}, "update": update}));
 
 const app = express();
 app.use(express.static("public"));
@@ -211,27 +212,29 @@ app.get("/accountUpdate/:postID", function(req, res){
 
     console.log(postID);
 
-    if (fs.existsSync("posts.json")){
-        let posts = JSON.parse(fs.readFileSync("posts.json"));
-        for (let i = 0; i < posts.length; i++){
-            if (posts[i]["_id"] == postID && posts[i]["author"] == username){
-                updatedPost = posts[i];
-                posts.splice(i,1);
-                break;
-            }
+    Post.findOne({author: req.user["username"], _id: postID }, function(err, result) {
+        if (err) throw err;
+        updatedPost = result;
+        // console.log(result);
+        // console.log(updatedPost);
+        if (updatedPost.length !== 0){
+            update = true;
+            fs.writeFileSync("update.json",JSON.stringify({"post": updatedPost, "update": update}));
+            Post.deleteOne({author: req.user["username"], _id: postID }, function(err, result) {
+                if (err) throw err;
+                res.redirect('/post');
+            });
         }
-        fs.writeFileSync("posts.json",JSON.stringify(posts));
-        update = true;
-        fs.writeFileSync("update.json",JSON.stringify({"post": updatedPost, "update": update}));
-    }
+    });
 
-    res.redirect('/post');
+    
 
 });
 
 app.get("/updateJSON", function(req, res){
     res.sendFile(__dirname + "/update.json");
     update = false;
+    fs.writeFileSync("update.json",JSON.stringify({"post": {}, "update": update}));
 });
 
 

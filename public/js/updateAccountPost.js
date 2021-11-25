@@ -1,5 +1,9 @@
 console.log("hi");
+
+
 let dictionary = {};
+
+
 const response = await fetch("../../updateJSON");
 if (response.ok) {
   dictionary = await response.json();
