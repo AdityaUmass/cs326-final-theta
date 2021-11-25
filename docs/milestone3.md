@@ -36,7 +36,7 @@ User document {
 
 **posts**: an array of Posts created by the user
 
-As you can see, a ```name```, ```username```, and ```password``` are required fields to be entered.
+As you can see, a ```name```, ```username```, and ```password``` are required fields to be entered in order to create an account.
 
 ### Post
 
