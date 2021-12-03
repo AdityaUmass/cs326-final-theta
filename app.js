@@ -25,7 +25,7 @@ let username = '';
 let loggedin = false;
 let filtered = false;
 let update = false;
-fs.writeFileSync("update.json",JSON.stringify({"post": {}, "update": update}));
+fs.writeFileSync("update.json", JSON.stringify({ "post": {}, "update": update }));
 
 const app = express();
 app.use(express.static("public"));
@@ -37,12 +37,12 @@ app.use(session({
     saveUninitialized: true
 }));
 
-passport.serializeUser(function(user, done) {
+passport.serializeUser(function (user, done) {
     done(null, user.id);
 });
-  
-passport.deserializeUser(async function(id, done) {
-    User.findById(id, function(err, user) {
+
+passport.deserializeUser(async function (id, done) {
+    User.findById(id, function (err, user) {
         done(err, user);
     });
 });
@@ -50,29 +50,29 @@ passport.deserializeUser(async function(id, done) {
 // use passport local strategy
 passport.use(
     new LocalStrategy((username, password, done) => {
-      User.findOne({ username: username }, (err, user) => {
-        if (err) { 
-            return done(err);
-        }
-
-        if (!user) {
-            return done(null, false, { message: "Incorrect username" });
-        }
-        
-        bcryptjs.compare(password, user.password, (err, res) => {
-            
-            if(res) {
-                console.log("passwords match");
-                return done(null, user);
-            } else if(err) {
-                console.log(err);
+        User.findOne({ username: username }, (err, user) => {
+            if (err) {
                 return done(err);
-            } else {
-                console.log("passwords dont match");
-                return done(null, false);
             }
+
+            if (!user) {
+                return done(null, false, { message: "Incorrect username" });
+            }
+
+            bcryptjs.compare(password, user.password, (err, res) => {
+
+                if (res) {
+                    console.log("passwords match");
+                    return done(null, user);
+                } else if (err) {
+                    console.log(err);
+                    return done(err);
+                } else {
+                    console.log("passwords dont match");
+                    return done(null, false);
+                }
+            });
         });
-      });
     })
 );
 
@@ -83,8 +83,8 @@ app.use(passport.session());
 
 // checks whether a user is logged in
 function isLoggedIn(req, res, next) {
-    
-    if(req.user) { // user is logged in
+
+    if (req.user) { // user is logged in
         next();
     } else {
         res.sendFile(__dirname + "/home.html"); // user is not logged in
@@ -92,20 +92,20 @@ function isLoggedIn(req, res, next) {
 }
 
 // endpoint for homepage
-app.get("/", function(req, res) {
-    
+app.get("/", function (req, res) {
+
     //render functions
     if (!filtered) {
         let posts = JSON.parse(fs.readFileSync("posts.json"));
-        Post.find({}, function(err, foundPosts) {
+        Post.find({}, function (err, foundPosts) {
             if (!err) {
-                let renderInfo = {"userName": username, "posts": foundPosts.reverse()};
+                let renderInfo = { "userName": username, "posts": foundPosts.reverse() };
 
                 fs.writeFile("render.json", JSON.stringify(renderInfo), (err) => {
                     "Write error.";
                 });
             }
-        });   
+        });
     } else {
         filtered = false;
     }
@@ -113,11 +113,11 @@ app.get("/", function(req, res) {
 });
 
 // enpoint for creating a user
-app.post('/createUser', function(req, res) {
-    
+app.post('/createUser', function (req, res) {
+
     bcryptjs.hash(req.body.password, 10, (err, hashedPassword) => {
         // handle error
-        if(err) {
+        if (err) {
             console.log("couldn't hash password");
         }
         // store user into the database
@@ -139,8 +139,12 @@ app.post('/createUser', function(req, res) {
 
 app.post("/login", passport.authenticate("local", {
     successRedirect: "/",
-    failureRedirect: "/"
+    failureRedirect: "/failureLogin"
 }));
+
+app.get("/failureLogin", function (req, res) {
+    res.sendFile(__dirname + "/failureLogin.html");
+})
 
 app.get("/signout", (req, res) => {
     req.logout();
@@ -149,14 +153,14 @@ app.get("/signout", (req, res) => {
 
 
 // endpoint will get the posts page
-app.get("/post", function(req, res) {
+app.get("/post", function (req, res) {
     res.sendFile(__dirname + "/post.html");
 });
 
 // endpoint will send the navigation bar based on login status
-app.get("/navbar", function(req, res) {
-    
-    if(req.user) {
+app.get("/navbar", function (req, res) {
+
+    if (req.user) {
         res.sendFile(__dirname + "/navbarlog.html");
     } else {
         res.sendFile(__dirname + "/navbar.html");
@@ -165,18 +169,18 @@ app.get("/navbar", function(req, res) {
 });
 
 // endpoint which gets all posts for the account
-app.get("/account", function(req, res) {    
+app.get("/account", function (req, res) {
     res.sendFile(__dirname + "/account.html");
 });
 
 // endpoint will get an accounts posts file
-app.get("/myAccountJSON", function(req, res){
+app.get("/myAccountJSON", function (req, res) {
     try {
         const username = req.user["username"];
         //pull from the database
-        Post.find({author: username}, function(err, result) {
+        Post.find({ author: username }, function (err, result) {
             if (err) throw err;
-            res.send(result); 
+            res.send(result);
         });
         //console.log(posts);
         //res.json(posts);
@@ -187,13 +191,13 @@ app.get("/myAccountJSON", function(req, res){
 });
 
 // endpoint which deletes a post on the account
-app.get("/accountDelete/:postID", function(req, res){
+app.get("/accountDelete/:postID", function (req, res) {
     //get card's id and delete from the persistent storage/data
 
     const postID = req.params.postID;
     console.log(postID);
 
-    Post.deleteOne({author: req.user["username"], _id: postID }, function(err, result) {
+    Post.deleteOne({ author: req.user["username"], _id: postID }, function (err, result) {
         if (err) throw err;
         res.redirect('/account');
     });
@@ -201,7 +205,7 @@ app.get("/accountDelete/:postID", function(req, res){
 });
 
 // endpoint which deletes a post on the account
-app.get("/accountUpdate/:postID", function(req, res){
+app.get("/accountUpdate/:postID", function (req, res) {
     //get card's id and delete from the persistent storage/data
 
 
@@ -212,81 +216,81 @@ app.get("/accountUpdate/:postID", function(req, res){
 
     console.log(postID);
 
-    Post.findOne({author: req.user["username"], _id: postID }, function(err, result) {
+    Post.findOne({ author: req.user["username"], _id: postID }, function (err, result) {
         if (err) throw err;
         updatedPost = result;
         console.log("updating");
         console.log(updatedPost);
-        if (updatedPost.length !== 0){
+        if (updatedPost.length !== 0) {
             update = true;
-            fs.writeFileSync("update.json",JSON.stringify({"post": updatedPost, "update": update}));
-            Post.deleteOne({author: req.user["username"], _id: postID }, function(err, result) {
+            fs.writeFileSync("update.json", JSON.stringify({ "post": updatedPost, "update": update }));
+            Post.deleteOne({ author: req.user["username"], _id: postID }, function (err, result) {
                 if (err) throw err;
                 res.redirect('/post');
             });
         }
     });
 
-    
+
 
 });
 
-app.get("/updateJSON", function(req, res){
+app.get("/updateJSON", function (req, res) {
     res.sendFile(__dirname + "/update.json");
     update = false;
 });
 
 
 // endpoint will send the clubs_news page
-app.get("/clubnews", function(req, res) {
+app.get("/clubnews", function (req, res) {
     res.sendFile(__dirname + "/clubs_news.html");
 });
 
 // endpoint for going to the update info page
-app.get("/updateInfo", function(req, res) {
+app.get("/updateInfo", function (req, res) {
     res.sendFile(__dirname + "/accountUpdate.html");
 })
 
 // endpoint for updating user account information
-app.post("/updateAccountInfo", isLoggedIn, async function(req, res) {
-    
+app.post("/updateAccountInfo", isLoggedIn, async function (req, res) {
+
     console.log(req.body);
-    
+
     // save old email
     let oldEmail = req.user.username;
-    
-    if(req.body.useremail.length !== 0) {
-            
-        User.findOneAndUpdate({ username: req.user.username }, {username: req.body.useremail}).catch(err => {
+
+    if (req.body.useremail.length !== 0) {
+
+        User.findOneAndUpdate({ username: req.user.username }, { username: req.body.useremail }).catch(err => {
             console.log(err);
         });
-        
+
     }
 
-    if(req.body.accountname.length !== 0) {
-        User.findOneAndUpdate({ username: req.user.username }, {name: req.body.accountname}).catch(err => {
+    if (req.body.accountname.length !== 0) {
+        User.findOneAndUpdate({ username: req.user.username }, { name: req.body.accountname }).catch(err => {
             console.log(err);
         });
     }
 
-    if(req.body.userpassword.length !== 0) {
+    if (req.body.userpassword.length !== 0) {
 
         //need to hash the password first
         bcryptjs.hash(req.body.userpassword, 10, (err, hashedPassword) => {
             // handle error
-            if(err) {
+            if (err) {
                 console.log("couldn't hash password");
             }
-            
-            User.findOneAndUpdate({ username: req.user.username }, {password: hashedPassword}).catch(err => {
+
+            User.findOneAndUpdate({ username: req.user.username }, { password: hashedPassword }).catch(err => {
                 console.log(err);
             });
         });
     }
-    
+
     // find every instance of the old username in each liked_username array
     try {
-        await Post.updateMany({ liked_username : oldEmail}, { $set: {"liked_username.$" : req.user.username}});
+        await Post.updateMany({ liked_username: oldEmail }, { $set: { "liked_username.$": req.user.username } });
     } catch (error) {
         console.log(error);
     }
@@ -296,11 +300,11 @@ app.post("/updateAccountInfo", isLoggedIn, async function(req, res) {
 
 
 // endpoint for creating a new post
-app.post("/createPost", isLoggedIn, function(req, res) {
-    
+app.post("/createPost", isLoggedIn, function (req, res) {
+
     console.log(req.user);
-    console.log('entering create a post endpoint');    
-    
+    console.log('entering create a post endpoint');
+
     const post = new Post({
         author: req.user.username,
         liked_count: 0,
@@ -320,18 +324,18 @@ app.post("/createPost", isLoggedIn, function(req, res) {
         console.log(err);
         console.log('post couldn\'t be saved in database');
     });
-    
+
     res.redirect("/");
 });
 
-app.post("/filter", function(req, res) {
+app.post("/filter", function (req, res) {
 
     let filterData = req.body;
     console.log(req.body);
-    Post.find({}, function(err, foundPosts) {
+    Post.find({}, function (err, foundPosts) {
         if (!err) {
             let filteredPosts = [...foundPosts];
-            
+
             if ("activity" in filterData) {
                 if (filterData["activity"].length !== 0) {
                     filteredPosts = filteredPosts.filter(elem => ("activity" in elem));
@@ -349,7 +353,7 @@ app.post("/filter", function(req, res) {
             if (filterData["duration"].length !== 0) {
                 filteredPosts = filteredPosts.filter(elem => ("duration" in elem));
                 filteredPosts = filteredPosts.filter(elem => (elem["duration"] === filterData["duration"]));
-                
+
             }
 
             if (filterData["time"].length !== 0) {
@@ -357,11 +361,11 @@ app.post("/filter", function(req, res) {
                 filteredPosts = filteredPosts.filter(elem => (elem["activity"] === filterData["activity"]));
             }
 
-            if(filterData["date"].length !== 0) {
+            if (filterData["date"].length !== 0) {
                 filteredPosts = filteredPosts.filter(elem => ("date" in elem));
                 filteredPosts = filteredPosts.filter(elem => (elem["date"] === filterData["date"]));
             } else {
-                
+
                 if ("Monday" in filterData) {
                     filteredPosts = filteredPosts.filter(elem => (elem["days"].includes("Monday")));
                 }
@@ -391,7 +395,7 @@ app.post("/filter", function(req, res) {
                 }
             }
 
-            let renderInfo = {"userName": username, "posts": filteredPosts};
+            let renderInfo = { "userName": username, "posts": filteredPosts };
 
             fs.writeFile("render.json", JSON.stringify(renderInfo), (err) => {
                 "Write error.";
@@ -405,8 +409,8 @@ app.post("/filter", function(req, res) {
     });
 });
 
-app.get("/like/:postID", async function(req, res) {
-    if(!req.user) {
+app.get("/like/:postID", async function (req, res) {
+    if (!req.user) {
         res.redirect("/");
     }
     let postID = req.params.postID;
@@ -414,14 +418,14 @@ app.get("/like/:postID", async function(req, res) {
     let renderData = (JSON.parse(fs.readFileSync("render.json")));
     let postsRender = renderData["posts"];
 
-    Post.findOne({_id: postID}, async function(err, post) {
+    Post.findOne({ _id: postID }, async function (err, post) {
         likedPost = post;
         const postIndexRender = postsRender.findIndex(elem => elem._id === postID);
-        if(likedPost["liked_username"].includes(req.user.username)) {
+        if (likedPost["liked_username"].includes(req.user.username)) {
             const index = likedPost["liked_username"].indexOf(req.user.username);
             likedPost["liked_username"].splice(index, 1);
             try {
-                await Post.findOneAndUpdate({"_id": postID}, {$set: {liked_count: likedPost["liked_count"] - 1, liked_username: likedPost["liked_username"]}});
+                await Post.findOneAndUpdate({ "_id": postID }, { $set: { liked_count: likedPost["liked_count"] - 1, liked_username: likedPost["liked_username"] } });
             } catch (error) {
                 console.log(error);
             }
@@ -430,11 +434,11 @@ app.get("/like/:postID", async function(req, res) {
             postsRender[postIndexRender].liked_count--;
             postsRender[postIndexRender]["liked_username"].splice(indexRender, 1);
 
-            
+
         } else {
             likedPost["liked_username"].push(req.user.username);
             try {
-                await Post.findOneAndUpdate({"_id": postID}, {$set: {liked_count: likedPost["liked_count"] + 1, liked_username: likedPost["liked_username"]}});
+                await Post.findOneAndUpdate({ "_id": postID }, { $set: { liked_count: likedPost["liked_count"] + 1, liked_username: likedPost["liked_username"] } });
             } catch (error) {
                 console.log(error);
             }
@@ -452,12 +456,12 @@ app.get("/like/:postID", async function(req, res) {
     });
 });
 
-app.get("/renderjson", function(req, res) {
+app.get("/renderjson", function (req, res) {
     res.sendFile(__dirname + "/render.json");
 });
 
-app.listen(process.env.PORT || 8080, function(err) {
-    if(err) {
+app.listen(process.env.PORT || 8080, function (err) {
+    if (err) {
         console.log("couldn't connect to server");
     }
 });

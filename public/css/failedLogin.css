@@ -1,0 +1,29 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+#login-fail-form {
+  float: right;
+  margin-right: 100px;
+  margin-top: 200px;
+}
+
+.loginFailed {
+  margin-top: 10px;
+  color: red;
+  font-size: smaller;
+  font-weight: 500;
+}
+
+.container {
+  margin: 0;
+  padding-left: 0;
+}
+
+#failed-image {
+  background-repeat: no-repeat;
+  width: 60%;
+  height: 100%;
+  position: absolute;
+}
