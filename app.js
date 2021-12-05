@@ -292,11 +292,30 @@ app.post("/updateAccountInfo", isLoggedIn, async function (req, res) {
     // save old email
     let oldEmail = req.user.username;
 
+    // check if the user typed into the email box
     if (req.body.useremail.length !== 0) {
 
-        User.findOneAndUpdate({ username: req.user.username }, { username: req.body.useremail }).catch(err => {
-            console.log(err);
+        // check if this email already exists in the database
+        User.findOne({username: req.body.useremail}, function(err, user) {
+
+            if(err) {
+                console.log(err);
+            }
+
+            // 
+            if(user) {
+                // notify the user
+                console.log("couldn't update account email");
+            }
+
+            if(!user) {
+                User.findOneAndUpdate({ username: req.user.username }, { username: req.body.useremail }).catch(err => {
+                    console.log(err);
+                });
+            }
+
         });
+        
 
     }
 

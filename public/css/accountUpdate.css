@@ -48,3 +48,7 @@ h2 {
     margin-top: 100px;
     margin-bottom: 50px;
 }
+
+#taken {
+    color: red;
+}
