@@ -4,7 +4,7 @@ async function render() {
   let renderData = await fetch("/renderjson");
   if (renderData.ok) {
     renderData = await renderData.json();
-    console.log(renderData);
+    //console.log(renderData);
   } else {
     return;
   }
@@ -94,7 +94,7 @@ async function render() {
   });
 }
 
-window.onload = render().then(createColors);
+window.onload = render().then(createColors).then(runChecker);
 
 function createColors() {
   const likes = document.getElementsByClassName("likebutton");
@@ -124,4 +124,47 @@ function likeFormatting() {
     this.style.backgroundColor = "white";
     window.localStorage.setItem("color" + this.id, "white");
   }
+}
+
+// as the user is typing, send the user to the server and check for it in the database
+async function checkUsername() {
+
+  let url = "http://localhost:8080/checkUsernameTaken"; // CHANGE THIS TO HEROKU PATH
+
+  let datatosend = { username: document.getElementById("emailSignup").value };
+  let res = await fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(datatosend)
+  });
+
+  if (res.ok) {
+
+    let isFound = await res.json();
+
+    if (isFound.taken === 'taken') {
+      console.log('username is already taken');
+
+      // display error message for a few seconds 
+      const writeBox = document.getElementById("usernameTaken");
+      writeBox.innerHTML = "Username already in use";
+      setTimeout(() => {
+        writeBox.innerHTML = "";
+      }, 5000);
+
+    } else {
+      console.log('username available');
+    }
+  } else {
+    console.log('error awaiting json response');
+  }
+
+}
+
+// function to run after the page is fully loaded. Continuously checks a taken username as the user is typing
+function runChecker() {
+  const isTaken = document.getElementById("emailSignup");
+  isTaken.addEventListener('keyup', checkUsername);
 }

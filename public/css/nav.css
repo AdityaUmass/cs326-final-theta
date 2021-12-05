@@ -1,76 +1,76 @@
 .navbar .login-label {
-    
 }
 
 .navbar .signup-label {
-
 }
 
 .navbar .top-logo {
-    color: white;
+  color: white;
 }
 
 .navbar .login-label:hover {
-    text-decoration: underline;
-    text-underline-offset: 18px;
-    text-decoration-thickness: 3px;
+  text-decoration: underline;
+  text-underline-offset: 18px;
+  text-decoration-thickness: 3px;
 }
 
 .navbar .signoutlink {
-    text-decoration: none;
-    color: white;
-    font-weight: 500;
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
 }
 
 .navbar .signup-label:hover {
-    text-decoration: underline;
-    text-underline-offset: 18px;
-    text-decoration-thickness: 3px;
+  text-decoration: underline;
+  text-underline-offset: 18px;
+  text-decoration-thickness: 3px;
 }
 
 .offcanvas-header {
-    background-color: rgb(34, 37, 41);
+  background-color: rgb(34, 37, 41);
 }
 
 .offcanvas-header .btn-close {
-    background-color: snow;
+  background-color: snow;
 }
 
 .offcanvas-header .offcanvas-title {
-    color: white;
+  color: white;
 }
 
-
 .offcanvas-body {
-    background-color: rgb(34, 37, 41);
+  background-color: rgb(34, 37, 41);
 }
 
 .offcanvas-body .navbar-nav .nav-item .nav-link {
-    color: white;
-    font-family: 'Hind Siliguri', sans-serif;
-    font-family: 'Roboto', sans-serif;
-    font-family: 'Rubik', sans-serif;
+  color: white;
+  font-family: "Hind Siliguri", sans-serif;
+  font-family: "Roboto", sans-serif;
+  font-family: "Rubik", sans-serif;
 }
-
 
 .offcanvas-body .navbar-nav .nav-item .nav-link:hover {
-    color: peru;
+  color: peru;
 }
 
-.modal-footer{
-    display: flex;
-    flex-wrap: wrap;
-    flex-shrink: 0;
-    align-items: center;
-    justify-content: flex-end;
-    padding: .75rem .75rem 0rem .75rem;
-    border-top: 1px solid #dee2e6;
-    border-bottom-right-radius: calc(.3rem - 1px);
-    border-bottom-left-radius: calc(.3rem - 1px);
+.modal-footer {
+  display: flex;
+  flex-wrap: wrap;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0.75rem 0.75rem 0rem 0.75rem;
+  border-top: 1px solid #dee2e6;
+  border-bottom-right-radius: calc(0.3rem - 1px);
+  border-bottom-left-radius: calc(0.3rem - 1px);
 }
 
 .modal-body {
-    position: relative;
-    flex: 1 1 auto;
-    padding: 1rem 1rem 0rem 1rem;
+  position: relative;
+  flex: 1 1 auto;
+  padding: 1rem 1rem 0rem 1rem;
+}
+
+#usernameTaken {
+  color: red;
 }

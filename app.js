@@ -115,37 +115,56 @@ app.get("/", function (req, res) {
 // enpoint for creating a user
 app.post('/createUser', function (req, res) {
 
-    bcryptjs.hash(req.body.password, 10, (err, hashedPassword) => {
-        // handle error
-        if (err) {
-            console.log("couldn't hash password");
-        }
-        // store user into the database
-        const user = new User({
-            name: req.body.name,
-            username: req.body.username,
-            password: hashedPassword,
-            posts: []
-        }).save().then(entry => {
-            console.log(entry);
-        }).catch(err => {
-            console.log(err);
-        });
+    // checks to see if the username already exists in the database
+    User.findOne({ username: req.body.username }, function (err, user) {
 
+        if (err) {
+            res.send(err);
+            return;
+        }
+
+        if (user) {
+            console.log("username already exists");
+        }
+
+        if (!user) {
+
+            bcryptjs.hash(req.body.password, 10, (err, hashedPassword) => {
+                // handle error
+                if (err) {
+                    console.log("couldn't hash password");
+                }
+                // store user into the database
+                const user = new User({
+                    name: req.body.name,
+                    username: req.body.username,
+                    password: hashedPassword,
+                    posts: []
+                }).save().then(entry => {
+                    console.log(entry);
+                }).catch(err => {
+                    console.log(err);
+                });
+
+            });
+        }
     });
 
     res.redirect("/");
 });
 
+// calls passport local strategy to login a user
 app.post("/login", passport.authenticate("local", {
     successRedirect: "/",
     failureRedirect: "/failureLogin"
 }));
 
+// redirects to a failed login page if the user fails to login
 app.get("/failureLogin", function (req, res) {
     res.sendFile(__dirname + "/failureLogin.html");
 })
 
+// sign out a user
 app.get("/signout", (req, res) => {
     req.logout();
     res.redirect("/");
@@ -233,6 +252,20 @@ app.get("/accountUpdate/:postID", function (req, res) {
 
 
 
+});
+
+app.post("/checkUsernameTaken", function (req, res) {
+
+    User.findOne({ username: req.body.username }, function (err, user) {
+        if (err) {
+            res.end();
+        } else if (user) {
+            console.log("found user");
+            res.end(JSON.stringify({ taken: 'taken' }));
+        } else if (!user) {
+            res.end(JSON.stringify({ taken: 'none' }));
+        }
+    });
 });
 
 app.get("/updateJSON", function (req, res) {
