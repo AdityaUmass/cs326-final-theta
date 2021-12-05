@@ -4,7 +4,7 @@ input.addEventListener('keyup', checkUsername);
 // as the user is typing, send the user to the server and check for it in the database
 async function checkUsername() {
 
-    let url = "http://localhost:8080/checkUsernameTaken"; // CHANGE THIS TO HEROKU PATH
+    let url = "https://ufit326.herokuapp.com/checkUsernameTaken"; // CHANGE THIS TO HEROKU PATH
     
     let datatosend = { username: document.getElementById("email").value };
     let res = await fetch(url, {
