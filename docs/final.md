@@ -188,6 +188,7 @@ All - We all contributed to each milestone writeup. We also all made UI styling 
 
 
 
+# Heroku Application Link
 
+[UFit](https://ufit326.herokuapp.com/)
 
-Link to application: https://ufit326.herokuapp.com/
