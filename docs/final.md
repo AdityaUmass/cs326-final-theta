@@ -25,10 +25,25 @@ UFit is a web application that gives UMass Amherst students and staff the opport
 
 ## API
 
-| Endpoint | Description |
+| Endpoint | Functionality |
 | --- | --- |
-| git status | List all new or modified files |
-| git diff | Show file differences that haven't been staged |
+| ```GET /``` | Accesses the homepage |
+| ```GET /post``` | Accesses the "Create a Post" page |
+| ```GET /clubnews``` | Accesses the "Clubs & News page |
+| ```GET /updateInfo``` | Accesses the "Update Account" page |
+| ```GET /account``` | Accesses "Account" page |
+| ```GET /failureLogin``` | Accesses "Failed Login" page |
+| ```POST /createuser``` | To create an account |
+| ```POST /login``` | Handles logging in |
+| ```GET /signout``` | Handles signing out |
+| ```POST /updateAccountInfo``` | Processes account update information |
+| ```GET /myAccountJSON``` | Find a users' posts |
+| ```GET /accountDelete/:postID``` | Deletes a users' specific post |
+| ```GET /accountUpdate/:postID``` | Updates a users' specific post |
+| ```POST /createPost``` | To create a post |
+| ```POST /filter``` | Filters posts on the homepage by criteria |
+| ```GET /like/:postID``` | Likes a specific post |
+| ```GET /navbar``` | Renders different navigation bars according to login status |
 
 
 
@@ -133,23 +148,23 @@ A Post can be about looking for a workout partner, posting an achievement, or ho
 ## URL Routes
 
 * Main Home Page: accessible to all
-* 
+
 ```https://ufit326.herokuapp.com/``` 
 
 * Clubs & News Page: accessible to all
-* 
+ 
 ```https://ufit326.herokuapp.com/clubnews```
 
 * Create a Post Page: accessible only to users who have a valid account and are logged in
-* 
+ 
 ```https://ufit326.herokuapp.com/post```
 
 * Account Page: accessible only to user who are logged in
-* 
+ 
 ```https://ufit326.herokuapp.com/account```
 
 * Update Account Page: accessible only to user who are logged in
-* 
+ 
 ```https://ufit326.herokuapp.com/updateInfo```
 
 
@@ -159,6 +174,14 @@ A Post can be about looking for a workout partner, posting an achievement, or ho
 Secure account credentials is a very important aspect of web development, and UFit utilizates password hashing and salting to accomplish this need. UFit implements PassportJS' local strategy along with Express Sessions to create and log in users, and a login session remains persistent across the application until a user signs out. All passwords are salted and hashed with an NPM package called BCryptJS. These secure passwords are the ones uploaded to the database.
 
 ## Division of Labor
+
+Aditya Kumar Roy Chowdbury
+
+Raghav Malpani
+
+Brandon Figueredo - Responsible for user account creation, logging in and signing out using PassportJS and BCryptJS. Created functionality for a user to update their account information. Handled User and Post creation to the MongoDB database. Created Clubs & News page.
+
+All - We all contributed to each milestone writeup. We also all made UI styling changes.
 
 ## Conclusion
 
