@@ -249,50 +249,50 @@ Working as a team while each of us was still learning languages such as HTML and
 ## Rubric 
 
 
-### Heroku Implementation 
+### Heroku Implementation (5 points)
 -  All of the listed functionality described here are visible on a live heroku site at https://ufit326.herokuapp.com/
 
-### Final Video 
+### Final Video (5 points)
 - The final video is less than 10 minutes long and describes the functionality of the website in a comprehensive manner
 
-### Logged Out User
+### Logged Out User (5 points)
 - A logged out user should only be able to see the “Clubs and News” page on the navigation sidebar and should see options to sign in or log out on the navigation bar
 
-### Logged In User
+### Logged In User (5 points)
 - A logged in user should be able to see and access additional pages on the navigation sidebar - “Create a Post”, “My Account”, “Update Account”.
 - There should be an option to log out on the top navigation bar.
 
-### Signing up a User
+### Signing up a User (5 points)
 - Successfully creates a user account in the database through the “sign up” modal.
 
-### Liking a Post on the homepage
+### Liking a Post on the homepage (10 points)
 - Liking a post on the home page by clicking on the heart icon on a post increments the like count if a user has already liked a post and decrements it otherwise. - It also adds the user’s username to the post’s liked_username field so it can be accessed later on the My Account page.
 
-### Creating a post on the “Create a Post” page
+### Creating a post on the “Create a Post” page (10 points)
 - When a post is created on this page with a title, content, and a set of filter and “Post” is clicked, a user should be redirected to the homepage and be able to view their post at the top of all posts.
 
-### Filtering a Post on the homepage
+### Filtering a Post on the homepage (10 points)
 - When the input fields under “Find a Match” on the home page are filled with information, and the “Filter” button is clicked, only posts matching that information should be displayed on the right side of that page.
 
-### Scrolling through posts on the homepage
+### Scrolling through posts on the homepage (5 points)
 - When scrolling through all the posts on the homepage, only the posts should be scrollable and other content should be fixed in place.
 
-### Deleting a post on the “My Account” page
+### Deleting a post on the “My Account” page (10 points)
 - When you delete a post on the “My Account” page using the “Delete” button, it should disappear from the home page as well as the “My Account” page.
 
-### Updating a post on the “My Account” page
+### Updating a post on the “My Account” page (10 points)
 - “When you click the “Update” button on a post, it should redirect you to the “Create a Post” page with the information from the previous post filled into the text input fields that can be updated. You then click post to see the updated post.
 
-### Updating account information
+### Updating account information (10 points)
 - Successfully updates the information associated to a User account upon request. E.g. Name, Email address/Username, and Password. This is an example of a CR(U)D operation.
 
-### Viewing personal posts on the “My Account” page
+### Viewing personal posts on the “My Account” page (10 points)
 - When a logged in user clicks on the “My Account” page, any post that the user has created in the past and not deleted should be visible there.
 
-### Viewing Interested people for a post on the “My Account” page
+### Viewing Interested people for a post on the “My Account” page (10 points)
 - When the “See all Interested” button on a post is clicked, a user should be able to see the email IDs of everyone who has liked that post.
 
-### Database Implementation
+### Database Implementation (10 points)
 - A MongoDB database is used to handle CRUD operations related to post and user information.
 
 
