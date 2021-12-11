@@ -246,7 +246,7 @@ Each of us focused on the implementation of specific components of the website t
 
 Working as a team while each of us was still learning languages such as HTML and CSS, frameworks like Bootstrap and Express, and using version control software like GitHub, it really encouraged us to share ideas and discuss approaches to difficulties we encountered along the way. The collaboration aspect of this course was invaluable exposure for what each of us will likely experience in our professional careers.
 
-## Rubric 
+## Rubric (Total Points : __/120) 
 
 
 ### Heroku Implementation (5 points)
