@@ -71,6 +71,12 @@ Update account page
 Create A Post
 ![post Image 1](https://github.com/AdityaUmass/cs326-final-theta/blob/master/public/Images/createapostf.png)
 
+### Clubs & News Page
+
+![clubs Image 1](https://github.com/AdityaUmass/cs326-final-theta/blob/master/public/Images/clubsf.png)
+
+![clubs Image 2](https://github.com/AdityaUmass/cs326-final-theta/blob/master/public/Images/clubs2f.png)
+
 
 ## API
 
