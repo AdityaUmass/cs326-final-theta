@@ -22,6 +22,55 @@ UFit is a web application that gives UMass Amherst students and staff the opport
 ## User Interface
 
 
+### Home/Posts page
+
+Home Page View
+![Homepage Image 1](https://github.com/AdityaUmass/cs326-final-theta/blob/master/public/Images/homepagef.png)
+
+With Single-Day Activity Filter Enabled
+![Homepage Image 2](https://github.com/AdityaUmass/cs326-final-theta/blob/master/public/Images/singledaytogglef.png)
+
+With Multi-Day Activity Filter Enabled
+![Homepage Image 3](https://github.com/AdityaUmass/cs326-final-theta/blob/master/public/Images/multidaytogglef.png)
+
+
+### Navigation Menu
+
+Not Logged in
+![offcanvas2](https://github.com/AdityaUmass/cs326-final-theta/blob/master/public/Images/Screen%20Shot%202021-12-11%20at%2011.10.34%20AM.png)
+
+Logged in
+![offcanvas2](https://github.com/AdityaUmass/cs326-final-theta/raw/master/public/Images/offcanvasf.png)
+
+### Login & Signup
+
+Login Modal
+![login](https://github.com/AdityaUmass/cs326-final-theta/blob/master/public/Images/loginf.png)
+
+Signup Modal
+![signup](https://github.com/AdityaUmass/cs326-final-theta/blob/master/public/Images/signupf.png)
+
+
+
+
+### Account Page
+
+Account Page View
+![account Image 1](https://github.com/AdityaUmass/cs326-final-theta/blob/master/public/Images/accountf.png)
+
+Display of usernames that have like your post
+![account Image 2](https://github.com/AdityaUmass/cs326-final-theta/blob/master/public/Images/likedinterestedf.png)
+
+### Update Account Page
+
+Update account page
+![update account](https://github.com/AdityaUmass/cs326-final-theta/blob/master/public/Images/updateaccf.png)
+
+### Create A Post Page
+
+Create A Post
+![post Image 1](https://github.com/AdityaUmass/cs326-final-theta/blob/master/public/Images/createapostf.png)
+
 
 ## API
 
@@ -185,9 +234,11 @@ All - We all contributed to each milestone writeup. We also all made UI styling 
 
 ## Conclusion
 
-The team worked well together in order to complete the goals and ideas we originally set out with and through the process, we even added new ideas such as the "Update Account" page.Initially, the project looked daunting due to our limited experience with designing a full-stack product but as the milestones progressed, we found ourselves to be more comfortable with the project overall. Designing the front-end of the website in Milestone 1 was likely the largest technical hurdle we faced as we were very new to CSS and Bootstrap styling. Figuring out how to propgate information from the server-side code to the browser-side was also a challenge that we took some time to figure out. Collaborating in person in order to work through these challenges was lwhat helped us find solutions efficiently. 
+The team worked well together in order to complete the goals and ideas we originally set out with and through the process, we even added new ideas such as the "Update Account" page. Initially, the project looked daunting due to our limited experience with designing a full-stack product but as the milestones progressed, we found ourselves to be more comfortable with the project overall. Designing the front-end of the website in Milestone 1 was likely the largest technical hurdle we faced as we were all very new to CSS and Bootstrap styling. Figuring out how to propagate information from the server-side code to the browser-side was also a challenge that took some time to figure out. Collaborating in person in order to work through these challenges was what helped us find solutions efficiently. 
 
-Everyone also focused on the implementation of specific components of the website each throughout the duration of the project which enabled us to complete work rapidly. Apart from learning to collaborate effectively, we learned a lot of new ideas in web development such as working with a non-relational database, uploading a site live, and encryption/authorization measures. The project offered a good opportunity to learn how to connect servers, databases, and a front-end to form a complete product. Something our team would have liked to know before starting on the project would be how to connect the database with the server-side code. This is because we essentially implemented most of the functionality of the website during Milestone 2 using files to store data as text. If we had this information prior, we could have saved some time in the database implementation section and maybe combined the two milestones. On a more general level, we would have liked to have a clearer idea of how many changes to the original idea over the course of the project. Sometimes, we were unsure of whether to add on improvements to the site as we were unaware of the exact rules around adding new features after the first milestone.
+Each of us focused on the implementation of specific components of the website throughout the duration of the project, which enabled us to complete work rapidly. Apart from learning to collaborate effectively, we learned a lot of new ideas in web development such as working with a non-relational database, uploading a site live, and encryption/authorization measures. The project offered a good opportunity to learn how to connect servers, databases, and a front-end to form a complete product. Something our team would have liked to know before starting on the project would be how to connect the database with the server-side code. This is because we essentially implemented most of the functionality of the website during Milestone 2 using files to store data as text. If we had this information prior, we could have saved some time in the database implementation section and maybe combined the two milestones. On a more general level, we would have liked to have a clearer idea of how many changes to the original idea over the course of the project (WHAT DOES THIS MEAN?). Sometimes, we were unsure of whether to add improvements to the site, as we were unaware of the exact rules around adding new features after the first milestone. 
+
+Working as a team while each of us was still learning languages such as HTML and CSS, frameworks like Bootstrap and Express, and using version control software like GitHub, it really encouraged us to share ideas and discuss approaches to difficulties we encountered along the way. The collaboration aspect of this course was invaluable exposure for what each of us will likely experience in our professional careers.
 
 
 # Heroku Application Link
