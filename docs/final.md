@@ -246,6 +246,55 @@ Each of us focused on the implementation of specific components of the website t
 
 Working as a team while each of us was still learning languages such as HTML and CSS, frameworks like Bootstrap and Express, and using version control software like GitHub, it really encouraged us to share ideas and discuss approaches to difficulties we encountered along the way. The collaboration aspect of this course was invaluable exposure for what each of us will likely experience in our professional careers.
 
+## Rubric 
+
+
+### Heroku Implementation 
+-  All of the listed functionality described here are visible on a live heroku site at https://ufit326.herokuapp.com/
+
+### Final Video 
+- The final video is less than 10 minutes long and describes the functionality of the website in a comprehensive manner
+
+### Logged Out User
+- A logged out user should only be able to see the “Clubs and News” page on the navigation sidebar and should see options to sign in or log out on the navigation bar
+
+### Logged In User
+- A logged in user should be able to see and access additional pages on the navigation sidebar - “Create a Post”, “My Account”, “Update Account”.
+- There should be an option to log out on the top navigation bar.
+
+### Signing up a User
+- Successfully creates a user account in the database through the “sign up” modal.
+
+### Liking a Post on the homepage
+- Liking a post on the home page by clicking on the heart icon on a post increments the like count if a user has already liked a post and decrements it otherwise. - It also adds the user’s username to the post’s liked_username field so it can be accessed later on the My Account page.
+
+### Creating a post on the “Create a Post” page
+- When a post is created on this page with a title, content, and a set of filter and “Post” is clicked, a user should be redirected to the homepage and be able to view their post at the top of all posts.
+
+### Filtering a Post on the homepage
+- When the input fields under “Find a Match” on the home page are filled with information, and the “Filter” button is clicked, only posts matching that information should be displayed on the right side of that page.
+
+### Scrolling through posts on the homepage
+- When scrolling through all the posts on the homepage, only the posts should be scrollable and other content should be fixed in place.
+
+### Deleting a post on the “My Account” page
+- When you delete a post on the “My Account” page using the “Delete” button, it should disappear from the home page as well as the “My Account” page.
+
+### Updating a post on the “My Account” page
+- “When you click the “Update” button on a post, it should redirect you to the “Create a Post” page with the information from the previous post filled into the text input fields that can be updated. You then click post to see the updated post.
+
+### Updating account information
+- Successfully updates the information associated to a User account upon request. E.g. Name, Email address/Username, and Password. This is an example of a CR(U)D operation.
+
+### Viewing personal posts on the “My Account” page
+- When a logged in user clicks on the “My Account” page, any post that the user has created in the past and not deleted should be visible there.
+
+### Viewing Interested people for a post on the “My Account” page
+- When the “See all Interested” button on a post is clicked, a user should be able to see the email IDs of everyone who has liked that post.
+
+### Database Implementation
+- A MongoDB database is used to handle CRUD operations related to post and user information.
+
 
 # Heroku Application Link
 
