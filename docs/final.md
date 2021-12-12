@@ -232,7 +232,7 @@ Secure account credentials is a very important aspect of web development, and UF
 
 Aditya Kumar Roy Chowdhury - Responsible for Post creation and rendering on homepage, contributions to the navbar design, filtering of posts on home page, and liking/unliking user posts. Handled post filteration and liking using MongoDB. Created general Express outline for server-side implementation.
 
-Raghav Malpani
+Raghav Malpani - Responsible for the Account page, and being able to update and delete posts. Additional functionalities within the account page include being able to mass email all the users who have liked a certain post. Created a generic JS template to render posts from the MongoDB database into HTML cards. Created modals for login/signup.
 
 Brandon Figueredo - Responsible for user account creation, logging in and signing out using PassportJS and BCryptJS. Created functionality for a user to update their account information. Handled User and Post creation to the MongoDB database. Created Clubs & News page.
 
