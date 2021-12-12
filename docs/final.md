@@ -230,7 +230,7 @@ Secure account credentials is a very important aspect of web development, and UF
 
 ## Division of Labor
 
-Aditya Kumar Roy Chowdbury - Responsible for Post creation and rendering on homepage, contributions to the navbar design, filtering of posts on home page, and liking/unliking user posts. Handled post filteration and liking using MongoDB. Created general Express outline for server-side implementation.
+Aditya Kumar Roy Chowdhury - Responsible for Post creation and rendering on homepage, contributions to the navbar design, filtering of posts on home page, and liking/unliking user posts. Handled post filteration and liking using MongoDB. Created general Express outline for server-side implementation.
 
 Raghav Malpani
 
